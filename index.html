@@ -242,6 +242,32 @@ main.fx .dt{animation:fadeIn .4s 1s both}
 .rest.low{border-color:var(--gold);animation:pulse 1s ease-in-out infinite}
 .rest.low .bar i{background:var(--gold)}
 
+/* program editor + day view */
+.erow{padding:0;overflow:hidden;transition:transform .18s ease}
+.ehead{display:flex;align-items:center;gap:2px;padding:4px 6px 4px 2px}
+.grip{width:44px;height:50px;display:grid;place-items:center;color:var(--muted);touch-action:none;cursor:grab;flex:0 0 auto;border-radius:12px}
+.grip svg{width:20px;height:20px;fill:currentColor}
+.grip:active{color:var(--lilac)}
+.etitle{flex:1;min-width:0;text-align:left;display:flex;flex-direction:column;padding:6px 4px}
+.etitle b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700}
+.etitle span{font-size:13px;color:var(--muted)}
+.ech{width:40px;height:44px;display:grid;place-items:center;color:var(--muted)}
+.ech svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
+.ech.open svg{transform:rotate(180deg)}
+.ebody{padding:0 12px 12px}
+.panel.dragmode .ebody{display:none}
+.erow.dragging{position:relative;z-index:5;transition:none;border-color:var(--violet);background:var(--surface);box-shadow:0 14px 34px rgba(0,0,0,.55)}
+button.wd{padding:2px 4px}
+.wd.plan i{border-style:dashed;border-color:var(--violet)}
+.wd:active i{transform:scale(.86)}
+.exh{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.exh h3{flex:1;min-width:0}
+.mv{display:flex;gap:6px}
+.mv button{width:34px;height:34px;border-radius:10px;background:var(--raised);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted)}
+.mv svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.dv .logrow span:first-child{color:var(--text);font-weight:600}
+.dv .small{color:var(--muted);font-weight:400}
+
 /* celebration */
 .cel{position:fixed;inset:0;z-index:100;background:radial-gradient(80% 320px at 50% 28%,rgba(var(--acc-rgb),.22),transparent 70%) no-repeat,var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:calc(28px + env(safe-area-inset-top,0px)) 24px calc(28px + env(safe-area-inset-bottom,0px));text-align:center;overflow:auto;animation:fadeIn .3s ease both}
 .cel .rsvg{width:140px;height:140px;filter:drop-shadow(0 0 26px rgba(var(--acc-rgb),.55))}
@@ -509,17 +535,42 @@ function installTip(){
 }
 
 function weekStrip(){
-  var now=new Date(),dow=(now.getDay()+6)%7;
+  var now=new Date(),dow=(now.getDay()+6)%7,today=todayStr();
   var mon=new Date(now.getFullYear(),now.getMonth(),now.getDate()-dow);
-  var names=['M','T','O','T','F','L','S'],h='';
-  var cnt=0;
+  var sch=schedule(14),names=['M','T','O','T','F','L','S'],h='',cnt=0;
   for(var i=0;i<7;i++){
     var d=new Date(mon.getFullYear(),mon.getMonth(),mon.getDate()+i),ds=todayStr(d);
     var has=S.sessions.some(function(s){return s.date===ds});
     if(has)cnt++;
-    h+='<div class="wd'+(has?' has':'')+(i===dow?' today':'')+'"><span>'+names[i]+'</span><i></i></div>';
+    var pl=ds>=today&&!has&&sch.some(function(e){return e.date===ds&&e.status==='train'});
+    h+='<button class="wd'+(has?' has':'')+(pl?' plan':'')+(i===dow?' today':'')+'" data-a="viewDay" data-d="'+ds+'" aria-label="'+esc(fmtDate(ds,true))+'"><span>'+names[i]+'</span><i></i></button>';
   }
   return '<div class="week" aria-label="Pas denne uge: '+cnt+' af '+S.goals.weekly+'">'+h+'</div>';
+}
+
+function dayViewHtml(ds){
+  var today=todayStr(),ses=S.sessions.filter(function(x){return x.date===ds}),sch=schedule(14);
+  var cur=sch.find(function(e){return e.date===ds});
+  var h='<div class="dv"><div class="ph"><h2 class="uc">'+esc(fmtDate(ds,true))+'</h2><button class="iconbtn" data-a="closeSheet" aria-label="Luk">'+IC.x+'</button></div>';
+  function exRows(list){return '<div class="card" style="padding:4px 16px">'+list.join('')+'</div>'}
+  if(ses.length){
+    ses.forEach(function(x){
+      h+='<p class="muted" style="margin-top:0">Udført: <b style="color:var(--text)">'+esc(x.dayName+' '+(x.focus||''))+'</b></p>'
+        +exRows(x.exercises.map(function(e){return '<div class="logrow" style="align-items:flex-start"><span>'+esc(e.name)+'</span><span style="text-align:right">'+setsText(e.sets,e.kind)+'</span></div>'}));
+    });
+  }else if(cur&&cur.status==='train'){
+    var d=S.program.find(function(x){return x.id===cur.dayId});
+    h+='<p class="muted" style="margin-top:0">Planlagt: <b style="color:var(--text)">'+esc(cur.name+' '+cur.focus)+'</b></p>'
+      +exRows(d.exercises.map(function(e){
+        var hh=hist(e.name),l=hh.length?hh[hh.length-1]:null;
+        return '<div class="logrow" style="flex-direction:column;gap:3px"><div style="display:flex;justify-content:space-between;gap:12px"><span>'+esc(e.name)+'</span><span style="color:var(--lilac);font-weight:600">'+e.sets+' × '+esc(e.reps)+'</span></div>'
+          +(l?'<span class="small">Sidst: '+setsText(l.sets,l.kind)+'</span>':(e.note?'<span class="small">'+esc(e.note)+'</span>':''))+'</div>'}));
+  }else if(ds>=today){
+    var nx=sch.find(function(e){return e.status==='train'&&e.date>ds});
+    h+='<p class="muted" style="margin-top:0">Hviledag.'+(nx?' Næste pas er '+esc(nx.name+' '+nx.focus)+', '+esc(fmtDate(nx.date)):'')+'</p>';
+  }else h+='<p class="muted" style="margin-top:0">Ingen pas registreret denne dag.</p>';
+  if(ds>=today&&!ses.length)h+='<button class="btn sec2" data-a="openDate" data-d="'+ds+'" style="margin-top:6px">Ryk eller ændr dagen</button>';
+  return h+'</div>';
 }
 
 var PLS=[[25,23,78],[20,21,72],[15,18,60],[10,15,48],[5,12,36],[2.5,10,28],[1.25,8,22]];
@@ -571,7 +622,7 @@ function bwCard(){
 function upcomingList(sch){
   var h='<div class="sec"><h2>Kommende dage</h2></div><div class="card" style="padding:4px 16px">';
   sch.slice(1,8).forEach(function(e){
-    h+='<button class="logrow" style="width:100%;text-align:left;align-items:center" data-a="openDate" data-d="'+e.date+'"><span>'+fmtDate(e.date)+'</span><span style="text-align:right;color:'+(e.status==='train'?'var(--lilac)':'var(--muted)')+';font-weight:600">'
+    h+='<button class="logrow" style="width:100%;text-align:left;align-items:center" data-a="viewDay" data-d="'+e.date+'"><span>'+fmtDate(e.date)+'</span><span style="text-align:right;color:'+(e.status==='train'?'var(--lilac)':'var(--muted)')+';font-weight:600">'
       +(e.status==='train'?esc(e.name)+' '+esc(e.focus):e.status==='done'?'Udført':'Hviledag')+(e.ov?' <span class="small muted">(ændret)</span>':'')+'</span></button>';
   });
   return h+'</div>';
@@ -761,7 +812,7 @@ function viewWorkout(){
     +'<button class="finish" data-a="finish">Afslut</button></div><div class="wk">';
   a.exercises.forEach(function(ex){
     var t=ex.kind==='time',pr=prFlags(ex);
-    h+='<section class="ex"><h3>'+esc(ex.name)+'</h3><div class="tg">'+esc(ex.target)+'</div>'+(ex.note?'<div class="nt">'+esc(ex.note)+'</div>':'')+lastText(ex.name)
+    h+='<section class="ex"><div class="exh"><h3>'+esc(ex.name)+'</h3><span class="mv"><button data-a="exUp" data-ex="'+ex.id+'" aria-label="Flyt øvelsen op"><svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg></button><button data-a="exDown" data-ex="'+ex.id+'" aria-label="Flyt øvelsen ned"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></span></div><div class="tg">'+esc(ex.target)+'</div>'+(ex.note?'<div class="nt">'+esc(ex.note)+'</div>':'')+lastText(ex.name)
       +'<div class="cols'+(t?' t':'')+'"><span>Sæt</span>'+(t?'':'<span>kg</span>')+'<span>'+(t?'sek':'reps')+'</span><span></span></div>';
     ex.sets.forEach(function(s,i){
       h+='<div class="set'+(t?' t':'')+(s.done?' done':'')+(ui.warn&&!s.done?' warn':'')+'" data-row="'+ex.id+'-'+i+'">'
@@ -813,15 +864,23 @@ function renderSheet(keep){
       +'<label class="fld"><span>Navn</span><input class="in" data-draft="name" value="'+esc(d.name)+'"></label>'
       +'<label class="fld"><span>Fokus</span><input class="in" data-draft="focus" value="'+esc(d.focus||'')+'" placeholder="fx Overkrop A"></label>';
     d.exercises.forEach(function(e,i){
-      h+='<div class="erow"><input class="in" list="exlist" data-draft="exercises.'+i+'.name" value="'+esc(e.name)+'" placeholder="Øvelse">'
+      var op=!!e._open;
+      h+='<div class="erow" data-i="'+i+'"><div class="ehead"><button class="grip" data-i="'+i+'" aria-label="Træk for at flytte"><svg viewBox="0 0 24 24"><circle cx="9" cy="6" r="1.8"/><circle cx="15" cy="6" r="1.8"/><circle cx="9" cy="12" r="1.8"/><circle cx="15" cy="12" r="1.8"/><circle cx="9" cy="18" r="1.8"/><circle cx="15" cy="18" r="1.8"/></svg></button>'
+        +'<button class="etitle" data-a="eToggle" data-i="'+i+'"><b>'+esc(e.name||'Ny øvelse')+'</b><span>'+esc(e.sets+' × '+e.reps)+(e.kind==='time'?' (tid)':'')+'</span></button>'
+        +'<button class="ech'+(op?' open':'')+'" data-a="eToggle" data-i="'+i+'" aria-label="Rediger"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></div>';
+      if(op)h+='<div class="ebody"><input class="in" list="exlist" data-draft="exercises.'+i+'.name" value="'+esc(e.name)+'" placeholder="Øvelse">'
         +'<div class="g"><label class="fld" style="margin:0"><span>Sæt</span><input class="in" inputmode="numeric" data-draft="exercises.'+i+'.sets" value="'+e.sets+'"></label>'
         +'<label class="fld" style="margin:0"><span>Reps / sek</span><input class="in" data-draft="exercises.'+i+'.reps" value="'+esc(e.reps)+'"></label>'
         +'<label class="fld" style="margin:0"><span>Type</span><select class="in" data-draft="exercises.'+i+'.kind"><option value="reps"'+(e.kind!=='time'?' selected':'')+'>Reps</option><option value="time"'+(e.kind==='time'?' selected':'')+'>Tid</option></select></label></div>'
         +'<input class="in" style="margin-top:8px" data-draft="exercises.'+i+'.note" value="'+esc(e.note||'')+'" placeholder="Note (valgfri)">'
         +'<div class="acts"><button data-a="dayUp" data-i="'+i+'">Op</button><button data-a="dayDown" data-i="'+i+'">Ned</button><button class="rm" data-a="dayDel" data-i="'+i+'">Fjern</button></div></div>';
+      h+='</div>';
     });
+    if(d.exercises.length>1)h+='<p class="muted small" style="margin:-2px 2px 12px">Hold på de seks prikker og træk for at ændre rækkefølgen. Tryk på en øvelse for at rette den.</p>';
     h+='<button class="btn sec2" data-a="dayAdd">+ Tilføj øvelse</button><button class="btn" data-a="daySave">Gem dag</button>'
       +(sheet.isNew?'':'<button class="btn danger" data-a="askDelDay" style="margin-top:10px">Slet dag</button>');
+  }else if(sheet.type==='dayview'){
+    h=dayViewHtml(sheet.date);
   }else if(sheet.type==='welcome'){
     h='<div class="ph"><h2>Velkommen 💪</h2></div><p class="muted" style="margin-top:0">Din træningslog ligger kun på denne telefon. Du har allerede lavet Dag 1 (bænkpres 60 kg og så videre). Skal jeg lægge det ind, så du kan følge din progression fra start?</p>'
       +'<label class="fld"><span>Hvornår lavede du Dag 1?</span><input class="in" type="date" id="wDate" value="'+todayStr()+'"></label>'
@@ -1075,9 +1134,10 @@ document.addEventListener('click',function(e){
     case 'openDay':
       var day=t.dataset.id?S.program.find(function(x){return x.id===t.dataset.id}):null;
       if(day)sheet={type:'day',isNew:false,draft:JSON.parse(JSON.stringify(day))};
-      else sheet={type:'day',isNew:true,draft:{id:'d'+uid(),name:'Dag '+(S.program.length+1),focus:'',exercises:[{name:'',sets:3,reps:'8',kind:'reps',note:''}]}};
+      else sheet={type:'day',isNew:true,draft:{id:'d'+uid(),name:'Dag '+(S.program.length+1),focus:'',exercises:[{name:'',sets:3,reps:'8',kind:'reps',note:'',_open:true}]}};
       renderSheet();break;
-    case 'dayAdd':sheet.draft.exercises.push({name:'',sets:3,reps:'8',kind:'reps',note:''});renderSheet(true);
+    case 'eToggle':var ei=+t.dataset.i;sheet.draft.exercises.forEach(function(x,k){x._open=(k===ei)?!x._open:false});renderSheet(true);break;
+    case 'dayAdd':sheet.draft.exercises.forEach(function(x){x._open=false});sheet.draft.exercises.push({name:'',sets:3,reps:'8',kind:'reps',note:'',_open:true});renderSheet(true);
       setTimeout(function(){var p=document.querySelector('.panel');if(p)p.scrollTop=p.scrollHeight},30);break;
     case 'dayDel':sheet.draft.exercises.splice(+t.dataset.i,1);renderSheet(true);break;
     case 'dayUp':var i=+t.dataset.i,ar=sheet.draft.exercises;if(i>0){var tmp=ar[i];ar[i]=ar[i-1];ar[i-1]=tmp}renderSheet(true);break;
@@ -1103,6 +1163,11 @@ document.addEventListener('click',function(e){
       sheet=null;save();render();toast(cnt+' hviledage sat, passene rykker videre');break;
     case 'togDow':var di=+t.dataset.i;S.plan.pattern[di]=S.plan.pattern[di]?0:1;save();render();break;
     case 'theme':S.theme=t.dataset.v;save();applyTheme();document.querySelectorAll('[data-a=theme]').forEach(function(b){b.classList.toggle('on',b.dataset.v===S.theme)});break;
+    case 'viewDay':sheet={type:'dayview',date:t.dataset.d};renderSheet();break;
+    case 'exUp':case 'exDown':
+      var xa=S.active.exercises,xi=xa.findIndex(function(x){return x.id===t.dataset.ex}),xj=a==='exUp'?xi-1:xi+1;
+      if(xi>=0&&xj>=0&&xj<xa.length){var xt=xa[xi];xa[xi]=xa[xj];xa[xj]=xt;save();render()}
+      break;
     case 'hideTip':S.hideTip=1;save();render();break;
     case 'celClose':$('#cel').innerHTML='';ui.fx=true;render();break;
     case 'welcomeSeed':
@@ -1128,6 +1193,44 @@ document.addEventListener('click',function(e){
   }
 });
 
+var drag=null;
+function endDrag(commit){
+  if(!drag)return;
+  var d=drag;drag=null;
+  d.rows.forEach(function(r){r.style.transform='';r.classList.remove('dragging')});
+  d.panel.classList.remove('dragmode');
+  if(commit&&d.to!==d.i&&sheet&&sheet.draft){var ar=sheet.draft.exercises,it=ar.splice(d.i,1)[0];ar.splice(d.to,0,it);buzz(10)}
+  renderSheet(true);
+}
+document.addEventListener('pointerdown',function(e){
+  var g=e.target.closest&&e.target.closest('.grip');
+  if(!g||!sheet||sheet.type!=='day')return;
+  e.preventDefault();
+  var panel=document.querySelector('.panel'),rows=[].slice.call(panel.querySelectorAll('.erow')),i=+g.dataset.i;
+  panel.classList.add('dragmode');void panel.offsetHeight;
+  drag={i:i,to:i,startY:e.clientY,panel:panel,rows:rows,rects:rows.map(function(r){return r.getBoundingClientRect()})};
+  rows[i].classList.add('dragging');
+  try{g.setPointerCapture(e.pointerId)}catch(er){}
+  buzz(8);
+});
+document.addEventListener('pointermove',function(e){
+  if(!drag)return;
+  var dy=e.clientY-drag.startY,i=drag.i,r0=drag.rects[i],center=r0.top+r0.height/2+dy,to=i,k;
+  drag.rows[i].style.transform='translateY('+dy+'px)';
+  for(k=0;k<i;k++){if(center<drag.rects[k].top+drag.rects[k].height/2){to=k;break}}
+  for(k=drag.rows.length-1;k>i;k--){if(center>drag.rects[k].top+drag.rects[k].height/2){to=k;break}}
+  drag.to=to;
+  var sh=r0.height+10;
+  drag.rows.forEach(function(r,j){
+    if(j===i)return;
+    var off=0;
+    if(to<i&&j>=to&&j<i)off=sh;
+    if(to>i&&j>i&&j<=to)off=-sh;
+    r.style.transform=off?'translateY('+off+'px)':'';
+  });
+});
+document.addEventListener('pointerup',function(){endDrag(true)});
+document.addEventListener('pointercancel',function(){endDrag(false)});
 document.addEventListener('input',function(e){
   var t=e.target;
   if(t.dataset.f&&t.dataset.ex){
@@ -1155,6 +1258,8 @@ applyTheme();
 render();
 try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
 if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){
+  var hadSW=!!navigator.serviceWorker.controller;
+  navigator.serviceWorker.addEventListener('controllerchange',function(){if(hadSW&&!S.active&&!window.__reloaded){window.__reloaded=true;location.reload()}});
   window.addEventListener('load',function(){try{navigator.serviceWorker.register('sw.js').catch(function(){})}catch(e){}});
 }
 if(ui.view==='workout')lock();
