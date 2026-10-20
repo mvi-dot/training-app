@@ -8,6 +8,7 @@ Alt data gemmes kun i browseren på din egen enhed (localStorage). Der er ingen 
 - manifest.webmanifest (navn, farver og ikoner til hjemmeskærmen)
 - sw.js (offline-funktion)
 - icon-192.png, icon-512.png, apple-touch-icon.png
+- splash-1170x2532.png (opstartsbillede til iPhone 16e, matcher åbningsanimationen)
 
 ## Sæt op på GitHub Pages
 1. Opret et nyt repository på github.com, fx `training-app`. Sæt det til Public (kræves for gratis Pages).
