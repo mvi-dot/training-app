@@ -22,5 +22,7 @@ Alt data gemmes kun i browseren på din egen enhed (localStorage). Der er ingen 
 ## Opdatér appen senere
 Erstat filerne i repoet. Ret `VERSION` i sw.js (fx til traening-v2), så telefonen henter den nye udgave.
 
-## Backup
-Program > Data > Backup og gendan. Tag en backup nu og da.
+## Backup til GitHub
+Program > Data > Backup og gendan. Opret et privat repo (fx training-backup) og et fine-grained token med
+Contents: Read and write på netop det repo. Indsæt repo og token i appen. Backups lægges i mappen `backup`.
+Tokenet gemmes kun på telefonen og er ikke en del af backupfilerne.

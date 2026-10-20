@@ -193,7 +193,7 @@ textarea.in{min-height:120px;font-size:13px;font-family:ui-monospace,Menlo,monos
 .sesb .e b{display:block;font-weight:700}
 .sesb .e span{color:var(--muted)}
 .empty{padding:36px 16px;text-align:center;color:var(--muted)}
-.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--toast);border:1px solid var(--violet);border-radius:14px;padding:12px 18px;font-weight:600;z-index:90;max-width:90vw;text-align:center;animation:up .2s ease}
+.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--toast);border:1px solid var(--violet);border-radius:14px;padding:12px 18px;font-weight:600;z-index:140;max-width:90vw;text-align:center;animation:up .2s ease}
 .goalin{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
 
 /* ===== final polish ===== */
@@ -203,7 +203,7 @@ button,.chip,.dayc,.sesh{touch-action:manipulation;-webkit-user-select:none;user
 .step button:active{background:rgba(var(--acc-rgb),.28)}
 .chip:active,.ghost:active,.dayc:active,.sesh:active,.exbtns button:active,.addex:active{transform:scale(.97)}
 .nav-in{position:relative}
-.nav .ind{position:absolute;top:0;left:0;width:25%;height:3px;display:flex;justify-content:center;transform:translateX(calc(var(--i,0)*100%));transition:transform .42s cubic-bezier(.3,1.35,.5,1);pointer-events:none}
+.nav .ind{position:absolute;top:0;left:0;width:20%;height:3px;display:flex;justify-content:center;transform:translateX(calc(var(--i,0)*100%));transition:transform .42s cubic-bezier(.3,1.35,.5,1);pointer-events:none}
 .nav .ind i{width:38px;height:3px;border-radius:0 0 4px 4px;background:linear-gradient(90deg,var(--violet),var(--acc2));box-shadow:0 3px 16px 1px rgba(var(--acc-rgb),.8)}
 .nav button svg{transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
 .nav button.on svg{transform:translateY(-2px) scale(1.12)}
@@ -268,6 +268,42 @@ button.wd{padding:2px 4px}
 .dv .logrow span:first-child{color:var(--text);font-weight:600}
 .dv .small{color:var(--muted);font-weight:400}
 
+
+/* coach, sore, backup */
+.sorebtn{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left}
+.sorebtn b{display:block;font-family:var(--display);font-size:17px}
+.sch{display:inline-flex;align-items:center;gap:6px;background:var(--raised);border:1px solid var(--line);border-radius:999px;padding:10px 15px;font-weight:600;font-size:14px;color:var(--muted)}
+.sch.l1{border-color:var(--gold);color:var(--gold);background:rgba(var(--gold-rgb),.1)}
+.sch.l2{border-color:var(--danger);color:var(--danger);background:rgba(251,113,133,.14)}
+.card.dl{border-color:rgba(var(--gold-rgb),.55);background:linear-gradient(160deg,rgba(var(--gold-rgb),.13),var(--surface))}
+.card.dl b{color:var(--gold)}
+.rec{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:14px 16px;margin-bottom:12px}
+.rec .rh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.rec .rh b{font-family:var(--display);font-size:19px}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rg div{background:var(--raised);border-radius:14px;padding:10px 12px}
+.rg span{display:block;font-size:12px;color:var(--muted)}
+.rg b{display:block;font-family:var(--display);font-size:17px}
+.rg i{font-style:normal;font-size:12px;color:var(--muted)}
+.vrow{display:grid;grid-template-columns:120px 1fr 36px;gap:10px;align-items:center;padding:6px 0;font-size:14px}
+.vbar{position:relative;height:10px;border-radius:6px;background:var(--raised)}
+.vbar i{position:absolute;inset:0 auto 0 0;border-radius:6px;background:linear-gradient(90deg,var(--violet),var(--orchid))}
+.vbar i.low{background:var(--gold)}
+.vbar u{position:absolute;top:-3px;bottom:-3px;left:50%;width:2px;background:var(--text);opacity:.45}
+.vrow b{text-align:right}
+.sug{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:14px 16px;margin-bottom:10px}
+.sug>div{flex:1}
+.sug b{font-family:var(--display);font-size:18px;display:block}
+.sug p{margin:6px 0 0;font-size:14px;color:var(--muted)}
+.tp{margin:10px 4px 4px;padding:10px 12px;border-radius:12px;background:rgba(var(--gold-rgb),.1);border:1px solid rgba(var(--gold-rgb),.4);font-size:13px}
+.tp button{display:block;margin-top:8px;color:var(--gold);font-weight:700}
+.msg{border-radius:12px;padding:10px 12px;margin-bottom:12px;font-size:14px;background:var(--raised);border:1px solid var(--line)}
+.msg.err{border-color:var(--danger);color:var(--danger)}
+.msg.ok{border-color:var(--orchid);color:var(--lilac)}
+.steps{margin:6px 0 12px 18px;padding:0;font-size:13px;color:var(--muted)}
+.steps li{margin-bottom:4px}
+.sw2{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0}
+
 /* celebration */
 .cel{position:fixed;inset:0;z-index:100;background:radial-gradient(80% 320px at 50% 28%,rgba(var(--acc-rgb),.22),transparent 70%) no-repeat,var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:calc(28px + env(safe-area-inset-top,0px)) 24px calc(28px + env(safe-area-inset-bottom,0px));text-align:center;overflow:auto;animation:fadeIn .3s ease both}
 .cel .rsvg{width:140px;height:140px;filter:drop-shadow(0 0 26px rgba(var(--acc-rgb),.55))}
@@ -291,6 +327,7 @@ button.wd{padding:2px 4px}
 <nav class="nav" id="nav" hidden><div class="nav-in">
   <button data-a="tab" data-t="home" aria-label="Træn"><svg viewBox="0 0 24 24"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg>Træn</button>
   <button data-a="tab" data-t="prog" aria-label="Fremgang"><svg viewBox="0 0 24 24"><path d="M3 17l5-6 4 4 8-9"/><path d="M15 6h5v5"/></svg>Fremgang</button>
+  <button data-a="tab" data-t="coach" aria-label="Coach"><svg viewBox="0 0 24 24"><path d="M12 3l2.2 5.3 5.8.5-4.4 3.8 1.4 5.6L12 15l-5 3.2 1.4-5.6L4 8.8l5.8-.5z"/></svg>Coach</button>
   <button data-a="tab" data-t="hist" aria-label="Historik"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Historik</button>
   <button data-a="tab" data-t="plan" aria-label="Program"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>Program</button>
   <span class="ind"><i></i></span>
@@ -359,10 +396,17 @@ function seed(){
   ];
   return{v:1,program:program,sessions:[],bodyweight:[],welcomed:false,
     goals:{lifts:[{name:'Bænkpres',kg:100,sets:5,reps:5},{name:'Squat',kg:120,sets:4,reps:8},{name:'Dødløft',kg:140,sets:4,reps:5}],bwStart:69,bwTarget:80,weekly:4},
-    rest:90,active:null,plan:defPlan(),theme:'blaalilla'};
+    rest:90,active:null,plan:defPlan(),theme:'blaalilla',deload:{every:6,next:null},sore:{}};
+}
+function normalize(o){
+  if(!o.plan)o.plan=defPlan();
+  if(o.welcomed===undefined)o.welcomed=true;
+  if(!o.deload)o.deload={every:6,next:null};
+  if(!o.sore)o.sore={};
+  return o;
 }
 function load(){
-  try{var r=store.get();if(r){var o=JSON.parse(r);if(o&&o.v===1){if(!o.plan)o.plan=defPlan();if(o.welcomed===undefined)o.welcomed=true;return o}}}catch(e){}
+  try{var r=store.get();if(r){var o=JSON.parse(r);if(o&&o.v===1){normalize(o);return o}}}catch(e){}
   return seed();
 }
 var S=load();
@@ -443,14 +487,16 @@ function allNames(){
 }
 function suggestions(){
   var set={};
-  BUILTIN.forEach(function(n){set[n]=1});
+  LIB.forEach(function(l){set[l[0]]=1});
   S.program.forEach(function(d){d.exercises.forEach(function(e){set[e.name]=1})});
   Object.keys(allNames()).forEach(function(n){set[n]=1});
   return Object.keys(set).sort(function(a,b){return a.localeCompare(b,'da')});
 }
 function kindOf(name){
   var k='reps';
-  S.program.forEach(function(d){d.exercises.forEach(function(e){if(e.name.toLowerCase()===name.toLowerCase())k=e.kind||'reps'})});
+  var found=false;
+  S.program.forEach(function(d){d.exercises.forEach(function(e){if(e.name.toLowerCase()===name.toLowerCase()){k=e.kind||'reps';found=true}})});
+  if(!found){var lb=libFind(name);if(lb)k=lb[3]}
   return k;
 }
 function valOf(kind,s){return kind==='time'?s.reps:e1rm(s.kg,s.reps)}
@@ -519,12 +565,293 @@ var IC={
   plan:'<svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>',
   check:'<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
   back:'<svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>',
-  x:'<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>'
+  x:'<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  chev:'<svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round"><path d="M9 6l6 6-6 6"/></svg>'
 };
+
+
+/* ---------- library of exercises ---------- */
+var LIB=[
+ ['Squat','Ben','Quadriceps','reps','c'],['Front squat','Ben','Quadriceps','reps','c'],['Goblet squat','Ben','Quadriceps','reps','c'],
+ ['Hack squat','Ben','Quadriceps','reps','c'],['Benpres','Ben','Quadriceps','reps','c'],['Bulgarian split squat','Ben','Quadriceps','reps','c'],
+ ['Udfald','Ben','Quadriceps','reps','c'],['Step-ups','Ben','Quadriceps','reps','c'],['Let squat','Ben','Quadriceps','reps','c'],
+ ['Leg extension','Ben','Quadriceps','reps','i'],
+ ['Dødløft','Ben','Baglår og baller','reps','c'],['Rumænsk dødløft','Ben','Baglår og baller','reps','c'],['Hip thrust','Ben','Baglår og baller','reps','c'],
+ ['Good morning','Ben','Baglår og baller','reps','c'],['Back extension','Ben','Baglår og baller','reps','i'],
+ ['Hamstring curl, liggende','Ben','Baglår og baller','reps','i'],['Hamstring curl, siddende','Ben','Baglår og baller','reps','i'],
+ ['Hamstring curl, stående','Ben','Baglår og baller','reps','i'],['Leg curl','Ben','Baglår og baller','reps','i'],
+ ['Calf raises, stående','Ben','Læg','reps','i'],['Calf raises, siddende','Ben','Læg','reps','i'],['Calf raises','Ben','Læg','reps','i'],['Calf raise i benpres','Ben','Læg','reps','i'],
+ ['Bænkpres','Bryst','Bryst','reps','c'],['Bænkpres med pause','Bryst','Bryst','reps','c'],['Incline bænkpres','Bryst','Bryst','reps','c'],
+ ['Incline dumbbell press','Bryst','Bryst','reps','c'],['Dumbbell bænkpres','Bryst','Bryst','reps','c'],['Chest press maskine','Bryst','Bryst','reps','c'],
+ ['Dips','Bryst','Bryst','reps','c'],['Cable fly','Bryst','Bryst','reps','i'],['Pec deck','Bryst','Bryst','reps','i'],['Push-ups','Bryst','Bryst','reps','c'],
+ ['Barbell row','Ryg','Ryg','reps','c'],['Pull-ups','Ryg','Ryg','reps','c'],['Chin-ups','Ryg','Ryg','reps','c'],['Lat pulldown','Ryg','Ryg','reps','c'],
+ ['Lat pulldown ergogrip','Ryg','Ryg','reps','c'],['Seated row','Ryg','Ryg','reps','c'],['Chest-supported row','Ryg','Ryg','reps','c'],
+ ['T-bar row','Ryg','Ryg','reps','c'],['Dumbbell row','Ryg','Ryg','reps','c'],['Straight-arm pulldown','Ryg','Ryg','reps','i'],['Rack pull','Ryg','Ryg','reps','c'],
+ ['Stående skulderpres','Skuldre','Skuldre','reps','c'],['Skulderpres med håndvægte','Skuldre','Skuldre','reps','c'],['Lateral raises','Skuldre','Skuldre','reps','i'],
+ ['Cable lateral raise','Skuldre','Skuldre','reps','i'],['Rear delt fly','Skuldre','Skuldre','reps','i'],['Face pulls','Skuldre','Skuldre','reps','i'],
+ ['Upright row','Skuldre','Skuldre','reps','i'],['Shrugs','Skuldre','Skuldre','reps','i'],
+ ['Biceps curl','Biceps','Biceps','reps','i'],['Hammer curl','Biceps','Biceps','reps','i'],['Incline curl','Biceps','Biceps','reps','i'],
+ ['Preacher curl','Biceps','Biceps','reps','i'],['Cable curl','Biceps','Biceps','reps','i'],
+ ['Triceps pushdown','Triceps','Triceps','reps','i'],['Triceps extension','Triceps','Triceps','reps','i'],['Skull crushers','Triceps','Triceps','reps','i'],
+ ['Overhead triceps extension','Triceps','Triceps','reps','i'],['Close-grip bænkpres','Triceps','Triceps','reps','c'],
+ ['Hanging knee raises','Mave','Mave','reps','i'],['Hanging leg raises','Mave','Mave','reps','i'],['Planke','Mave','Mave','time','i'],
+ ['Cable crunch','Mave','Mave','reps','i'],['Ab wheel','Mave','Mave','reps','i'],['Russian twist','Mave','Mave','reps','i'],['Pallof press','Mave','Mave','reps','i']
+];
+var GROUPS=['Bryst','Ryg','Skuldre','Biceps','Triceps','Ben','Mave'];
+var MUSCLES=['Bryst','Ryg','Skuldre','Biceps','Triceps','Quadriceps','Baglår og baller','Læg','Mave'];
+var MIN_SETS={'Bryst':8,'Ryg':10,'Skuldre':8,'Biceps':6,'Triceps':6,'Quadriceps':8,'Baglår og baller':8,'Læg':6,'Mave':6};
+var VARS={'Bænkpres':['Incline bænkpres','Dips','Close-grip bænkpres'],'Bænkpres med pause':['Incline dumbbell press','Cable fly'],
+  'Squat':['Front squat','Hack squat','Bulgarian split squat'],'Dødløft':['Rumænsk dødløft','Rack pull','Hip thrust'],
+  'Rumænsk dødløft':['Hip thrust','Hamstring curl, liggende'],'Stående skulderpres':['Skulderpres med håndvægte','Lateral raises','Face pulls'],
+  'Barbell row':['Chest-supported row','T-bar row','Pull-ups'],'Lat pulldown ergogrip':['Pull-ups','Seated row','Straight-arm pulldown']};
+function libFind(name){var n=String(name).toLowerCase();for(var i=0;i<LIB.length;i++)if(LIB[i][0].toLowerCase()===n)return LIB[i];return null}
+function muscleOf(name){var l=libFind(name);return l?l[2]:null}
+function defaultsFor(name){
+  var l=libFind(name);
+  if(l&&l[3]==='time')return{sets:3,reps:'30 sek',kind:'time'};
+  if(l&&l[4]==='i')return{sets:3,reps:'12',kind:'reps'};
+  return{sets:3,reps:'8',kind:'reps'};
+}
+function exSelect(attr,placeholder){
+  var counts=allNames(),top=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]||a.localeCompare(b,'da')}).slice(0,8);
+  var h='<select class="in" '+attr+'><option value="">'+placeholder+'</option>';
+  if(top.length)h+='<optgroup label="Mest brugte">'+top.map(function(n){return '<option>'+esc(n)+'</option>'}).join('')+'</optgroup>';
+  GROUPS.forEach(function(g){h+='<optgroup label="'+g+'">'+LIB.filter(function(l){return l[1]===g}).map(function(l){return '<option>'+esc(l[0])+'</option>'}).join('')+'</optgroup>'});
+  return h+'</select>';
+}
+
+/* ---------- dates ---------- */
+function daysBetween(a,b){return Math.round((parseD(b)-parseD(a))/864e5)}
+function mondayOf(ds){var d=parseD(ds),dow=(d.getDay()+6)%7;d.setDate(d.getDate()-dow);return todayStr(d)}
+function r25(x){return Math.round(x/2.5)*2.5}
+
+/* ---------- records ---------- */
+function records(name){
+  var H=hist(name),kind=kindOf(name),mk=null,mr=null,be=null,one=null;
+  H.forEach(function(e){e.sets.forEach(function(s){
+    if(kind==='time'){if(!mr||s.reps>mr.reps)mr={reps:s.reps,kg:0,date:e.date};return}
+    if(s.kg>0&&(!mk||s.kg>mk.kg||(s.kg===mk.kg&&s.reps>mk.reps)))mk={kg:s.kg,reps:s.reps,date:e.date};
+    if(s.reps>0&&(!mr||s.reps>mr.reps||(s.reps===mr.reps&&s.kg>mr.kg)))mr={reps:s.reps,kg:s.kg,date:e.date};
+    if(s.kg>0&&s.reps>0&&s.reps<=12){var v=e1rm(s.kg,s.reps);if(!be||v>be.v)be={v:v,kg:s.kg,reps:s.reps,date:e.date}}
+    if(s.reps===1&&s.kg>0&&(!one||s.kg>one.kg))one={kg:s.kg,date:e.date};
+  })});
+  return{maxKg:mk,maxReps:mr,e1:be,one:one,kind:kind,n:H.length};
+}
+
+/* ---------- soreness ---------- */
+function soreText(ds){
+  var m=S.sore[ds];if(!m)return '';
+  var k=Object.keys(m).filter(function(x){return x!=='none'&&m[x]>0});
+  if(!k.length)return m.none?'Ingen ømhed':'';
+  return k.map(function(x){return x+(m[x]>1?' (meget)':' (lidt)')}).join(', ');
+}
+function soreCard(){
+  var ds=todayStr(),tx=soreText(ds);
+  return '<button class="card sorebtn" data-a="openSore" data-d="'+ds+'"><div><b>Hvordan har kroppen det?</b><span class="small muted">'+(tx?esc(tx):'Tryk for at logge ømhed')+'</span></div><span class="muted">'+IC.chev+'</span></button>';
+}
+function soreHint(t){
+  if(!t||t.status!=='train')return '';
+  var m=S.sore[todayStr()]||{},d=S.program.find(function(x){return x.id===t.dayId});if(!d)return '';
+  var hit=[];d.exercises.forEach(function(e){var mu=muscleOf(e.name);if(mu&&m[mu]>=2&&hit.indexOf(mu)<0)hit.push(mu)});
+  if(!hit.length)return '';
+  return '<div class="tip"><div><b>Du er meget øm i dag</b>'+esc(hit.join(', '))+' trænes i dagens pas. Tag det roligt, eller ryk passet en dag.</div></div>';
+}
+function soreStreak(){
+  var n=0,today=todayStr();
+  for(var i=0;i<7;i++){var m=S.sore[addDays(today,-i)];if(m&&Object.keys(m).some(function(k){return k!=='none'&&m[k]>=2}))n++}
+  return n;
+}
+
+/* ---------- deload ---------- */
+function deloadOn(){return !!(S.deload&&S.deload.every>0)}
+function initDeload(){
+  if(!S.deload)S.deload={every:6,next:null};
+  if(deloadOn()&&!S.deload.next){
+    var ss=sortedSessions(),first=ss.length?ss[0].date:todayStr();
+    S.deload.next=addDays(mondayOf(first),(S.deload.every-1)*7);
+  }
+}
+function rollDeload(){
+  initDeload();if(!deloadOn())return;
+  var t=mondayOf(todayStr()),n=0;
+  while(addDays(S.deload.next,7)<=t&&n<80){S.deload.next=addDays(S.deload.next,S.deload.every*7);n++}
+}
+function isDeloadWeek(ds){
+  if(!deloadOn()||!S.deload.next)return false;
+  var m=mondayOf(ds);
+  if(m<S.deload.next)return false;
+  return (daysBetween(S.deload.next,m)/7)%S.deload.every===0;
+}
+function deloadFor(day){
+  return day.exercises.map(function(e){
+    var H=hist(e.name),l=H.length?H[H.length-1]:null,kg=null,top=0;
+    if(l&&e.kind!=='time'){l.sets.forEach(function(s){if(s.kg>top)top=s.kg});if(top>0)kg=r25(top*0.9)}
+    return{name:e.name,kind:e.kind||'reps',sets:Math.max(1,Math.ceil((e.sets||2)*0.6)),reps:e.reps,kg:kg,top:top,note:'Deload: stop 3–4 reps før grænsen'};
+  });
+}
+function deloadBanner(){
+  if(!deloadOn())return '';
+  var today=todayStr();
+  if(isDeloadWeek(today))return '<div class="card dl"><b>Deload-uge</b><p class="small muted" style="margin:4px 0 0">Ca. 60 % af sættene og ca. 90 % af din vægt. Stop 3–4 reps før grænsen. Vægtene er foreslået ud fra dine seneste pas.</p></div>';
+  for(var k=1;k<=3;k++){var d=addDays(today,k);if(isDeloadWeek(d)&&!isDeloadWeek(addDays(d,-1)))return '<div class="card"><b>Deload-uge starter '+esc(fmtDate(d))+'</b><p class="small muted" style="margin:4px 0 0">Næste uge er let. Så er du frisk til at presse igen bagefter.</p></div>'}
+  return '';
+}
+
+/* ---------- 1RM planning ---------- */
+var MAIN1=['Bænkpres','Squat','Dødløft','Stående skulderpres','Barbell row'];
+function dayHas(id,name){var d=S.program.find(function(x){return x.id===id});return !!d&&d.exercises.some(function(e){return e.name.toLowerCase()===name.toLowerCase()})}
+var _pc={k:'',v:null};
+function plans1RM(){
+  var k=S.sessions.length+'|'+todayStr()+'|'+JSON.stringify(S.deload)+'|'+JSON.stringify(S.plan)+'|'+JSON.stringify(S.program.map(function(d){return d.id+d.exercises.length}));
+  if(_pc.k===k)return _pc.v;
+  var names=MAIN1.slice();S.goals.lifts.forEach(function(g){if(names.indexOf(g.name)<0)names.push(g.name)});
+  var today=todayStr(),sch=schedule(120),out=[];
+  names.forEach(function(name){
+    var H=hist(name);if(!H.length||kindOf(name)==='time')return;
+    var first=H[0].date,last1=null,best=0,recent=0,since=addDays(today,-56);
+    H.forEach(function(e){e.sets.forEach(function(s){
+      if(s.reps===1&&s.kg>0)last1=e.date;
+      if(s.kg>0&&s.reps>0&&s.reps<=12){var v=e1rm(s.kg,s.reps);if(v>best)best=v;if(e.date>=since&&v>recent)recent=v}
+    })});
+    var e1=recent||best;if(e1<=0)return;
+    var earliest=addDays(first,28);if(last1&&addDays(last1,56)>earliest)earliest=addDays(last1,56);if(earliest<today)earliest=today;
+    var elig=sch.filter(function(e){return e.status==='train'&&e.date>=earliest&&dayHas(e.dayId,name)&&!isDeloadWeek(e.date)});
+    var after=elig.find(function(e){return deloadOn()&&isDeloadWeek(addDays(e.date,-7))});
+    var pick=(after&&daysBetween(earliest,after.date)<=42)?after:elig[0];
+    var ladder=[[.4,5],[.6,3],[.75,2],[.85,1]].map(function(x){return{kg:r25(e1*x[0]),reps:x[1]}}).concat([.93,.97,1.01].map(function(x){return{kg:r25(e1*x),reps:1}}));
+    out.push({name:name,date:pick?pick.date:null,dayId:pick?pick.dayId:null,e1:e1,low:r25(e1*.97),high:r25(e1*1.03),last1:last1,after:!!(pick&&after&&pick.date===after.date),earliest:earliest,ladder:ladder});
+  });
+  out.sort(function(a,b){return (a.date||'9999')<(b.date||'9999')?-1:1});
+  _pc={k:k,v:out};return out;
+}
+function plansOn(ds){return plans1RM().filter(function(p){return p.date===ds})}
+function ladderText(p){
+  var w=p.ladder.slice(0,4).map(function(x){return fmt(x.kg)+' × '+x.reps}).join(', ');
+  var a=p.ladder.slice(4).map(function(x){return fmt(x.kg)}).join(', ');
+  return 'Opvarmning: '+w+'. Forsøg: '+a+' kg.';
+}
+function testBanner(ex){
+  if(!S.active||ex.kind==='time')return '';
+  var p=plansOn(S.active.date).find(function(x){return x.name.toLowerCase()===ex.name.toLowerCase()});
+  if(!p)return '';
+  return '<div class="tp"><b>1RM-dag.</b> Forventet ca. '+fmt(p.low)+' til '+fmt(p.high)+' kg. '+esc(ladderText(p))+'<button data-a="applyLadder" data-ex="'+ex.id+'">Sæt 1RM-forsøg ind</button></div>';
+}
+
+/* ---------- training analysis + suggestions ---------- */
+function volumeByMuscle(){
+  var today=todayStr(),since=addDays(today,-28),ss=sortedSessions().filter(function(x){return x.date>=since}),per={},src='plan';
+  if(ss.length>=4){
+    src='log';
+    var wk=Math.max(1,Math.min(4,Math.round(daysBetween(ss[0].date,today)/7)));
+    ss.forEach(function(x){x.exercises.forEach(function(e){var m=muscleOf(e.name);if(m)per[m]=(per[m]||0)+e.sets.length})});
+    Object.keys(per).forEach(function(k){per[k]=per[k]/wk});
+  }else{
+    var tpw=Math.max(1,S.plan.pattern.reduce(function(a,b){return a+b},0)),f=S.program.length?tpw/S.program.length:1;
+    S.program.forEach(function(d){d.exercises.forEach(function(e){var m=muscleOf(e.name);if(m)per[m]=(per[m]||0)+(e.sets||0)*f})});
+  }
+  return{per:per,src:src};
+}
+function exerciseSuggestions(){
+  var v=volumeByMuscle(),used={},out=[],seen={};
+  S.program.forEach(function(d){d.exercises.forEach(function(e){used[e.name.toLowerCase()]=1})});
+  Object.keys(allNames()).forEach(function(n){used[n.toLowerCase()]=1});
+  function add(name,reason){if(seen[name]||out.length>=5)return;seen[name]=1;var d=defaultsFor(name);out.push({name:name,reason:reason,def:d})}
+  var low=MUSCLES.filter(function(m){return (v.per[m]||0)<MIN_SETS[m]}).sort(function(a,b){return (v.per[a]||0)/MIN_SETS[a]-(v.per[b]||0)/MIN_SETS[b]});
+  low.slice(0,3).forEach(function(m){
+    var opts=LIB.filter(function(l){return l[2]===m&&!used[l[0].toLowerCase()]});
+    var pick=opts.find(function(l){return l[4]==='c'})||opts[0];
+    if(pick)add(pick[0],((v.per[m]||0)<0.5?'Du har ingen sæt til '+m.toLowerCase()+' i din træning.':'Du har kun ca. '+fmt(Math.round((v.per[m]||0)*10)/10)+' sæt pr. uge til '+m.toLowerCase()+'.')+' De fleste får mest ud af mindst '+MIN_SETS[m]+'. '+pick[0]+' er et godt sted at starte.');
+  });
+  var counts=allNames(),top=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]});
+  top.slice(0,3).forEach(function(n){
+    var key=Object.keys(VARS).find(function(k){return k.toLowerCase()===n.toLowerCase()});
+    if(!key)return;
+    var vr=VARS[key].find(function(x){return !used[x.toLowerCase()]});
+    if(vr)add(vr,'Du bruger '+n+' meget ('+counts[n]+' pas). '+vr+' belaster det fra en ny vinkel og kan give dig mere styrke og størrelse.');
+  });
+  return out;
+}
+
+/* ---------- GitHub backup ---------- */
+var GHKEY='traening.gh';
+function ghGet(){try{return JSON.parse(localStorage.getItem(GHKEY)||'null')}catch(e){return null}}
+function ghSet(o){try{if(o)localStorage.setItem(GHKEY,JSON.stringify(o));else localStorage.removeItem(GHKEY)}catch(e){}}
+function b64(str){return btoa(unescape(encodeURIComponent(str)))}
+function unb64(b){return decodeURIComponent(escape(atob(b.replace(/\s/g,''))))}
+function stamp(){var d=new Date();return todayStr(d)+'_'+pad(d.getHours())+pad(d.getMinutes())+pad(d.getSeconds())}
+function fmtStamp(n){
+  var m=n.match(/traening-(\d{4})-(\d{2})-(\d{2})_(\d{2})(\d{2})/);if(!m)return n;
+  return parseInt(m[3],10)+'. '+['jan','feb','mar','apr','maj','jun','jul','aug','sep','okt','nov','dec'][+m[2]-1]+' '+m[1]+', kl. '+m[4]+':'+m[5];
+}
+function ghErr(status,j){
+  if(status===401)return 'Token afvist. Tjek at du har kopieret hele tokenet, og at det ikke er udløbet.';
+  if(status===403)return 'Ingen adgang. Tokenet skal have Contents: Read and write på repoet.';
+  if(status===404)return 'Repoet blev ikke fundet, eller tokenet har ikke adgang til det.';
+  if(status===422)return 'GitHub afviste filen (den findes måske allerede). Prøv igen om lidt.';
+  return 'GitHub svarede '+status+(j&&j.message?': '+j.message:'');
+}
+function ghReq(path,opt){
+  var c=ghGet();
+  if(!c||!c.token||!c.repo)return Promise.reject(new Error('GitHub er ikke sat op'));
+  var o=Object.assign({headers:{'Authorization':'Bearer '+c.token,'Accept':'application/vnd.github+json'}},opt||{});
+  return fetch('https://api.github.com/repos/'+c.repo+(path?'/'+path:''),o).catch(function(){throw new Error('Ingen forbindelse. Prøv igen med signal.')});
+}
+function backupJson(){var o=JSON.parse(JSON.stringify(S));o.active=null;return JSON.stringify(o)}
+function doBackup(){
+  var name='backup/traening-'+stamp()+'.json';
+  return ghReq('contents/'+name,{method:'PUT',headers:{'Authorization':'Bearer '+(ghGet()||{}).token,'Accept':'application/vnd.github+json','Content-Type':'application/json'},body:JSON.stringify({message:'Backup '+stamp(),content:b64(backupJson())})})
+    .then(function(r){
+      if(!r.ok)return r.json().catch(function(){return {}}).then(function(j){throw new Error(ghErr(r.status,j))});
+      S.lastBackup=todayStr();S.lastBackupAt=Date.now();save();return name;
+    });
+}
+function autoBackup(){
+  var c=ghGet();if(!c||!c.token||!c.auto)return;
+  doBackup().then(function(){toast('Backup sendt til GitHub ✓')}).catch(function(e){toast('Backup fejlede: '+e.message)});
+}
+function backupHtml(sh){
+  var c=ghGet(),h='<div class="ph"><h2>Backup og gendan</h2><button class="iconbtn" data-a="closeSheet" aria-label="Luk">'+IC.x+'</button></div>';
+  if(sh.msg)h+='<div class="msg '+(sh.msgType||'')+'">'+esc(sh.msg)+'</div>';
+  if(sh.busy)h+='<div class="msg">Vent et øjeblik…</div>';
+  if(sh.mode==='restore'){
+    h+='<p class="muted small" style="margin-top:0">Vælg en backup. Den erstatter alt i appen nu.</p>';
+    if(sh.pending){
+      var o=sh.pending.data;
+      h+='<div class="card"><b>'+esc(fmtStamp(sh.pending.name))+'</b><p class="small muted" style="margin:6px 0 0">'+(o.sessions||[]).length+' pas, '+(o.bodyweight||[]).length+' vægtmålinger. Alt, du har i appen nu, bliver erstattet.</p></div>'
+        +'<button class="btn" data-a="ghRestoreOk">Gendan denne backup</button><button class="btn sec2" data-a="ghRestoreCancel" style="margin-top:10px">Annuller</button>';
+    }else if(sh.list){
+      h+=sh.list.length?'<div class="pick">'+sh.list.map(function(f){return '<button data-a="ghRestore" data-n="'+esc(f)+'">'+esc(fmtStamp(f))+'</button>'}).join('')+'</div>':'<p class="muted">Der er ingen backups i mappen endnu.</p>';
+      h+='<button class="btn sec2" data-a="ghBack" style="margin-top:12px">Tilbage</button>';
+    }
+    return h;
+  }
+  if(sh.mode==='setup'||!c){
+    h+='<p class="muted small" style="margin-top:0">Appen kan sende en backup til GitHub i mappen <b>backup</b>. Du skal bruge et privat repo og et token.</p>'
+      +'<ol class="steps"><li>Opret et <b>privat</b> repo, fx <b>training-backup</b>.</li><li>GitHub, Settings, Developer settings, Personal access tokens, Fine-grained tokens, Generate new token.</li><li>Repository access: Only select repositories, og vælg backup-repoet.</li><li>Permissions, Repository permissions, Contents: Read and write.</li><li>Kopiér tokenet og indsæt det her.</li></ol>'
+      +'<label class="fld"><span>Repo (ejer/navn)</span><input class="in" id="ghRepo" autocapitalize="off" autocomplete="off" placeholder="mvi-dot/training-backup" value="'+esc(sh.tmpRepo||(c?c.repo:''))+'"></label>'
+      +'<label class="fld"><span>Token</span><input class="in" id="ghTok" type="password" autocapitalize="off" autocomplete="off" placeholder="github_pat_…" value="'+esc(sh.tmpTok||'')+'"></label>';
+    if(sh.warnPublic)h+='<div class="msg err">Dette repo er offentligt. Alle på internettet kan se dine backupfiler. Brug helst et privat repo.</div><button class="btn danger" data-a="ghSaveAnyway">Brug det alligevel</button>';
+    h+='<button class="btn" data-a="ghSave">Gem og test</button>'+(c?'<button class="btn sec2" data-a="ghBack" style="margin-top:10px">Annuller</button>':'');
+  }else{
+    h+='<div class="card"><b>Forbundet til '+esc(c.repo)+'</b><p class="small muted" style="margin:6px 0 0">Mappe: backup. '+(S.lastBackupAt?'Sidste backup: '+esc(fmtDate(todayStr(new Date(S.lastBackupAt))))+'.':'Ingen backup sendt endnu.')+'</p></div>'
+      +'<button class="btn" data-a="ghBackup">Tag backup nu</button>'
+      +'<button class="btn sec2" data-a="ghList" style="margin-top:10px">Gendan fra GitHub</button>'
+      +'<div class="sw2"><span>Backup automatisk efter hvert pas</span><button class="chip'+(c.auto?' on':'')+'" data-a="ghAuto">'+(c.auto?'Til':'Fra')+'</button></div>'
+      +'<button class="link" data-a="ghSetup">Skift repo eller token</button> <button class="link" data-a="ghForget" style="margin-left:14px">Fjern forbindelse</button>';
+  }
+  h+='<div class="sec" style="margin-top:22px"><h2 style="font-size:18px">Uden GitHub</h2></div>'
+    +'<p class="muted small" style="margin-top:0">Kopiér teksten eller download en fil. Gendan ved at indsætte teksten eller vælge filen.</p>'
+    +'<textarea class="in" id="bk">'+esc(backupJson())+'</textarea>'
+    +'<button class="btn sec2" data-a="bkCopy">Kopiér</button><button class="btn sec2" data-a="bkDownload" style="margin-top:10px">Download fil</button>'
+    +'<label class="fld" style="margin-top:14px"><span>Vælg backupfil</span><input class="in" type="file" accept=".json,application/json" id="bkFile"></label>'
+    +'<button class="btn sec2" data-a="bkImport">Gendan fra tekstfeltet</button>';
+  return h;
+}
+function sheetRefresh(patch){if(!sheet||sheet.type!=='backup')return;Object.assign(sheet,patch);renderSheet(true)}
 
 /* ---------- views ---------- */
 function syncNav(){
-  var tabs=['home','prog','hist','plan'];
+  var tabs=['home','prog','coach','hist','plan'];
   $('#nav .ind').style.setProperty('--i',Math.max(0,tabs.indexOf(ui.tab)));
   document.querySelectorAll('#nav button').forEach(function(b){b.classList.toggle('on',b.dataset.t===ui.tab)});
 }
@@ -559,16 +886,21 @@ function dayViewHtml(ds){
         +exRows(x.exercises.map(function(e){return '<div class="logrow" style="align-items:flex-start"><span>'+esc(e.name)+'</span><span style="text-align:right">'+setsText(e.sets,e.kind)+'</span></div>'}));
     });
   }else if(cur&&cur.status==='train'){
-    var d=S.program.find(function(x){return x.id===cur.dayId});
-    h+='<p class="muted" style="margin-top:0">Planlagt: <b style="color:var(--text)">'+esc(cur.name+' '+cur.focus)+'</b></p>'
-      +exRows(d.exercises.map(function(e){
-        var hh=hist(e.name),l=hh.length?hh[hh.length-1]:null;
-        return '<div class="logrow" style="flex-direction:column;gap:3px"><div style="display:flex;justify-content:space-between;gap:12px"><span>'+esc(e.name)+'</span><span style="color:var(--lilac);font-weight:600">'+e.sets+' × '+esc(e.reps)+'</span></div>'
-          +(l?'<span class="small">Sidst: '+setsText(l.sets,l.kind)+'</span>':(e.note?'<span class="small">'+esc(e.note)+'</span>':''))+'</div>'}));
+    var d=S.program.find(function(x){return x.id===cur.dayId}),dl=isDeloadWeek(ds),rows;
+    h+='<p class="muted" style="margin-top:0">'+(dl?'Deload-pas: ':'Planlagt: ')+'<b style="color:var(--text)">'+esc(cur.name+' '+cur.focus)+'</b></p>';
+    if(dl)h+='<p class="small muted" style="margin:-4px 0 10px">Ca. 60 % af sættene og ca. 90 % af din vægt. Stop 3–4 reps før grænsen.</p>';
+    if(dl)rows=deloadFor(d).map(function(p){return '<div class="logrow" style="flex-direction:column;gap:3px"><div style="display:flex;justify-content:space-between;gap:12px"><span>'+esc(p.name)+'</span><span style="color:var(--gold);font-weight:600;text-align:right">'+p.sets+' × '+esc(p.reps)+(p.kg?' med ca. '+fmt(p.kg)+' kg':'')+'</span></div></div>'});
+    else rows=d.exercises.map(function(e){
+      var hh=hist(e.name),l=hh.length?hh[hh.length-1]:null;
+      return '<div class="logrow" style="flex-direction:column;gap:3px"><div style="display:flex;justify-content:space-between;gap:12px"><span>'+esc(e.name)+'</span><span style="color:var(--lilac);font-weight:600">'+e.sets+' × '+esc(e.reps)+'</span></div>'
+        +(l?'<span class="small">Sidst: '+setsText(l.sets,l.kind)+'</span>':(e.note?'<span class="small">'+esc(e.note)+'</span>':''))+'</div>'});
+    h+=exRows(rows);
+    plansOn(ds).forEach(function(p){h+='<div class="tp"><b>1RM-test:</b> '+esc(p.name)+'. Forventet ca. '+fmt(p.low)+' til '+fmt(p.high)+' kg. '+esc(ladderText(p))+'</div>'});
   }else if(ds>=today){
     var nx=sch.find(function(e){return e.status==='train'&&e.date>ds});
     h+='<p class="muted" style="margin-top:0">Hviledag.'+(nx?' Næste pas er '+esc(nx.name+' '+nx.focus)+', '+esc(fmtDate(nx.date)):'')+'</p>';
   }else h+='<p class="muted" style="margin-top:0">Ingen pas registreret denne dag.</p>';
+  if(ds<=today){var st=soreText(ds);h+='<div class="card" style="margin-top:12px"><b>Ømhed</b><p class="small muted" style="margin:4px 0 10px">'+(st?esc(st):'Ikke noteret')+'</p><button class="chip" data-a="openSore" data-d="'+ds+'">'+(st?'Ret ømhed':'Log ømhed')+'</button></div>'}
   if(ds>=today&&!ses.length)h+='<button class="btn sec2" data-a="openDate" data-d="'+ds+'" style="margin-top:6px">Ryk eller ændr dagen</button>';
   return h+'</div>';
 }
@@ -628,7 +960,8 @@ function upcomingList(sch){
   return h+'</div>';
 }
 function viewHome(){
-  var a=S.active,sch=schedule(10),t=sch[0],h='<main'+mc(0)+'><div class="datebar"><div class="date">'+fmtDate(todayStr(),true)+'</div></div>'+installTip();
+  var a=S.active,sch=schedule(10),t=sch[0],today=todayStr(),dlNow=isDeloadWeek(today);
+  var h='<main'+mc(0)+'><div class="datebar"><div class="date">'+fmtDate(today,true)+'</div></div>'+installTip()+deloadBanner();
   if(a){
     var tot=0,dn=0;a.exercises.forEach(function(e){e.sets.forEach(function(s){tot++;if(s.done)dn++})});
     h+='<section class="hero"><p class="lbl">Pas i gang</p><h1>'+esc(a.name)+'</h1><p class="focus">'+esc(a.focus||'')+'</p>'
@@ -636,22 +969,86 @@ function viewHome(){
       +'<button class="cta" data-a="openWorkout">Fortsæt pas</button>'
       +'<button class="link" data-a="askDiscard">Kassér passet</button></section>';
   }else if(t.status==='train'){
-    var n=S.program.find(function(d){return d.id===t.dayId});
-    h+='<section class="hero"><p class="lbl">I dag</p><h1>'+esc(t.name)+'</h1><p class="focus">'+esc(t.focus||'')+'</p>'
-      +'<p class="exlist">'+n.exercises.map(function(e){return esc(e.name)}).join(', ')+'</p>'
-      +'<button class="cta" data-a="start" data-id="'+n.id+'">Start pas</button>'
+    var n=S.program.find(function(d){return d.id===t.dayId}),tests=plansOn(t.date),dlp=dlNow?deloadFor(n):null;
+    h+='<section class="hero"><p class="lbl">'+(dlNow?'I dag, deload':'I dag')+'</p><h1>'+esc(t.name)+'</h1><p class="focus">'+esc(t.focus||'')+'</p>'
+      +(tests.length&&!dlNow?'<p class="exlist" style="color:var(--gold)">1RM-test i dag: '+tests.map(function(p){return esc(p.name)}).join(', ')+'</p>':'')
+      +'<p class="exlist">'+(dlp?dlp.map(function(p){return esc(p.name)+' '+p.sets+' × '+esc(p.reps)}).join(', '):n.exercises.map(function(e){return esc(e.name)}).join(', '))+'</p>'
+      +'<button class="cta" data-a="start" data-id="'+n.id+'" data-dl="'+(dlNow?1:0)+'">'+(dlNow?'Start deload-pas':'Start pas')+'</button>'
+      +(dlNow?'<button class="link" data-a="start" data-id="'+n.id+'" data-dl="0">Træn normalt i stedet</button>':'')
       +'<div class="chips">'+S.program.filter(function(d){return d.id!==n.id}).map(function(d){
-        return '<button class="chip" data-a="start" data-id="'+d.id+'">'+esc(d.name)+' '+esc(d.focus||'')+'</button>'}).join('')+'</div>'
-      +'<button class="link" data-a="openDate" data-d="'+t.date+'">Ryk eller spring over i dag</button></section>';
+        return '<button class="chip" data-a="start" data-id="'+d.id+'" data-dl="'+(dlNow?1:0)+'">'+esc(d.name)+' '+esc(d.focus||'')+'</button>'}).join('')+'</div>'
+      +'<button class="link" data-a="openDate" data-d="'+t.date+'">Ryk eller spring over i dag</button></section>'+soreHint(t);
   }else{
     var nx=sch.find(function(e){return e.status==='train'}),dn2=t.status==='done';
     h+='<section class="hero"><p class="lbl">'+(dn2?'Klaret i dag':'I dag')+'</p><h1>'+(dn2?'Godt gået':'Hviledag')+'</h1>'
       +'<p class="focus">'+(dn2?esc('Du har trænet '+t.name+' '+t.focus):'Lad musklerne vokse. Spis og sov godt.')+'</p>'
       +(nx?'<p class="exlist">Næste pas: '+esc(nx.name)+' '+esc(nx.focus)+', '+fmtDate(nx.date)+'</p>'
-        +'<button class="ghost" style="width:100%;padding:14px" data-a="start" data-id="'+nx.dayId+'">Træn alligevel: '+esc(nx.name)+'</button>':'')
+        +'<button class="ghost" style="width:100%;padding:14px" data-a="start" data-id="'+nx.dayId+'" data-dl="'+(dlNow?1:0)+'">Træn alligevel: '+esc(nx.name)+'</button>':'')
       +'<button class="link" data-a="openDate" data-d="'+t.date+'">Ændr i dag</button></section>';
   }
-  return h+weekStrip()+goalsSection()+upcomingList(sch)+bwCard()+'</main>';
+  return h+soreCard()+weekStrip()+goalsSection()+upcomingList(sch)+bwCard()+'</main>';
+}
+
+
+function deloadCard(){
+  var h='<div class="sec"><h2>Deload</h2></div><div class="card">';
+  if(!deloadOn())return h+'<p style="margin-top:0" class="muted">Deload er slået fra.</p><button class="btn sec2" data-a="deloadEvery" data-v="6">Slå til, hver 6. uge</button></div>';
+  var now=isDeloadWeek(todayStr());
+  h+='<p style="margin-top:0">'+(now?'<b>Det er deload-uge nu.</b>':'Næste deload-uge starter <b>'+esc(fmtDate(S.deload.next))+'</b>')+'</p>'
+    +'<p class="muted small">Planlagt hver '+S.deload.every+'. uge. Deload er ca. 60 % af sættene og ca. 90 % af din vægt, og du stopper 3–4 reps før grænsen. Du kører de samme øvelser, bare lettere.</p>'
+    +'<div class="chips" style="margin:0 0 8px">'+(now?'':'<button class="chip" data-a="deloadNow">Deload denne uge</button>')+'<button class="chip" data-a="deloadPostpone">Udskyd en uge</button></div>';
+  if(!now&&soreStreak()>=3)h+='<p class="small" style="color:var(--gold)">Du har været meget øm på '+soreStreak()+' af de seneste 7 dage. Overvej at deloade nu.</p>';
+  h+='<p class="small muted" style="margin-bottom:8px">Se forslag til deload-pas:</p><div class="chips" style="margin:0">'+S.program.map(function(d){return '<button class="chip" data-a="dlPlan" data-id="'+d.id+'">'+esc(d.name)+' '+esc(d.focus||'')+'</button>'}).join('')+'</div></div>';
+  return h;
+}
+function testCard(){
+  var h='<div class="sec"><h2>1RM-test</h2></div>',ps=plans1RM();
+  if(!ps.length)return h+'<div class="card"><p class="muted" style="margin:0">Log pas med fx Bænkpres, Squat eller Dødløft, så regner jeg ud, hvornår du er klar til at teste din 1RM.</p></div>';
+  h+='<div class="card" style="padding:4px 16px">';
+  ps.forEach(function(p){
+    h+='<div class="logrow" style="flex-direction:column;gap:4px"><div style="display:flex;justify-content:space-between;gap:12px"><span style="color:var(--text);font-weight:700">'+esc(p.name)+'</span><span style="color:var(--lilac);font-weight:600;text-align:right">'+(p.date?esc(fmtDate(p.date)):'Ingen dag')+'</span></div>'
+      +'<span class="small" style="color:var(--muted)">Forventet 1RM ca. '+fmt(p.low)+' til '+fmt(p.high)+' kg.'+(p.after?' Lagt i ugen efter deload, så du er frisk.':'')+(p.date?'':' Øvelsen skal ligge på en træningsdag i programmet.')+'</span>'
+      +(p.date?'<span class="small" style="color:var(--muted)">'+esc(ladderText(p))+'</span>':'')+'</div>';
+  });
+  return h+'</div><p class="small muted" style="margin:-4px 4px 14px">Tidligst 4 uger efter første pas og 8 uger efter sidste test. Aldrig i en deload-uge.</p>';
+}
+function recCardHtml(n,r){
+  var t=r.kind==='time',h='<div class="rec"><div class="rh"><b>'+esc(n)+'</b><span class="small muted">'+r.n+' pas</span></div><div class="rg">';
+  function cell(l,v,d){return '<div><span>'+l+'</span><b>'+v+'</b><i>'+(d?esc(fmtDate(d)):'&nbsp;')+'</i></div>'}
+  if(t)h+=cell('Længste tid',r.maxReps?r.maxReps.reps+' sek':'–',r.maxReps&&r.maxReps.date);
+  else h+=cell('Tungeste løft',r.maxKg?fmt(r.maxKg.kg)+' kg × '+r.maxKg.reps:'–',r.maxKg&&r.maxKg.date)
+    +cell('Flest reps',r.maxReps?r.maxReps.reps+' reps'+(r.maxReps.kg?' med '+fmt(r.maxReps.kg)+' kg':''):'–',r.maxReps&&r.maxReps.date)
+    +cell('1RM',r.one?fmt(r.one.kg)+' kg 🏆':'Ikke testet',r.one&&r.one.date)
+    +cell('Est. 1RM',r.e1?fmt(Math.round(r.e1.v*10)/10)+' kg':'–',r.e1&&r.e1.date);
+  return h+'</div></div>';
+}
+function recordsCard(){
+  var counts=allNames(),names=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]||a.localeCompare(b,'da')});
+  var h='<div class="sec"><h2>Rekorder</h2></div>';
+  if(!names.length)return h+'<div class="empty">Log dit første pas, så dukker dine rekorder op her.</div>';
+  var list=ui.recAll?names:names.slice(0,5);
+  list.forEach(function(n){h+=recCardHtml(n,records(n))});
+  if(names.length>5)h+='<button class="btn sec2" data-a="recAll">'+(ui.recAll?'Vis færre':'Vis alle ('+names.length+')')+'</button>';
+  return h;
+}
+function trainingCard(){
+  var v=volumeByMuscle(),counts=allNames(),top=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]}).slice(0,5);
+  var h='<div class="sec"><h2>Din træning</h2></div><div class="card"><p class="small muted" style="margin-top:0">Sæt pr. uge pr. muskelgruppe ('+(v.src==='log'?'ud fra dine seneste uger':'ud fra dit program')+'). Stregen viser et godt minimum.</p>';
+  MUSCLES.forEach(function(m){
+    var n=v.per[m]||0,pct=Math.min(100,n/(MIN_SETS[m]*2)*100);
+    h+='<div class="vrow"><span>'+m+'</span><div class="vbar"><i class="'+(n<MIN_SETS[m]?'low':'')+'" style="width:'+pct+'%"></i><u></u></div><b>'+fmt(Math.round(n*10)/10)+'</b></div>';
+  });
+  if(top.length)h+='<p class="small muted" style="margin:12px 0 0">Mest brugte: '+top.map(function(n){return esc(n)+' ('+counts[n]+')'}).join(', ')+'</p>';
+  h+='</div><div class="sec"><h2>Forslag til dig</h2></div>';
+  var sg=exerciseSuggestions();
+  if(!sg.length)return h+'<div class="card"><p class="muted" style="margin:0">Ingen forslag lige nu. Din træning ser jævnt fordelt ud.</p></div>';
+  sg.forEach(function(x){
+    h+='<div class="sug"><div><b>'+esc(x.name)+'</b><span class="small muted">Foreslået '+x.def.sets+' × '+esc(x.def.reps)+'</span><p>'+esc(x.reason)+'</p></div><button class="chip" data-a="sugAdd" data-n="'+esc(x.name)+'">Tilføj</button></div>';
+  });
+  return h;
+}
+function viewCoach(){
+  return '<main'+mc(1)+'><div class="sec"><h2>Coach</h2></div>'+deloadCard()+testCard()+recordsCard()+trainingCard()+'</main>';
 }
 
 /* chart */
@@ -768,6 +1165,9 @@ function viewPlan(){
   h+='<div class="sec" style="margin-top:22px"><h2>Farver</h2></div><div class="chips" style="margin:0 0 4px">'+Object.keys(THEMES).map(themeChip).join('')+'</div>';
   h+='<div class="sec" style="margin-top:22px"><h2>Ugerytme</h2></div><div class="card"><p class="muted small" style="margin-top:0">Vælg de dage du helst træner. Resten er hviledage. Enkelte dage kan du altid rykke fra Træn-siden.</p><div class="seg" style="margin-bottom:0">'
     +['Man','Tir','Ons','Tor','Fre','Lør','Søn'].map(function(n,i){return '<button data-a="togDow" data-i="'+i+'" class="'+(S.plan.pattern[i]?'on':'')+'">'+n+'</button>'}).join('')+'</div></div>';
+  h+='<div class="sec" style="margin-top:22px"><h2>Deload</h2></div><div class="card"><p class="muted small" style="margin-top:0">Hvor ofte vil du have en let uge? Appen minder dig om det og foreslår sæt, reps og vægt.</p><div class="seg" style="margin-bottom:0">'
+    +[[0,'Fra'],[4,'4. uge'],[5,'5. uge'],[6,'6. uge'],[8,'8. uge']].map(function(o){return '<button data-a="deloadEvery" data-v="'+o[0]+'" class="'+((S.deload.every||0)===o[0]?'on':'')+'">'+o[1]+'</button>'}).join('')+'</div>'
+    +(deloadOn()&&S.deload.next?'<label class="fld" style="margin-top:12px"><span>Næste deload-uge starter</span><input class="in" type="date" data-deloadnext="1" value="'+S.deload.next+'"></label>':'')+'</div>';
   h+='<div class="sec" style="margin-top:22px"><h2>Mål</h2></div><div class="card">';
   S.goals.lifts.forEach(function(g,i){
     h+='<div style="margin-bottom:12px"><div style="font-weight:700;margin-bottom:6px">'+esc(g.name)+'</div><div class="goalin">'
@@ -781,7 +1181,7 @@ function viewPlan(){
   h+='<div class="sec" style="margin-top:22px"><h2>Hviletid mellem sæt</h2></div><div class="seg">'
     +[60,90,120,180].map(function(v){return '<button data-a="setRest" data-v="'+v+'" class="'+(S.rest===v?'on':'')+'">'+(v/60>=1&&v%60===0?(v/60)+' min':Math.floor(v/60)+':'+pad(v%60))+'</button>'}).join('')+'</div>';
   h+='<div class="sec" style="margin-top:22px"><h2>Data</h2></div><div class="card"><p class="muted small" style="margin-top:0">Alt ligger kun på din telefon. Tag en backup nu og da, især hvis du skifter telefon. Sidste backup: '+(S.lastBackup?fmtDate(S.lastBackup):'aldrig')+'.</p>'
-    +'<button class="btn sec2" data-a="openBackup">Backup og gendan</button><button class="btn danger" data-a="askReset" style="margin-top:10px">Nulstil alt</button></div>';
+    +'<button class="btn" data-a="openBackup">Backup og gendan</button></div>';
   return h+'</main>';
 }
 
@@ -792,17 +1192,27 @@ function lastText(name){
   return '<div class="last">Sidst, '+fmtDate(l.date)+': <b>'+setsText(l.sets,l.kind)+'</b></div>';
 }
 function prFlags(ex){
-  var flags={},kind=ex.kind,hb=bestVal(ex.name);
-  if(hb<=0)return flags;
-  var bestI=-1,bestV=hb*1.0001;
+  var flags={},kind=ex.kind,H=hist(ex.name);
+  if(!H.length)return flags;
+  var rec=records(ex.name),mk=rec.maxKg?rec.maxKg.kg:0,one=rec.one?rec.one.kg:0,be=rec.e1?rec.e1.v:0,mr=rec.maxReps?rec.maxReps.reps:0;
+  var extra=[];
+  function repsAtOrAbove(kg){var b=0;H.forEach(function(e){e.sets.forEach(function(x){if(x.kg>=kg&&x.reps>b)b=x.reps})});extra.forEach(function(x){if(x.kg>=kg&&x.reps>b)b=x.reps});return b}
   ex.sets.forEach(function(s,i){
     if(!s.done)return;
     var kg=num(s.kg),reps=num(s.reps);
-    if(kind!=='time'&&reps>12)return;
-    var v=valOf(kind,{kg:kg,reps:reps});
-    if(v>bestV){bestV=v;bestI=i}
+    if(kind==='time'){if(reps>mr){flags[i]='Ny rekord';mr=reps}return}
+    if(kg<=0||reps<=0)return;
+    var lab=null;
+    if(reps===1&&kg>one)lab='1RM-rekord';
+    else if(kg>mk)lab='Tungeste løft';
+    else if(reps>repsAtOrAbove(kg))lab='Rep-rekord';
+    else if(reps<=12&&e1rm(kg,reps)>be*1.0001)lab='Ny rekord';
+    if(reps===1&&kg>one)one=kg;
+    if(kg>mk)mk=kg;
+    if(reps<=12){var v=e1rm(kg,reps);if(v>be)be=v}
+    extra.push({kg:kg,reps:reps});
+    if(lab)flags[i]=lab;
   });
-  if(bestI>=0)flags[bestI]=1;
   return flags;
 }
 function viewWorkout(){
@@ -812,7 +1222,7 @@ function viewWorkout(){
     +'<button class="finish" data-a="finish">Afslut</button></div><div class="wk">';
   a.exercises.forEach(function(ex){
     var t=ex.kind==='time',pr=prFlags(ex);
-    h+='<section class="ex"><div class="exh"><h3>'+esc(ex.name)+'</h3><span class="mv"><button data-a="exUp" data-ex="'+ex.id+'" aria-label="Flyt øvelsen op"><svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg></button><button data-a="exDown" data-ex="'+ex.id+'" aria-label="Flyt øvelsen ned"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></span></div><div class="tg">'+esc(ex.target)+'</div>'+(ex.note?'<div class="nt">'+esc(ex.note)+'</div>':'')+lastText(ex.name)
+    h+='<section class="ex"><div class="exh"><h3>'+esc(ex.name)+'</h3><span class="mv"><button data-a="exUp" data-ex="'+ex.id+'" aria-label="Flyt øvelsen op"><svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg></button><button data-a="exDown" data-ex="'+ex.id+'" aria-label="Flyt øvelsen ned"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></span></div><div class="tg">'+esc(ex.target)+'</div>'+(ex.note?'<div class="nt">'+esc(ex.note)+'</div>':'')+lastText(ex.name)+testBanner(ex)
       +'<div class="cols'+(t?' t':'')+'"><span>Sæt</span>'+(t?'':'<span>kg</span>')+'<span>'+(t?'sek':'reps')+'</span><span></span></div>';
     ex.sets.forEach(function(s,i){
       h+='<div class="set'+(t?' t':'')+(s.done?' done':'')+(ui.warn&&!s.done?' warn':'')+'" data-row="'+ex.id+'-'+i+'">'
@@ -825,7 +1235,7 @@ function viewWorkout(){
         if(s.rir!=null)r=s.rir;else{r=estRir(ex.name,num(s.kg),num(s.reps));est=true}
         if(r!=null)meta+='<button class="rir" data-a="rir" data-ex="'+ex.id+'" data-i="'+i+'" aria-label="Skift RIR">'+(est?'ca. ':'')+(r>=5?'5+':r)+' RIR</button>';
         else if(!t)meta+='<button class="rir" data-a="rir" data-ex="'+ex.id+'" data-i="'+i+'">Sæt RIR</button>';
-        if(pr[i])meta+='<span class="pr">Ny rekord 🏆</span>';
+        if(pr[i])meta+='<span class="pr">'+esc(pr[i])+' 🏆</span>';
         if(meta)h+='<div class="meta" data-meta="'+ex.id+'-'+i+'">'+meta+'</div>';
       }
     });
@@ -850,11 +1260,12 @@ function renderSheet(keep){
       +'<label class="fld"><span>Vægt (kg)</span><input class="in" id="bwKg" inputmode="decimal" placeholder="fx 70,5" value="'+(latestBw()?fmt(latestBw().kg):'')+'"></label>'
       +'<label class="fld"><span>Dato</span><input class="in" id="bwDate" type="date" value="'+todayStr()+'"></label><button class="btn" data-a="saveBw">Gem</button>';
   }else if(sheet.type==='addEx'){
-    var q=(sheet.q||'').trim().toLowerCase();
-    var list=suggestions().filter(function(n){return !q||n.toLowerCase().indexOf(q)>=0}).slice(0,12);
+    var q=(sheet.q||'').trim().toLowerCase(),counts0=allNames();
+    var list=q?suggestions().filter(function(n){return n.toLowerCase().indexOf(q)>=0}).slice(0,12):Object.keys(counts0).sort(function(a,b){return counts0[b]-counts0[a]}).slice(0,6);
     var exact=suggestions().some(function(n){return n.toLowerCase()===q});
     h='<div class="ph"><h2>Tilføj øvelse</h2><button class="iconbtn" data-a="closeSheet" aria-label="Luk">'+IC.x+'</button></div>'
-      +'<input class="in" id="exq" placeholder="Søg eller skriv en ny øvelse" value="'+esc(sheet.q||'')+'" autocomplete="off">'
+      +'<label class="fld"><span>Vælg fra listen</span>'+exSelect('data-addpick="1"','Vælg øvelse…')+'</label>'
+      +'<input class="in" id="exq" placeholder="Eller søg / skriv en ny øvelse" value="'+esc(sheet.q||'')+'" autocomplete="off">'
       +'<div class="pick">'+(q&&!exact?'<button data-a="pickEx" data-n="'+esc(sheet.q.trim())+'">Opret «'+esc(sheet.q.trim())+'»</button>':'')
       +list.map(function(n){return '<button data-a="pickEx" data-n="'+esc(n)+'">'+esc(n)+'</button>'}).join('')+'</div>';
   }else if(sheet.type==='day'){
@@ -868,7 +1279,7 @@ function renderSheet(keep){
       h+='<div class="erow" data-i="'+i+'"><div class="ehead"><button class="grip" data-i="'+i+'" aria-label="Træk for at flytte"><svg viewBox="0 0 24 24"><circle cx="9" cy="6" r="1.8"/><circle cx="15" cy="6" r="1.8"/><circle cx="9" cy="12" r="1.8"/><circle cx="15" cy="12" r="1.8"/><circle cx="9" cy="18" r="1.8"/><circle cx="15" cy="18" r="1.8"/></svg></button>'
         +'<button class="etitle" data-a="eToggle" data-i="'+i+'"><b>'+esc(e.name||'Ny øvelse')+'</b><span>'+esc(e.sets+' × '+e.reps)+(e.kind==='time'?' (tid)':'')+'</span></button>'
         +'<button class="ech'+(op?' open':'')+'" data-a="eToggle" data-i="'+i+'" aria-label="Rediger"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></div>';
-      if(op)h+='<div class="ebody"><input class="in" list="exlist" data-draft="exercises.'+i+'.name" value="'+esc(e.name)+'" placeholder="Øvelse">'
+      if(op)h+='<div class="ebody"><label class="fld"><span>Vælg fra listen</span>'+exSelect('data-pick="'+i+'"','Vælg øvelse…')+'</label><input class="in" list="exlist" data-draft="exercises.'+i+'.name" value="'+esc(e.name)+'" placeholder="Eller skriv selv">'
         +'<div class="g"><label class="fld" style="margin:0"><span>Sæt</span><input class="in" inputmode="numeric" data-draft="exercises.'+i+'.sets" value="'+e.sets+'"></label>'
         +'<label class="fld" style="margin:0"><span>Reps / sek</span><input class="in" data-draft="exercises.'+i+'.reps" value="'+esc(e.reps)+'"></label>'
         +'<label class="fld" style="margin:0"><span>Type</span><select class="in" data-draft="exercises.'+i+'.kind"><option value="reps"'+(e.kind!=='time'?' selected':'')+'>Reps</option><option value="time"'+(e.kind==='time'?' selected':'')+'>Tid</option></select></label></div>'
@@ -884,7 +1295,7 @@ function renderSheet(keep){
   }else if(sheet.type==='welcome'){
     h='<div class="ph"><h2>Velkommen 💪</h2></div><p class="muted" style="margin-top:0">Din træningslog ligger kun på denne telefon. Du har allerede lavet Dag 1 (bænkpres 60 kg og så videre). Skal jeg lægge det ind, så du kan følge din progression fra start?</p>'
       +'<label class="fld"><span>Hvornår lavede du Dag 1?</span><input class="in" type="date" id="wDate" value="'+todayStr()+'"></label>'
-      +'<button class="btn" data-a="welcomeSeed">Læg Dag 1 ind</button><button class="btn sec2" data-a="welcomeSkip" style="margin-top:10px">Start helt forfra</button>';
+      +'<button class="btn" data-a="welcomeSeed">Læg Dag 1 ind</button><button class="btn sec2" data-a="welcomeSkip" style="margin-top:10px">Start helt forfra</button><button class="btn sec2" data-a="openBackup" style="margin-top:10px">Gendan fra backup</button>';
   }else if(sheet.type==='date'){
     var e=schedule(10).find(function(x){return x.date===sheet.date})||{date:sheet.date,status:'rest',ov:S.plan.overrides[sheet.date]};
     h='<div class="ph"><h2 class="uc">'+esc(fmtDate(sheet.date,true))+'</h2><button class="iconbtn" data-a="closeSheet" aria-label="Luk">'+IC.x+'</button></div>'
@@ -895,13 +1306,28 @@ function renderSheet(keep){
     if(e.status!=='done')h+='<div class="sec" style="margin-top:20px"><h2>Ferie eller syg?</h2></div><p class="muted small" style="margin-top:0">Vælg sidste hviledag. Passene rykker automatisk til næste mulige træningsdag.</p>'
       +'<label class="fld"><span>Hvile til og med</span><input class="in" type="date" id="restTo" value="'+addDays(sheet.date,2)+'" min="'+sheet.date+'"></label><button class="btn sec2" data-a="dateBlock">Sæt hviledage</button>';
   }else if(sheet.type==='backup'){
-    h='<div class="ph"><h2>Backup og gendan</h2><button class="iconbtn" data-a="closeSheet" aria-label="Luk">'+IC.x+'</button></div>'
-      +'<p class="muted small" style="margin-top:0">Kopiér teksten og gem den et sikkert sted (fx en note), eller download en fil. Til gendannelse: indsæt teksten eller vælg filen.</p>'
-      +'<textarea class="in" id="bk">'+esc(JSON.stringify(S))+'</textarea>'
-      +'<button class="btn sec2" data-a="bkCopy">Kopiér</button><button class="btn sec2" data-a="bkDownload" style="margin-top:10px">Download fil</button>'
-      +'<label class="fld" style="margin-top:14px"><span>Vælg backupfil</span><input class="in" type="file" accept=".json,application/json" id="bkFile"></label>'
-      +'<button class="btn" data-a="bkImport">Gendan fra tekstfeltet</button>';
+    h=backupHtml(sheet);
+  }else if(sheet.type==='sore'){
+    var sm=S.sore[sheet.date]||{};
+    h='<div class="ph"><h2>Ømhed</h2><button class="iconbtn" data-a="closeSheet" aria-label="Luk">'+IC.x+'</button></div>'
+      +'<p class="muted" style="margin-top:0"><span class="uc" style="display:inline-block">'+esc(fmtDate(sheet.date,true))+'</span></p>'
+      +'<p class="muted small">Tryk én gang for lidt øm, to gange for meget øm, og tre gange for at fjerne.</p><div class="chips" style="margin:0 0 14px">'
+      +MUSCLES.map(function(m){return '<button class="sch'+(sm[m]?' l'+sm[m]:'')+'" data-a="soreTap" data-m="'+esc(m)+'">'+esc(m)+(sm[m]===1?', lidt':sm[m]===2?', meget':'')+'</button>'}).join('')+'</div>'
+      +'<button class="btn" data-a="closeSheet">Færdig</button><button class="btn sec2" data-a="soreNone" style="margin-top:10px">Ingen ømhed i dag</button>';
+  }else if(sheet.type==='addToDay'){
+    var df2=defaultsFor(sheet.n);
+    h='<div class="ph"><h2>Tilføj '+esc(sheet.n)+'</h2><button class="iconbtn" data-a="closeSheet" aria-label="Luk">'+IC.x+'</button></div>'
+      +'<p class="muted" style="margin-top:0">Foreslået '+df2.sets+' × '+esc(df2.reps)+'. Vælg hvilken dag øvelsen skal ligge på.</p><div class="pick">'
+      +S.program.map(function(d){return '<button data-a="sugToDay" data-id="'+d.id+'">'+esc(d.name+' '+(d.focus||''))+'</button>'}).join('')+'</div>';
+  }else if(sheet.type==='dlplan'){
+    var dd=S.program.find(function(x){return x.id===sheet.id});
+    h='<div class="ph"><h2>Deload: '+esc(dd.name+' '+(dd.focus||''))+'</h2><button class="iconbtn" data-a="closeSheet" aria-label="Luk">'+IC.x+'</button></div>'
+      +'<p class="muted small" style="margin-top:0">Forslag ud fra dine seneste pas: ca. 60 % af sættene og ca. 90 % af topvægten fra sidst. Stop 3–4 reps før grænsen.</p>'
+      +'<div class="card" style="padding:4px 16px">'+deloadFor(dd).map(function(p){
+        return '<div class="logrow" style="flex-direction:column;gap:3px"><div style="display:flex;justify-content:space-between;gap:12px"><span style="color:var(--text);font-weight:600">'+esc(p.name)+'</span><span style="color:var(--gold);font-weight:600;text-align:right">'+p.sets+' × '+esc(p.reps)+'</span></div>'
+          +'<span class="small" style="color:var(--muted)">'+(p.kg?'Ca. '+fmt(p.kg)+' kg (sidst topvægt: '+fmt(p.top)+' kg)':(p.kind==='time'?'Kropsvægt':'Ingen vægt fra sidst, find en let vægt'))+'</span></div>'}).join('')+'</div>';
   }
+  
   el.innerHTML='<div class="bd" data-a="bdClose"><div class="panel" role="dialog" aria-modal="true">'+h+'</div></div>';
   var p=el.querySelector('.panel');if(p&&keep)p.scrollTop=st;
   if(sheet.type==='addEx'&&sheet.focus){var q2=$('#exq');if(q2){q2.focus();var l=q2.value.length;q2.setSelectionRange(l,l)}}
@@ -910,11 +1336,12 @@ function renderSheet(keep){
 /* ---------- render ---------- */
 function render(){
   FX=ui.fx;ui.fx=false;
+  rollDeload();
   var app=$('#app'),nv=$('#nav');
   if(ui.view==='workout'&&S.active){app.innerHTML=viewWorkout();nv.hidden=true}
   else{
     ui.view='tabs';
-    app.innerHTML=({home:viewHome,prog:viewProgress,hist:viewHistory,plan:viewPlan})[ui.tab]();
+    app.innerHTML=({home:viewHome,prog:viewProgress,coach:viewCoach,hist:viewHistory,plan:viewPlan})[ui.tab]();
     nv.hidden=false;syncNav();
   }
   renderSheet(true);
@@ -994,11 +1421,22 @@ function makeEx(name,sets,reps,note,kind){
   }
   return{id:uid(),name:name,kind:kind||'reps',target:sets+' × '+reps,targetReps:String(reps),note:note||'',sets:out};
 }
-function startWorkout(id){
+function makeExPlan(p){
+  var out=[];
+  for(var i=0;i<p.sets;i++)out.push({kg:p.kg!=null?p.kg:'',reps:firstNum(p.reps)||'',rir:null,done:false});
+  return{id:uid(),name:p.name,kind:p.kind,target:p.sets+' × '+p.reps,targetReps:String(p.reps),note:p.note+(p.kg?' (ca. 90 % af '+fmt(p.top)+' kg)':''),sets:out};
+}
+function startWorkout(id,dl){
   var d=S.program.find(function(x){return x.id===id});if(!d)return;
-  S.active={id:uid(),dayId:d.id,name:d.name,focus:d.focus||'',date:todayStr(),startedAt:Date.now(),
-    exercises:d.exercises.map(function(e){return makeEx(e.name,e.sets||2,e.reps,e.note,e.kind)})};
+  var exs=dl?deloadFor(d).map(makeExPlan):d.exercises.map(function(e){return makeEx(e.name,e.sets||2,e.reps,e.note,e.kind)});
+  S.active={id:uid(),dayId:d.id,name:d.name,focus:(d.focus||'')+(dl?' (deload)':''),date:todayStr(),startedAt:Date.now(),deload:!!dl,exercises:exs};
   save();ui.view='workout';rest=null;window.scrollTo(0,0);render();lock();
+}
+function addExerciseToWorkout(nm){
+  var df=defaultsFor(nm);
+  S.active.exercises.push(makeEx(nm,df.sets,df.reps,'',kindOf(nm)));
+  sheet=null;save();render();
+  setTimeout(function(){window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})},50);
 }
 function finishWorkout(){
   var a=S.active,exs=[],prs=0,prNames=[];
@@ -1013,10 +1451,11 @@ function finishWorkout(){
     });
     if(sets.length)exs.push({name:ex.name,kind:ex.kind,sets:sets});
   });
-  var ses={id:uid(),date:a.date,dayId:a.dayId,dayName:a.name,focus:a.focus,durationMin:Math.round((Date.now()-a.startedAt)/60000),exercises:exs};
+  var ses={id:uid(),date:a.date,dayId:a.dayId,dayName:a.name,focus:a.focus,durationMin:Math.round((Date.now()-a.startedAt)/60000),deload:!!a.deload,exercises:exs};
   S.sessions.push(ses);S.active=null;rest=null;ui.warn=false;save();
   ui.view='tabs';ui.tab='home';ui.fx=true;sheet=null;window.scrollTo(0,0);render();
   celebrate(ses,prNames);
+  autoBackup();
 }
 function celebrate(ses,prs){
   var vol=Math.round(sessionVolume(ses)),sets=0;ses.exercises.forEach(function(e){sets+=e.sets.length});
@@ -1039,9 +1478,11 @@ function celebrate(ses,prs){
 }
 function closeSheet(){
   if(sheet&&sheet.type==='welcome')return;
-  var warn=sheet&&sheet.act==='finishAnyway';
+  var warn=sheet&&sheet.act==='finishAnyway',redo=sheet&&(sheet.type==='sore'||sheet.type==='backup');
   sheet=null;
+  if(!S.welcomed)sheet={type:'welcome'};
   if(warn){ui.warn=true;render();var u=document.querySelector('.set.warn');if(u)u.scrollIntoView({block:'center',behavior:'smooth'})}
+  else if(redo)render();
   else renderSheet();
 }
 function confirmSheet(o){sheet=Object.assign({type:'confirm'},o);renderSheet()}
@@ -1054,7 +1495,7 @@ document.addEventListener('click',function(e){
   var ex,s;
   switch(a){
     case 'tab':if(ui.tab!==t.dataset.t||ui.view!=='tabs')ui.fx=true;ui.tab=t.dataset.t;ui.view='tabs';window.scrollTo(0,0);render();break;
-    case 'start':startWorkout(t.dataset.id);break;
+    case 'start':startWorkout(t.dataset.id,t.dataset.dl==='1');break;
     case 'openWorkout':ui.view='workout';window.scrollTo(0,0);render();lock();break;
     case 'closeWorkout':ui.view='tabs';ui.tab='home';ui.fx=true;window.scrollTo(0,0);render();break;
     case 'askDiscard':confirmSheet({title:'Kassér passet?',text:'Alt du har logget i dette pas bliver slettet.',ok:'Kassér',danger:1,act:'discard'});break;
@@ -1080,7 +1521,7 @@ document.addEventListener('click',function(e){
           if(prFlags(ex)[ti]){
             var pm=document.querySelector('[data-meta="'+ex.id+'-'+ti+'"] .pr');if(pm)pm.classList.add('new');
             var rc=row.querySelector('.check').getBoundingClientRect();
-            confetti(rc.left+rc.width/2,rc.top+rc.height/2,28);buzz([30,40,30]);toast('Ny rekord på '+ex.name+' 🏆');
+            confetti(rc.left+rc.width/2,rc.top+rc.height/2,28);buzz([30,40,30]);toast(prFlags(ex)[ti]+': '+ex.name+' 🏆');
           }else buzz(12);
         }
       }
@@ -1103,11 +1544,7 @@ document.addEventListener('click',function(e){
     case 'rmEx':
       confirmSheet({title:'Fjern øvelsen?',text:'Øvelsen fjernes fra dette pas.',ok:'Fjern',danger:1,act:'rmEx',arg:t.dataset.ex});break;
     case 'addEx':sheet={type:'addEx',q:'',focus:1};renderSheet();break;
-    case 'pickEx':
-      var nm=t.dataset.n;
-      S.active.exercises.push(makeEx(nm,3,'8','',kindOf(nm)));
-      sheet=null;save();render();
-      setTimeout(function(){window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})},50);break;
+    case 'pickEx':addExerciseToWorkout(t.dataset.n);break;
     case 'restAdj':if(rest){rest.end+=(+t.dataset.d)*1000;rest.total=Math.max(rest.total,Math.ceil((rest.end-Date.now())/1000));tick()}break;
     case 'restSkip':rest=null;tick();break;
     case 'closeSheet':closeSheet();break;
@@ -1118,7 +1555,6 @@ document.addEventListener('click',function(e){
       else if(cs.act==='rmEx'){S.active.exercises=S.active.exercises.filter(function(x){return x.id!==cs.arg});save();render()}
       else if(cs.act==='delSes'){S.sessions=S.sessions.filter(function(x){return x.id!==cs.arg});ui.openSes=null;save();render()}
       else if(cs.act==='delDay'){S.program=S.program.filter(function(x){return x.id!==cs.arg});save();render()}
-      else if(cs.act==='reset'){S=seed();save();rest=null;ui.view='tabs';ui.tab='home';render();toast('Alt er nulstillet')}
       break;
     case 'openBw':sheet={type:'bw'};renderSheet();break;
     case 'saveBw':
@@ -1172,24 +1608,94 @@ document.addEventListener('click',function(e){
     case 'celClose':$('#cel').innerHTML='';ui.fx=true;render();break;
     case 'welcomeSeed':
       var wd=$('#wDate').value||todayStr();
-      S.sessions.push(dag1Session(wd));S.bodyweight.push({id:uid(),date:wd,kg:69});S.welcomed=true;sheet=null;save();ui.fx=true;render();break;
+      S.sessions.push(dag1Session(wd));S.bodyweight.push({id:uid(),date:wd,kg:69});S.welcomed=true;S.deload.next=null;initDeload();sheet=null;save();ui.fx=true;render();break;
     case 'welcomeSkip':S.welcomed=true;sheet=null;save();ui.fx=true;render();break;
-    case 'openBackup':sheet={type:'backup'};renderSheet();break;
+    case 'openBackup':sheet={type:'backup',mode:'main'};renderSheet();break;
     case 'bkCopy':
       var ta=$('#bk');ta.select();S.lastBackup=todayStr();save();
       try{navigator.clipboard.writeText(ta.value).then(function(){toast('Kopieret')}).catch(function(){document.execCommand('copy');toast('Kopieret')})}catch(er){try{document.execCommand('copy');toast('Kopieret')}catch(e2){toast('Marker teksten og kopiér manuelt')}}
       break;
     case 'bkDownload':
       S.lastBackup=todayStr();save();
-      try{var blob=new Blob([JSON.stringify(S)],{type:'application/json'}),u=URL.createObjectURL(blob),an=document.createElement('a');
+      try{var blob=new Blob([backupJson()],{type:'application/json'}),u=URL.createObjectURL(blob),an=document.createElement('a');
         an.href=u;an.download='traening-backup-'+todayStr()+'.json';document.body.appendChild(an);an.click();an.remove();setTimeout(function(){URL.revokeObjectURL(u)},2000)}catch(er){toast('Download virkede ikke, brug Kopiér')}
       break;
     case 'bkImport':
       try{var o=JSON.parse($('#bk').value);if(!o||o.v!==1||!o.program||!o.sessions)throw 0;
-        S=o;if(!S.plan)S.plan=defPlan();S.active=null;save();sheet=null;ui.view='tabs';render();toast('Backup er gendannet')}
+        S=normalize(o);S.active=null;save();_pc={k:'',v:null};sheet=null;ui.view='tabs';ui.fx=true;applyTheme();render();toast('Backup er gendannet')}
       catch(er){toast('Teksten er ikke en gyldig backup')}
       break;
-    case 'askReset':confirmSheet({title:'Nulstil alt?',text:'Al din historik, dit program og dine mål slettes. Tag en backup først hvis du er i tvivl.',ok:'Nulstil alt',danger:1,act:'reset'});break;
+    case 'ghSetup':sheetRefresh({mode:'setup',msg:'',warnPublic:false});break;
+    case 'ghBack':sheetRefresh({mode:'main',list:null,pending:null,msg:'',warnPublic:false});break;
+    case 'ghAuto':var gc=ghGet();if(gc){gc.auto=!gc.auto;ghSet(gc);renderSheet(true)}break;
+    case 'ghForget':ghSet(null);sheetRefresh({mode:'main',msg:'Forbindelsen er fjernet fra denne telefon.',msgType:'ok'});break;
+    case 'ghSave':case 'ghSaveAnyway':
+      var repo=($('#ghRepo').value||'').trim().replace(/^https?:\/\/github\.com\//,'').replace(/\.git$/,'').replace(/\/$/,''),tok=($('#ghTok').value||'').trim()||(ghGet()||{}).token||'',anyway=(a==='ghSaveAnyway');
+      if(!/^[\w.-]+\/[\w.-]+$/.test(repo)){sheetRefresh({msg:'Skriv repoet som ejer/navn, fx mvi-dot/training-backup',msgType:'err',tmpRepo:repo});break}
+      if(!tok){sheetRefresh({msg:'Indsæt dit token',msgType:'err',tmpRepo:repo});break}
+      sheetRefresh({busy:true,msg:'',warnPublic:false,tmpRepo:repo,tmpTok:tok});
+      fetch('https://api.github.com/repos/'+repo,{headers:{'Authorization':'Bearer '+tok,'Accept':'application/vnd.github+json'}})
+        .then(function(r){return r.json().catch(function(){return {}}).then(function(j){return{r:r,j:j}})})
+        .then(function(x){
+          if(!x.r.ok){sheetRefresh({busy:false,msg:ghErr(x.r.status,x.j),msgType:'err'});return}
+          if(x.j.permissions&&x.j.permissions.push===false){sheetRefresh({busy:false,msg:ghErr(403),msgType:'err'});return}
+          if(x.j.private===false&&!anyway){sheetRefresh({busy:false,warnPublic:true});return}
+          var old=ghGet()||{};ghSet({repo:repo,token:tok,auto:old.auto!==undefined?old.auto:true});
+          sheetRefresh({busy:false,mode:'main',msg:'Forbundet til '+repo+'. Du kan nu tage backup.',msgType:'ok',warnPublic:false,tmpTok:'',tmpRepo:''});
+        }).catch(function(){sheetRefresh({busy:false,msg:'Ingen forbindelse. Prøv igen med signal.',msgType:'err'})});
+      break;
+    case 'ghBackup':
+      sheetRefresh({busy:true,msg:''});
+      doBackup().then(function(n){sheetRefresh({busy:false,msg:'Backup gemt på GitHub: '+n,msgType:'ok'})}).catch(function(e){sheetRefresh({busy:false,msg:e.message,msgType:'err'})});
+      break;
+    case 'ghList':
+      sheetRefresh({mode:'restore',list:null,pending:null,busy:true,msg:''});
+      ghReq('contents/backup').then(function(r){
+        if(r.status===404){sheetRefresh({busy:false,list:[]});return}
+        return r.json().then(function(j){
+          if(!r.ok)throw new Error(ghErr(r.status,j));
+          var names=(Array.isArray(j)?j:[]).map(function(f){return f.name}).filter(function(n){return /^traening-.*\.json$/.test(n)}).sort().reverse();
+          sheetRefresh({busy:false,list:names});
+        });
+      }).catch(function(e){sheetRefresh({busy:false,mode:'main',msg:e.message,msgType:'err'})});
+      break;
+    case 'ghRestore':
+      var fn=t.dataset.n;sheetRefresh({busy:true,msg:''});
+      ghReq('contents/backup/'+encodeURIComponent(fn)).then(function(r){
+        return r.json().then(function(j){
+          if(!r.ok)throw new Error(ghErr(r.status,j));
+          var o;try{o=JSON.parse(unb64(j.content))}catch(er){throw new Error('Kunne ikke læse backupfilen')}
+          if(!o||o.v!==1||!o.program||!o.sessions)throw new Error('Filen er ikke en gyldig backup');
+          sheetRefresh({busy:false,pending:{name:fn,data:o}});
+        });
+      }).catch(function(e){sheetRefresh({busy:false,msg:e.message,msgType:'err'})});
+      break;
+    case 'ghRestoreCancel':sheetRefresh({pending:null});break;
+    case 'ghRestoreOk':
+      var nd=sheet.pending.data;S=normalize(nd);S.active=null;S.welcomed=true;rest=null;sheet=null;save();_pc={k:'',v:null};
+      ui.view='tabs';ui.tab='home';ui.fx=true;applyTheme();render();toast('Backup gendannet');
+      break;
+    case 'openSore':sheet={type:'sore',date:t.dataset.d};renderSheet();break;
+    case 'soreTap':
+      var sk=sheet.date,so=S.sore[sk]||(S.sore[sk]={}),mm=t.dataset.m;delete so.none;so[mm]=((so[mm]||0)+1)%3;if(!so[mm])delete so[mm];
+      save();renderSheet(true);break;
+    case 'soreNone':S.sore[sheet.date]={none:1};save();sheet=null;render();toast('Noteret: ingen ømhed');break;
+    case 'deloadEvery':
+      S.deload.every=+t.dataset.v;if(S.deload.every>0){S.deload.next=null;initDeload()}save();render();break;
+    case 'deloadNow':S.deload.next=mondayOf(todayStr());save();render();toast('Denne uge er deload');break;
+    case 'deloadPostpone':initDeload();S.deload.next=addDays(S.deload.next,7);save();render();toast('Deload er udskudt en uge');break;
+    case 'dlPlan':sheet={type:'dlplan',id:t.dataset.id};renderSheet();break;
+    case 'recAll':ui.recAll=!ui.recAll;render();break;
+    case 'sugAdd':sheet={type:'addToDay',n:t.dataset.n};renderSheet();break;
+    case 'sugToDay':
+      var dd2=S.program.find(function(x){return x.id===t.dataset.id}),df3=defaultsFor(sheet.n),nm2=sheet.n;
+      if(dd2){dd2.exercises.push({name:nm2,sets:df3.sets,reps:df3.reps,kind:df3.kind,note:''});save();sheet=null;render();toast(nm2+' er lagt til '+dd2.name)}
+      break;
+    case 'applyLadder':
+      ex=findEx(t.dataset.ex);
+      var pl2=plansOn(S.active.date).find(function(x){return x.name.toLowerCase()===ex.name.toLowerCase()});
+      if(pl2){ex.sets=pl2.ladder.map(function(x){return{kg:x.kg,reps:x.reps,rir:null,done:false}});ex.target='1RM-test';ex.note='Opvarm og tag forsøgene. Hvil 3–5 min før hvert forsøg.';save();render()}
+      break;
   }
 });
 
@@ -1242,6 +1748,9 @@ document.addEventListener('input',function(e){
 });
 document.addEventListener('change',function(e){
   var t=e.target;
+  if(t.dataset.pick!==undefined&&t.value&&sheet&&sheet.draft){var pe=sheet.draft.exercises[+t.dataset.pick];pe.name=t.value;var lb=libFind(t.value);if(lb)pe.kind=lb[3];renderSheet(true);return}
+  if(t.dataset.addpick!==undefined&&t.value&&S.active){addExerciseToWorkout(t.value);return}
+  if(t.dataset.deloadnext&&t.value){S.deload.next=mondayOf(t.value);save();render();return}
   if(t.dataset.sel==='progEx'){ui.progEx=t.value;ui.fx=true;render();return}
   if(t.dataset.sesdate){var s=S.sessions.find(function(x){return x.id===t.dataset.sesdate});if(s&&t.value){s.date=t.value;save();render()}return}
   if(t.dataset.goal){
