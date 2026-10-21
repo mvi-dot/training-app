@@ -1,6 +1,6 @@
 /* Træning: service worker. Gør at appen åbner med det samme og virker uden signal.
    Skal du tvinge en opdatering ud til telefonen, så ret VERSION nedenfor (fx til traening-v2). */
-const VERSION = 'traening-v6';
+const VERSION = 'traening-v7';
 const SHELL = ['index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 
 self.addEventListener('install', (e) => {
