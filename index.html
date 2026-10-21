@@ -309,28 +309,21 @@ button.wd{padding:2px 4px}
 /* ===== v6: preloader, burger, home, body ===== */
 html.nopre .pre{display:none}
 .pre{position:fixed;inset:0;z-index:300;background:radial-gradient(70% 320px at 50% 46%,rgba(76,64,214,.26),transparent 70%) no-repeat,#030309;color:#eef1fc;font-family:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;overflow:hidden;transition:opacity .55s ease,transform .55s ease}
-.pre.out{opacity:0;transform:scale(1.06);pointer-events:none}
-.pre .pgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(90,100,170,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(90,100,170,.16) 1px,transparent 1px);background-size:26px 26px;opacity:0;animation:fadeIn .7s .3s forwards;-webkit-mask-image:radial-gradient(75% 40% at 50% 50%,#000 25%,transparent 78%);mask-image:radial-gradient(75% 40% at 50% 50%,#000 25%,transparent 78%)}
-.pre .base{position:absolute;left:0;right:0;top:50%;height:1.5px;margin-top:-.75px;background:rgba(142,151,184,.32)}
-.pre .ecg{position:absolute;left:0;top:50%;width:100%;height:auto;transform:translateY(-50%);overflow:visible}
-.pre .ecgp{fill:none;stroke:url(#eg);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:pdraw 1.7s linear .25s forwards;filter:drop-shadow(0 0 5px rgba(168,85,247,.9))}
-.pre .head{fill:#fff;filter:drop-shadow(0 0 7px #c084fc) drop-shadow(0 0 14px #3b82f6)}
-@keyframes pdraw{to{stroke-dashoffset:0}}
-.pre .ring{position:absolute;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;border:2px solid #a855f7;opacity:0;animation:pring .95s ease-out forwards}
-.pre .r1{left:29%;animation-delay:.78s}.pre .r2{left:55%;animation-delay:1.2s}.pre .r3{left:80%;animation-delay:1.62s}
-@keyframes pring{0%{opacity:.85;transform:scale(1)}100%{opacity:0;transform:scale(11)}}
-.pre .bpm{position:absolute;left:0;right:0;top:calc(50% + 96px);display:flex;justify-content:center;align-items:baseline;gap:8px;opacity:0;animation:fadeIn .5s .4s forwards}
-.pre .bpm b{font-weight:800;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
-.pre .bpm span{font-size:14px;font-weight:700;color:#8e97b8;letter-spacing:.12em}
-.pre .bpm svg{width:20px;height:20px;align-self:center;fill:#ec4899;animation:pbeat .62s ease-in-out infinite}
-@keyframes pbeat{0%,100%{transform:scale(1)}40%{transform:scale(1.35)}}
-.pre .word{position:absolute;left:0;right:0;top:calc(50% - 168px);display:flex;justify-content:center;font-weight:800;font-size:46px;letter-spacing:.1em;line-height:1}
-.pre .word span{display:inline-block;opacity:0;background:linear-gradient(180deg,#fff 10%,#b9c6ff 55%,#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent;animation:pword .7s cubic-bezier(.2,.9,.2,1) forwards;animation-delay:calc(1.7s + var(--i)*.055s)}
-@keyframes pword{0%{opacity:0;transform:translateY(26px) scale(1.25);filter:blur(10px)}100%{opacity:1;transform:none;filter:blur(0)}}
-.pre .sub{position:absolute;left:0;right:0;top:calc(50% - 106px);text-align:center;color:#8e97b8;font-size:14px;font-weight:600;letter-spacing:.14em;opacity:0;animation:fadeIn .6s 2.25s forwards;font-family:"Figtree",system-ui,sans-serif}
+.pre.out{opacity:0;transform:scale(1.05);pointer-events:none}
+.pre .floor{position:absolute;left:0;right:0;top:62%;height:1.5px;background:rgba(142,151,184,.32)}
+.pre .stage{position:absolute;inset:0;animation:pshake .55s .83s}
+@keyframes pshake{0%{transform:translate(0,0)}15%{transform:translate(-9px,5px)}30%{transform:translate(8px,-6px)}45%{transform:translate(-6px,4px)}60%{transform:translate(5px,-3px)}80%{transform:translate(-2px,1px)}100%{transform:translate(0,0)}}
+.pre .plate{position:absolute;left:50%;top:calc(62% - 148px);width:148px;height:148px;margin-left:-74px;transform:translateY(-80vh) rotate(-50deg);animation:pdrop 1.2s linear .2s forwards;filter:drop-shadow(0 0 22px rgba(120,90,255,.5))}
+@keyframes pdrop{0%{transform:translateY(-80vh) rotate(-50deg);animation-timing-function:cubic-bezier(.55,0,.9,.55)}53%{transform:translateY(0) rotate(0);animation-timing-function:cubic-bezier(.2,.65,.4,1)}67%{transform:translateY(-28px) rotate(3deg);animation-timing-function:cubic-bezier(.6,0,.8,.4)}79%{transform:translateY(0) rotate(0);animation-timing-function:cubic-bezier(.2,.65,.4,1)}88%{transform:translateY(-7px);animation-timing-function:cubic-bezier(.6,0,.8,.4)}100%{transform:translateY(0)}}
+.pre .shock{position:absolute;left:50%;top:62%;width:70px;height:10px;margin:-5px 0 0 -35px;border-radius:50%;border:2px solid rgba(192,132,252,.75);opacity:0;animation:pshock .85s ease-out .83s forwards}
+@keyframes pshock{0%{opacity:.95;transform:scaleX(.2)}100%{opacity:0;transform:scaleX(11)}}
+.pre .dust i{position:absolute;left:50%;top:62%;width:8px;height:8px;margin:-4px;border-radius:50%;background:#e8ecff;opacity:0;animation:pdust 1s ease-out forwards}
+@keyframes pdust{0%{opacity:.9;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.3)}}
+.pre .word{position:absolute;left:0;right:0;top:calc(62% - 148px - 92px);display:flex;justify-content:center;font-weight:800;font-size:60px;letter-spacing:.05em;line-height:1}
+.pre .word span{display:inline-block;opacity:0;background:linear-gradient(180deg,#fff 10%,#b9c6ff 55%,#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent;animation:pslam .6s cubic-bezier(.2,.9,.2,1) forwards;animation-delay:calc(1.45s + var(--i)*.07s)}
+@keyframes pslam{0%{opacity:0;transform:translateY(-70px) scale(1.5)}60%{opacity:1;transform:translateY(6px) scale(.96)}100%{opacity:1;transform:none}}
+.pre .sub{position:absolute;left:0;right:0;top:calc(62% + 38px);text-align:center;color:#8e97b8;font-size:14px;font-weight:600;letter-spacing:.2em;opacity:0;animation:fadeIn .6s 2s forwards;font-family:"Figtree",system-ui,sans-serif}
 .pre .skip{position:absolute;left:0;right:0;bottom:calc(34px + env(safe-area-inset-bottom,0px));text-align:center;color:#4f587a;font-size:13px;font-family:"Figtree",system-ui,sans-serif}
-.pre .flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(168,85,247,.5),transparent 60%);opacity:0;animation:pflash .8s ease-out 1.62s both}
-@keyframes pflash{0%{opacity:0}30%{opacity:1}100%{opacity:0}}
 .burger{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);right:16px;z-index:35;width:44px;height:44px;border-radius:14px;background:rgba(var(--bg-rgb),.82);border:1px solid var(--line);display:grid;place-items:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .burger svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round}
 .dr{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.62);opacity:0;pointer-events:none;transition:opacity .28s}
@@ -425,6 +418,80 @@ html.nopre .pre{display:none}
 .fth{flex:0 0 84px;width:84px;border-radius:12px;background:var(--bg)}
 .fth .fig{width:84px}
 .nav button.on svg{stroke:var(--orchid)}
+/* ===== v8 ===== */
+.nav{left:14px;right:14px;bottom:calc(env(safe-area-inset-bottom,0px)*.45 + 14px);border:1px solid var(--line);border-radius:28px;background:rgba(var(--nav-rgb),.8);box-shadow:0 14px 40px rgba(0,0,0,.55);padding-bottom:0;margin:0 auto;max-width:480px;overflow:hidden}
+.nav button{padding:11px 0 10px}
+main{padding-bottom:170px}
+.toast{bottom:calc(128px + env(safe-area-inset-bottom,0px))}
+.hic{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:10px;background:var(--raised);color:var(--lilac);margin-right:10px;flex:0 0 auto}
+.hic svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sec h2{display:flex;align-items:center}
+.ico-sm{display:inline-grid;vertical-align:middle;margin-right:6px}
+.ico-sm svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cta{display:flex;align-items:center;justify-content:center;gap:8px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px}
+.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cta svg{width:18px;height:18px}
+.cih{display:flex;align-items:center}
+.cih b{font-family:var(--display);font-size:18px}
+.ciq{margin-top:12px;padding:10px 12px;border-radius:14px;background:var(--raised);font-size:14px;border:1px solid var(--line)}
+.ciq.lv-lav{border-color:rgba(var(--gold-rgb),.55)}
+.ciq.lv-megetlav{border-color:rgba(251,113,133,.65)}
+.ciq.lv-god{border-color:rgba(var(--acc-rgb),.55)}
+.wrow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:12px 0 8px}
+.wnum b{font-family:var(--display);font-size:28px}
+.wbtns{display:flex;gap:8px}
+.wbtns .iconbtn{font-size:22px;font-weight:700}
+.wbtns .iconbtn.on{background:linear-gradient(135deg,var(--violet),var(--acc2));color:var(--on-acc);border:0}
+.tipr{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.tipr .ti{width:34px;height:34px;border-radius:11px;background:var(--raised);display:grid;place-items:center;color:var(--lilac);flex:0 0 auto}
+.tipr .ti svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.tipr b{display:block;font-size:14px}
+.tipr .d{font-size:13px;color:var(--muted)}
+.ico-drop svg{animation:drip 2.6s ease-in-out infinite}
+.ico-bolt svg{animation:flick 2.4s ease-in-out infinite}
+.ti.ico-moon svg,.ti.ico-leaf svg{animation:sway 3.4s ease-in-out infinite}
+@keyframes drip{0%,100%{transform:translateY(0)}45%{transform:translateY(2px) scale(.94,1.08)}70%{transform:translateY(-1px)}}
+@keyframes flick{0%,100%{opacity:1}45%{opacity:.5}50%{opacity:1}}
+@keyframes sway{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+.tl li{padding:0}
+.tl .rbtn{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding:9px 0;text-align:left;font-size:14px}
+.tl .rr{color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:8px}
+.tl .rinfo svg{width:16px;height:16px;fill:none;stroke:var(--lilac);stroke-width:2;stroke-linecap:round}
+.exr{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:8px 0;border-top:1px solid var(--line)}
+.exr:first-child{border-top:0}
+.exth{width:50px;flex:0 0 50px;border-radius:10px;background:var(--bg)}
+.exth .fig{width:50px}
+.exm{flex:1;min-width:0}
+.exm b{display:block;font-size:15px}
+.exright{color:var(--lilac);font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.exright svg{width:16px;height:16px;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round}
+.logrow.upr{display:flex;align-items:center;gap:12px}
+.logrow.upr .ui{width:32px;height:32px;border-radius:10px;background:var(--raised);display:grid;place-items:center;color:var(--lilac);flex:0 0 auto}
+.logrow.upr .ui.m{color:var(--muted)}
+.logrow.upr .ui svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.logrow.upr .ud{flex:1}
+.bd.top{z-index:95}
+/* full-screen menu */
+.dr{background:rgba(0,0,0,.0)}
+.drp{left:0;right:0;top:0;bottom:0;width:100%;display:block;border:0;background:radial-gradient(90% 300px at 50% -60px,rgba(var(--acc-rgb),.3),transparent 70%) no-repeat,var(--bg);padding:calc(18px + env(safe-area-inset-top,0px)) 16px calc(28px + env(safe-area-inset-bottom,0px));transform:translateY(46px) scale(.985);opacity:0;transition:transform .42s cubic-bezier(.2,.9,.2,1),opacity .3s}
+.dr.open .drp{transform:none;opacity:1}
+.drh{margin:4px 2px 18px}
+.drh .eb{display:block;font-size:13px;color:var(--lilac);font-weight:700}
+.drh h2{font-size:34px;font-weight:800}
+.acc{background:var(--surface);border:1px solid var(--line);border-radius:24px;margin-bottom:12px;overflow:hidden}
+.dr.open .acc{animation:rise .5s both;animation-delay:calc(var(--i)*.08s + .12s)}
+.acch{display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px;text-align:left}
+.acch .ic{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,rgba(var(--acc-rgb),.35),var(--raised));display:grid;place-items:center;color:var(--lilac);flex:0 0 auto}
+.acch .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.acch b{flex:1;font-family:var(--display);font-size:20px}
+.acch .cnt{background:var(--raised);border-radius:999px;padding:2px 10px;font-size:12px;color:var(--muted)}
+.acch .chev svg{width:20px;height:20px;fill:none;stroke:var(--muted);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
+.acc.open .chev svg{transform:rotate(90deg)}
+.accb{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.acc.open .accb{max-height:560px}
+.accb .dri{border-top:1px solid var(--line);border-radius:0;padding:13px 16px}
+@media (prefers-reduced-motion:reduce){.pre .plate{transform:none}}
 /* celebration */
 .cel{position:fixed;inset:0;z-index:100;background:radial-gradient(80% 320px at 50% 28%,rgba(var(--acc-rgb),.22),transparent 70%) no-repeat,var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:calc(28px + env(safe-area-inset-top,0px)) 24px calc(28px + env(safe-area-inset-bottom,0px));text-align:center;overflow:auto;animation:fadeIn .3s ease both}
 .cel .rsvg{width:140px;height:140px;filter:drop-shadow(0 0 26px rgba(var(--acc-rgb),.55))}
@@ -446,18 +513,22 @@ html.nopre .pre{display:none}
 <body>
 <script>try{var _s=JSON.parse(localStorage.getItem('traening.v1'));if(_s&&_s.settings&&_s.settings.preloader===false)document.documentElement.className+=' nopre'}catch(e){}</script>
 <div class="pre" id="pre" aria-hidden="true">
-  <div class="pgrid"></div>
-  <div class="base"></div>
-  <svg class="ecg" viewBox="0 0 390 120">
-    <defs><linearGradient id="eg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3b82f6"/><stop offset=".6" stop-color="#a855f7"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs>
-    <path id="ecgp" class="ecgp" pathLength="1" d="M0 60 L66 60 L76 60 Q82 51 88 60 L100 60 L106 67 L114 16 L122 102 L128 60 Q140 46 152 60 L196 60 L204 68 L213 8 L224 110 L231 60 Q244 42 258 60 L296 60 L304 70 L314 4 L326 116 L334 60 Q348 38 364 60 L390 60"/>
-    <circle r="4.5" class="head" cx="0" cy="0"><animateMotion dur="1.7s" begin="0.25s" fill="freeze" calcMode="linear"><mpath href="#ecgp"/></animateMotion></circle>
-  </svg>
-  <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
-  <div class="flash"></div>
-  <div class="word"><span style="--i:0">J</span><span style="--i:1">E</span><span style="--i:2">R</span><span style="--i:3">N</span><span style="--i:4">P</span><span style="--i:5">U</span><span style="--i:6">L</span><span style="--i:7">S</span></div>
-  <div class="sub">KLAR TIL NÆSTE PAS</div>
-  <div class="bpm"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9.3C1.2 8.4 3.2 5 6.6 5c2 0 3.6 1.1 5.4 3.2C13.800 6.100 15.400 5 17.400 5c3.400 0 5.400 3.400 4.100 6.700C19.500 16.400 12 21 12 21z"/></svg><b id="preN">62</b><span>BPM</span></div>
+  <div class="floor"></div>
+  <div class="stage">
+    <div class="shock"></div>
+    <div class="dust"><i style="--dx:-78px;--dy:-39px;animation-delay:0.88s"></i><i style="--dx:40px;--dy:-89px;animation-delay:0.86s"></i><i style="--dx:-38px;--dy:-85px;animation-delay:0.83s"></i><i style="--dx:95px;--dy:-29px;animation-delay:0.84s"></i><i style="--dx:-93px;--dy:-127px;animation-delay:0.84s"></i><i style="--dx:63px;--dy:-101px;animation-delay:0.91s"></i><i style="--dx:-116px;--dy:-71px;animation-delay:0.91s"></i><i style="--dx:36px;--dy:-131px;animation-delay:0.85s"></i><i style="--dx:-51px;--dy:-35px;animation-delay:0.85s"></i><i style="--dx:152px;--dy:-43px;animation-delay:0.88s"></i><i style="--dx:-125px;--dy:-68px;animation-delay:0.87s"></i><i style="--dx:39px;--dy:-27px;animation-delay:0.85s"></i><i style="--dx:-132px;--dy:-75px;animation-delay:0.86s"></i><i style="--dx:117px;--dy:-78px;animation-delay:0.85s"></i><i style="--dx:-149px;--dy:-110px;animation-delay:0.85s"></i><i style="--dx:116px;--dy:-88px;animation-delay:0.9s"></i></div>
+    <svg class="plate" viewBox="0 0 200 200">
+      <defs><linearGradient id="pg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs>
+      <circle cx="100" cy="100" r="98" fill="url(#pg2)"/>
+      <circle cx="100" cy="100" r="88" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="3"/>
+      <circle cx="100" cy="100" r="64" fill="#0b1022" stroke="rgba(255,255,255,.22)" stroke-width="2"/>
+      
+      <text x="100" y="92" text-anchor="middle" font-size="34" font-weight="800" fill="#fff" id="preN" font-family="Bricolage Grotesque,system-ui,sans-serif">20</text>
+      <text x="100" y="128" text-anchor="middle" font-size="20" font-weight="700" fill="#b9c6ff" font-family="Bricolage Grotesque,system-ui,sans-serif" letter-spacing="3">KG</text>
+    </svg>
+    <div class="word"><span style="--i:0">T</span><span style="--i:1">U</span><span style="--i:2">N</span><span style="--i:3">G</span><span style="--i:4">T</span></div>
+    <div class="sub">TID TIL AT LØFTE</div>
+  </div>
   <div class="skip">Tryk for at springe over</div>
 </div>
 <div id="app"></div>
@@ -473,6 +544,7 @@ html.nopre .pre{display:none}
 </div></nav>
 <div id="cel"></div>
 <div id="sheet"></div>
+<div id="pop"></div>
 <div id="toast"></div>
 
 <script>
@@ -508,6 +580,7 @@ var BUILTIN=['Bænkpres','Squat','Dødløft','Barbell row','Stående skulderpres
 
 function defPlan(){return{pattern:[1,0,1,0,1,0,1],overrides:{}}}
 /* ---------- seed ---------- */
+var RENAMES={'Leg curl':'Hamstring curl, liggende','Calf raises':'Calf raises, stående','Triceps extension':'Overhead triceps extension','Let squat':'Squat','Lat pulldown ergogrip':'Lat pulldown'};
 function dag1Session(d){
   function sets(kg,arr){return arr.map(function(r){return{kg:kg,reps:r,rir:null}})}
   return {id:uid(),date:d,dayId:'d1',dayName:'Dag 1',focus:'Overkrop A',durationMin:0,exercises:[
@@ -517,25 +590,26 @@ function dag1Session(d){
     {name:'Lat pulldown ergogrip',kind:'reps',sets:[{kg:30,reps:8,rir:null}].concat(sets(40,[8,8,8]))}
   ]};
 }
-function seed(){
-  function ex(name,sets,reps,note,kind){return{name:name,sets:sets,reps:reps,note:note||'',kind:kind||'reps'}}
-  var program=[
-    {id:'d1',name:'Dag 1',focus:'Overkrop A',exercises:[
-      ex('Bænkpres',3,'6','3–4 reps i reserve'),ex('Barbell row',2,'8','Ca. 40 kg'),ex('Stående skulderpres',2,'6','Ca. 30 kg'),
-      ex('Lat pulldown ergogrip',2,'8–10','Ca. 40 kg'),ex('Triceps pushdown',2,'12','Find vægt')]},
-    {id:'d2',name:'Dag 2',focus:'Underkrop A',exercises:[
-      ex('Squat',2,'6','3–4 reps i reserve'),ex('Rumænsk dødløft',2,'8','Rolig teknik'),ex('Bulgarian split squat',2,'8/ben','Let'),
-      ex('Leg curl',2,'12','Let'),ex('Planke',2,'30 sek','Kropsvægt','time')]},
-    {id:'d3',name:'Dag 3',focus:'Overkrop B',exercises:[
-      ex('Bænkpres med pause',2,'8','47,5–50 kg, sænk hvis tungt'),ex('Incline dumbbell press',2,'10','Find vægt'),ex('Chest-supported row',2,'10','Find vægt'),
-      ex('Lateral raises',2,'12','Let'),ex('Triceps extension',2,'12','Let')]},
-    {id:'d4',name:'Dag 4',focus:'Underkrop B',exercises:[
-      ex('Dødløft',2,'5','3–4 reps i reserve'),ex('Let squat',2,'8','Let'),ex('Leg curl',2,'10','Let'),
-      ex('Calf raises',2,'12','Find vægt'),ex('Hanging knee raises',2,'10','Kropsvægt')]}
+function defaultProgram(){
+  function ex(name,sets,reps,note){return{name:name,sets:sets,reps:reps,note:note||'',kind:name==='Planke'?'time':'reps'}}
+  return [
+    {id:'d1',name:'Dag 1',focus:'Overkrop A',exercises:[ex('Bænkpres',3,'6','3–4 reps i reserve'),ex('Barbell row',3,'8'),ex('Stående skulderpres',3,'8'),ex('Biceps curl',3,'10'),ex('Triceps pushdown',3,'12')]},
+    {id:'d2',name:'Dag 2',focus:'Underkrop A',exercises:[ex('Squat',3,'6','3–4 reps i reserve'),ex('Rumænsk dødløft',3,'8'),ex('Leg extension',3,'12'),ex('Calf raises, stående',3,'12'),ex('Planke',3,'30 sek','Kropsvægt')]},
+    {id:'d3',name:'Dag 3',focus:'Overkrop B',exercises:[ex('Incline dumbbell press',3,'10'),ex('Lat pulldown',3,'10'),ex('Lateral raises',3,'12'),ex('Hammer curl',3,'10'),ex('Overhead triceps extension',3,'12'),ex('Face pulls',3,'15')]},
+    {id:'d4',name:'Dag 4',focus:'Underkrop B',exercises:[ex('Dødløft',3,'5','3–4 reps i reserve'),ex('Benpres',3,'10'),ex('Hamstring curl, liggende',3,'12'),ex('Calf raises, siddende',3,'12'),ex('Hanging knee raises',3,'10','Kropsvægt')]}
   ];
-  return{v:1,program:program,sessions:[],bodyweight:[],welcomed:false,
+}
+function seed(){
+  return{v:1,program:defaultProgram(),progOffer:1,sessions:[],bodyweight:[],welcomed:false,
     goals:{lifts:[{name:'Bænkpres',kg:100,sets:5,reps:5},{name:'Squat',kg:120,sets:4,reps:8},{name:'Dødløft',kg:140,sets:4,reps:5}],bwStart:69,bwTarget:80,weekly:4},
-    rest:90,active:null,plan:defPlan(),theme:'blaalilla',deload:{every:6,next:null},sore:{},soreZ:{},swaps:{},settings:{step:2.5,sound:true,vibrate:true,preloader:true}};
+    rest:90,active:null,plan:defPlan(),theme:'blaalilla',deload:{every:6,next:null},sore:{},soreZ:{},swaps:{},checkin:{},daily:{},settings:{step:2.5,sound:true,vibrate:true,preloader:true,adapt:true,tips:true}};
+}
+function renameAll(o){
+  function r(n){return RENAMES[n]||n}
+  (o.program||[]).forEach(function(d){d.exercises.forEach(function(e){e.name=r(e.name)})});
+  (o.sessions||[]).forEach(function(x){x.exercises.forEach(function(e){e.name=r(e.name)})});
+  if(o.active)o.active.exercises.forEach(function(e){e.name=r(e.name)});
+  Object.keys(o.swaps||{}).forEach(function(k){var m=o.swaps[k].map,nm={};Object.keys(m).forEach(function(a){nm[r(a)]=r(m[a])});o.swaps[k].map=nm});
 }
 function normalize(o){
   if(!o.plan)o.plan=defPlan();
@@ -543,9 +617,12 @@ function normalize(o){
   if(!o.deload)o.deload={every:6,next:null};
   if(!o.sore)o.sore={};
   if(!o.soreZ)o.soreZ={};
+  if(!o.checkin)o.checkin={};
+  if(!o.daily)o.daily={};
+  renameAll(o);
   if(!o.swaps)o.swaps={};
   var st=o.settings||(o.settings={});
-  if(st.step==null)st.step=2.5;if(st.sound==null)st.sound=true;if(st.vibrate==null)st.vibrate=true;if(st.preloader==null)st.preloader=true;
+  if(st.step==null)st.step=2.5;if(st.sound==null)st.sound=true;if(st.vibrate==null)st.vibrate=true;if(st.preloader==null)st.preloader=true;if(st.adapt==null)st.adapt=true;if(st.tips==null)st.tips=true;
   return o;
 }
 function load(){
@@ -607,7 +684,7 @@ function applyTheme(){
 function swatch(k){var t=THEMES[k];return '<span class="sw" style="background:'+(t.duo?'linear-gradient(90deg,'+t.c[0]+' 50%,'+t.c[1]+' 50%)':'linear-gradient(135deg,'+t.c[0]+','+t.c[1]+')')+'"></span>'}
 function themeChip(k){return '<button class="chip'+(curTheme()===k?' on':'')+'" data-a="theme" data-v="'+k+'">'+swatch(k)+THEMES[k].n+'</button>'}
 function themeRow(){return '<div class="themerow" role="group" aria-label="Farvetema">'+Object.keys(THEMES).map(themeChip).join('')+'</div>'}
-var ui={tab:'home',view:S.active?'workout':'tabs',progEx:null,metric:'top',openSes:null,fx:true,page:null,drawer:false,soreDate:null};
+var ui={tab:'home',view:S.active?'workout':'tabs',progEx:null,metric:'top',openSes:null,fx:true,page:null,drawer:false,soreDate:null,acc:{a:true}};
 var FX=false;
 function mc(t){return FX?(t?' class="fx t"':' class="fx"'):''}
 var sheet=null, rest=null;
@@ -709,6 +786,15 @@ var IC={
   check:'<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
   back:'<svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>',
   x:'<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  flame:'<svg viewBox="0 0 24 24"><path d="M12 3c1 3 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/></svg>',
+  play:'<svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" style="fill:currentColor;stroke:none"/></svg>',
+  drop:'<svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg>',
+  leaf:'<svg viewBox="0 0 24 24"><path d="M5 19c0-9 5-14 14-14 0 9-5 14-14 14zM5 19l7-7"/></svg>',
+  food:'<svg viewBox="0 0 24 24"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-2 2-3 4-3 7h3v11"/></svg>',
+  bolt:'<svg viewBox="0 0 24 24"><path d="M13 3L5 13h6l-1 8 8-10h-6z"/></svg>',
+  list:'<svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg>',
+  edit:'<svg viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16z"/></svg>',
+  chart2:'<svg viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>',
   book:'<svg viewBox="0 0 24 24"><path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H19v15H7.5A2.5 2.5 0 0 0 5 20.5z"/><path d="M5 20.5A2.5 2.5 0 0 1 7.5 18H19"/></svg>',
   info:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></svg>',
   dumb2:'<svg viewBox="0 0 24 24"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg>',
@@ -817,7 +903,7 @@ var figRaf=null;
 function stopFig(){if(figRaf){cancelAnimationFrame(figRaf);figRaf=null}}
 function startFig(){
   stopFig();
-  var svg=document.querySelector('#sheet .fig.big');if(!svg||(typeof RM!=='undefined'&&RM))return;
+  var svg=document.querySelector('#pop .fig.big');if(!svg||(typeof RM!=='undefined'&&RM))return;
   var pat=FIG[svg.dataset.fig];if(!pat)return;
   (function f(now){
     if(!svg.isConnected){figRaf=null;return}
@@ -891,40 +977,63 @@ var FIG={
 };
 
 var EXD={"Squat": {"p": "sq", "s": ["Stå med fødderne i skulderbredde og tæerne lidt ud. Stangen hviler på øvre ryg.", "Træk vejret ind, spænd mavemusklerne og sænk dig ned, så lårene mindst er parallelle med gulvet.", "Pres igennem hele foden og rejs dig, mens knæene følger tæerne."], "t": "Hold brystet oppe og hælene i gulvet hele vejen.", "u": "Stang og stativ"}, "Front squat": {"p": "sqf", "s": ["Stangen ligger foran på skuldrene, og albuerne peger fremad og op.", "Sænk dig lige ned med oprejst overkrop, til lårene er parallelle.", "Rejs dig ved at presse gennem foden, og hold albuerne høje."], "t": "Albuerne skal ikke falde. Gør de det, så er vægten for tung.", "u": "Stang og stativ"}, "Goblet squat": {"p": "gob", "s": ["Hold en håndvægt eller kettlebell tæt ind til brystet.", "Sænk dig ned mellem knæene med oprejst overkrop.", "Pres op igen, og hold vægten tæt på kroppen."], "t": "En god øvelse til at lære dybden og holde ryggen ret.", "u": "Håndvægt eller kettlebell"}, "Hack squat": {"p": "hack", "s": ["Stil dig i maskinen med ryggen mod pladen og fødderne forrest på platformen.", "Sænk kontrolleret, til knæene er bøjet cirka 90 grader eller mere.", "Pres platformen væk, men lås ikke knæene helt ud."], "t": "Fødder lavt på platformen rammer mere af lårenes forside.", "u": "Hack squat-maskine"}, "Benpres": {"p": "lpress", "s": ["Sæt dig med ryggen fladt mod puden og fødderne i skulderbredde på pladen.", "Sænk pladen, indtil knæene er bøjet cirka 90 grader, uden at numsen løfter sig fra sædet.", "Pres pladen væk, og stop lige før knæene låses."], "t": "Lad aldrig knæene falde indad.", "u": "Benpres-maskine"}, "Bulgarian split squat": {"p": "bulg", "s": ["Læg bagerste fod på en bænk og tag et langt skridt frem med den forreste.", "Sænk dig lige ned, til forreste lår er cirka parallelt med gulvet.", "Pres op gennem forreste hæl. Tag alle gentagelser på ét ben, før du skifter."], "t": "Et langt skridt frem gør det lettere at holde balancen.", "u": "Bænk og håndvægte"}, "Udfald": {"p": "lunge", "s": ["Stå oprejst og tag et skridt frem.", "Sænk bagerste knæ mod gulvet, mens forreste knæ følger tæerne.", "Skub fra med forreste fod, og kom tilbage til start."], "t": "Hold overkroppen oprejst og kig fremad.", "u": "Håndvægte (valgfrit)"}, "Step-ups": {"p": "stepup", "s": ["Stil en fod fast på en kasse eller bænk.", "Pres igennem hælen på den forreste fod, og stå helt op på kassen.", "Sænk dig kontrolleret ned igen. Tag alle gentagelser på ét ben, og skift så."], "t": "Brug det forreste ben til at løfte dig, ikke det bagerste.", "u": "Kasse og håndvægte"}, "Let squat": {"p": "sq", "s": ["Stå med fødderne i skulderbredde.", "Sænk dig kontrolleret ned i en komfortabel dybde.", "Rejs dig igen med rolig bevægelse."], "t": "Brug en let vægt og fokuser på teknikken.", "u": "Stang eller kropsvægt"}, "Leg extension": {"p": "legext", "s": ["Indstil maskinen, så knæene står ud for drejepunktet, og puden ligger over anklerne.", "Stræk benene, til de er næsten helt rette, og spænd lårene i toppen.", "Sænk langsomt tilbage uden at slippe vægten ned."], "t": "Pause et sekund i toppen for at få mest ud af øvelsen.", "u": "Leg extension-maskine"}, "Dødløft": {"p": "dl", "s": ["Stå med stangen over midten af foden og fødderne i hoftebredde. Tag fat lige uden for benene.", "Spænd ryggen og maven, og pres gulvet væk, mens stangen holdes tæt på benene.", "Stå helt op med hofterne fremme, og sænk stangen kontrolleret tilbage."], "t": "Ryggen skal være lige hele vejen, aldrig rundet.", "u": "Stang og vægtskiver"}, "Rumænsk dødløft": {"p": "rdl", "s": ["Stå med let bøjede knæ og stangen foran lårene.", "Skub hofterne bagud, og lad stangen glide ned langs benene, til du mærker strækket i baglårene.", "Skub hofterne fremad, og rejs dig."], "t": "Knæene er næsten stille. Det er hoften, der bevæger sig.", "u": "Stang eller håndvægte"}, "Hip thrust": {"p": "hipt", "s": ["Sæt øvre ryg mod en bænk, og læg stangen over hofterne med en pude.", "Pres hofterne op, til kroppen danner en lige linje fra knæ til skulder.", "Spænd balderne i toppen, og sænk kontrolleret."], "t": "Hagen mod brystet og skinnebenene lodrette i toppen.", "u": "Bænk og stang"}, "Good morning": {"p": "gm", "s": ["Stangen ligger på øvre ryg, og knæene er let bøjede.", "Skub hofterne bagud, og læn overkroppen frem med lige ryg.", "Når du mærker strækket i baglårene, rejser du dig igen ved at skubbe hofterne frem."], "t": "Brug lettere vægt end du tror. Ryggen skal blive lige.", "u": "Stang og stativ"}, "Back extension": {"p": "backext", "s": ["Placer hofterne på puden, og kryds armene foran brystet.", "Sænk overkroppen ned fra hoften med lige ryg.", "Løft kroppen, til den er i lige linje med benene. Gå ikke længere op."], "t": "Spænd balderne, og undgå at overstrække lænden.", "u": "Back extension-bænk"}, "Hamstring curl, liggende": {"p": "curll", "s": ["Læg dig på maskinen med knæene lige uden for bænkens kant og puden over anklerne.", "Bøj knæene, og træk hælene mod numsen.", "Sænk langsomt tilbage, uden at hofterne løfter sig."], "t": "Tryk hofterne ned i bænken hele vejen.", "u": "Leg curl-maskine"}, "Hamstring curl, siddende": {"p": "curls", "s": ["Sæt dig tilbage i sædet, og indstil puden lige over anklerne.", "Træk hælene ned og tilbage mod sædet.", "Lad langsomt vægten føre benene tilbage."], "t": "Sid ret og hold hofterne i sædet.", "u": "Siddende leg curl-maskine"}, "Hamstring curl, stående": {"p": "curlst", "s": ["Stil dig ved maskinen, og lad puden ligge bag på anklen på det ene ben.", "Bøj knæet, og træk hælen mod numsen.", "Sænk kontrolleret, og tag alle gentagelser på ét ben, før du skifter."], "t": "Hold hofterne stille og overkroppen ret.", "u": "Stående leg curl-maskine"}, "Leg curl": {"p": "curll", "s": ["Læg dig på maskinen med puden over anklerne.", "Bøj knæene, og træk hælene mod numsen.", "Sænk langsomt tilbage."], "t": "Kontrolleret sænkning giver mest effekt.", "u": "Leg curl-maskine"}, "Calf raises, stående": {"p": "calfst", "s": ["Stå med forfødderne på en kant og hælene frit.", "Pres op på tæerne så højt du kan, og hold et sekund i toppen.", "Sænk hælene langsomt, til du mærker et stræk i læggene."], "t": "Fuldt udslag giver mest. Spring ikke bevægelsen over.", "u": "Kant eller maskine"}, "Calf raises, siddende": {"p": "calfse", "s": ["Sid med puden på knæene og forfødderne på platformen.", "Pres hælene op, og hold et sekund i toppen.", "Sænk langsomt for et fuldt stræk."], "t": "Siddende rammer den dybe lægmuskel bedst.", "u": "Siddende calf-maskine"}, "Calf raises": {"p": "calfst", "s": ["Stå med forfødderne på en kant.", "Pres op på tæerne, og hold kort i toppen.", "Sænk langsomt til fuldt stræk."], "t": "Brug hele bevægelsen, ikke korte hop.", "u": "Kant eller maskine"}, "Calf raise i benpres": {"p": "calflp", "s": ["Sæt dig i benpressen med forfødderne nederst på pladen og benene næsten strakte.", "Pres tæerne frem, som om du står på tæer.", "Lad pladen komme tilbage, til du mærker strækket i læggene."], "t": "Lås ikke knæene. Bevægelsen sker kun i anklen.", "u": "Benpres-maskine"}, "Bænkpres": {"p": "bench", "s": ["Læg dig på bænken med øjnene under stangen og fødderne i gulvet. Træk skulderbladene sammen.", "Sænk stangen kontrolleret til midten af brystet.", "Pres stangen op, til armene er næsten strakte."], "t": "Hold skulderbladene samlet og stabile hele sættet.", "u": "Stang og bænk"}, "Bænkpres med pause": {"p": "bench", "s": ["Læg dig på bænken som til almindelig bænkpres.", "Sænk stangen til brystet, og hold den helt stille i cirka 1 sekund.", "Pres eksplosivt op."], "t": "Pausen fjerner afsæt fra brystet og gør dig stærkere i bunden.", "u": "Stang og bænk"}, "Incline bænkpres": {"p": "incl", "s": ["Indstil bænken til cirka 30 grader og læg dig ned.", "Sænk stangen til øvre bryst.", "Pres op igen, og hold albuerne lidt ind mod kroppen."], "t": "Vælg en lav hældning. Bliver den for stejl, rammer du mest skuldrene.", "u": "Stang og skråbænk"}, "Incline dumbbell press": {"p": "incl", "s": ["Indstil bænken til cirka 30 grader, og hold en håndvægt i hver hånd ved skuldrene.", "Pres håndvægtene op, til armene er næsten strakte.", "Sænk langsomt, til du mærker et stræk i brystet."], "t": "Håndvægte giver et større bevægeudslag end stang.", "u": "Håndvægte og skråbænk"}, "Dumbbell bænkpres": {"p": "bench", "s": ["Læg dig på bænken med en håndvægt i hver hånd ved brystet.", "Pres håndvægtene op over brystet.", "Sænk kontrolleret, til albuerne er lige under bænkens højde."], "t": "Hold håndledene lige og over albuerne.", "u": "Håndvægte og bænk"}, "Chest press maskine": {"p": "seatp", "s": ["Indstil sædet, så håndtagene er i brysthøjde.", "Pres håndtagene frem, til armene er næsten strakte.", "Lad langsomt armene vende tilbage."], "t": "Hold skuldrene nede og ryggen mod puden.", "u": "Chest press-maskine"}, "Dips": {"p": "dips", "s": ["Tag fat i parallelstængerne, løft dig op med strakte arme og læn dig let frem.", "Sænk kroppen, til overarmene er cirka parallelle med gulvet.", "Pres dig op igen, men lås ikke albuerne helt ud."], "t": "Hold albuerne tæt ind for triceps, og lad dem gå ud for mere bryst.", "u": "Dipsstativ"}, "Cable fly": {"p": "fly", "s": ["Stå mellem to taljer med en let bøjning i albuerne.", "Før hænderne sammen foran brystet i en bred bue.", "Åbn langsomt armene igen, til du mærker et stræk i brystet."], "t": "Det er en isolationsøvelse. Brug lettere vægt end til pres.", "u": "Kabelmaskine"}, "Pec deck": {"p": "pecd", "s": ["Sid med ryggen mod puden og albuerne i skulderhøjde mod armpuderne.", "Pres armene sammen foran brystet.", "Åbn kontrolleret, og stop, før skuldrene trækkes for langt bagud."], "t": "Pres med brystet, ikke med hænderne.", "u": "Pec deck-maskine"}, "Push-ups": {"p": "push", "s": ["Stå i planke med hænderne lidt bredere end skuldrene og kroppen i lige linje.", "Sænk brystet mod gulvet med albuerne cirka 45 grader ud fra kroppen.", "Pres dig op igen, mens du holder maven og balderne spændt."], "t": "Lad ikke lænden hænge. Hold kroppen som en bræt.", "u": "Kropsvægt"}, "Barbell row": {"p": "brow", "s": ["Stå med let bøjede knæ og læn overkroppen frem med lige ryg. Hold stangen i strakte arme.", "Træk stangen mod navlen, og pres skulderbladene sammen.", "Sænk stangen kontrolleret ned igen."], "t": "Træk med albuerne, ikke med hænderne.", "u": "Stang"}, "Pull-ups": {"p": "pullup", "s": ["Tag fat i stangen med et overgreb, lidt bredere end skuldrene.", "Træk dig op, til hagen er over stangen.", "Sænk dig langsomt ned til strakte arme."], "t": "Start med at trække skuldrene ned, før du bøjer albuerne.", "u": "Chinsstang"}, "Chin-ups": {"p": "pullup", "s": ["Tag fat i stangen med et undergreb i skulderbredde.", "Træk dig op, til hagen er over stangen.", "Sænk dig langsomt til strakte arme."], "t": "Undergreb bruger mere biceps, så det er ofte lettere end pull-ups.", "u": "Chinsstang"}, "Lat pulldown": {"p": "pulld", "s": ["Sæt dig, og lås lårene under puderne. Tag fat i stangen lidt bredere end skuldrene.", "Træk stangen ned til øvre bryst, mens du trækker albuerne ned og ind.", "Lad stangen stige langsomt tilbage til strakte arme."], "t": "Læn dig kun en smule tilbage, og undgå at svinge.", "u": "Latmaskine"}, "Lat pulldown ergogrip": {"p": "pulld", "s": ["Sæt dig, og tag fat i ergogrebet med håndfladerne mod hinanden.", "Træk grebet ned mod øvre bryst, og før albuerne ind mod siderne.", "Lad grebet stige kontrolleret op."], "t": "Det neutrale greb er ofte skånsomt for skuldre og albuer.", "u": "Latmaskine med ergogreb"}, "Seated row": {"p": "srow", "s": ["Sæt dig med fødderne mod platformen og let bøjede knæ. Tag fat i håndtaget.", "Træk håndtaget mod maven, og pres skulderbladene sammen.", "Før armene langsomt frem igen uden at runde ryggen."], "t": "Overkroppen er stille. Det er ryggen, der arbejder.", "u": "Kabelmaskine"}, "Chest-supported row": {"p": "csrow", "s": ["Læg dig med brystet mod en skråbænk og en håndvægt i hver hånd.", "Træk albuerne op og tilbage, og pres skulderbladene sammen.", "Sænk kontrolleret."], "t": "Bænken tager belastningen af lænden, så du kan fokusere på ryggen.", "u": "Håndvægte og skråbænk"}, "T-bar row": {"p": "brow", "s": ["Stå over stangen med let bøjede knæ og læn overkroppen frem med lige ryg.", "Træk vægten mod brystet, og pres skulderbladene sammen.", "Sænk kontrolleret ned."], "t": "Hold kroppen stille og undgå at hive.", "u": "T-bar eller stang i hjørne"}, "Dumbbell row": {"p": "dbrow", "s": ["Støt den ene hånd og det ene knæ på en bænk. Hold en håndvægt i den anden hånd.", "Træk albuen op mod hoften, og pres skulderbladet tilbage.", "Sænk langsomt ned igen. Tag alle gentagelser på den ene side, før du skifter."], "t": "Hold ryggen ret og skuldrene vandrette.", "u": "Håndvægt og bænk"}, "Straight-arm pulldown": {"p": "sapd", "s": ["Stå foran en høj talje med strakte arme og let fremadlænet overkrop.", "Pres armene ned mod lårene, mens armene er næsten strakte.", "Lad armene stige langsomt op igen."], "t": "Det er ryggens brede muskel, der skal arbejde, ikke triceps.", "u": "Kabelmaskine"}, "Rack pull": {"p": "rack", "s": ["Sæt stangen i stativet cirka i knæhøjde, og stå tæt ind til den.", "Tag fat, spænd ryggen, og stå op ved at skubbe hofterne frem.", "Sænk stangen kontrolleret ned igen."], "t": "En kortere bevægelse end dødløft, så du kan bruge mere vægt til ryg og greb.", "u": "Stang og stativ"}, "Stående skulderpres": {"p": "ohp", "s": ["Stå med stangen foran på skuldrene, albuerne lidt foran stangen og maven spændt.", "Pres stangen lige op over hovedet, og flyt hovedet let frem, når stangen passerer.", "Sænk stangen kontrolleret tilbage til skuldrene."], "t": "Spænd balderne, så lænden ikke overstrækkes.", "u": "Stang"}, "Skulderpres med håndvægte": {"p": "ohpd", "s": ["Hold en håndvægt i hver hånd ved skuldrene.", "Pres håndvægtene op, til armene er næsten strakte.", "Sænk langsomt til skulderhøjde."], "t": "Hold håndledene over albuerne.", "u": "Håndvægte"}, "Lateral raises": {"p": "latr", "s": ["Stå med en håndvægt i hver hånd og let bøjede albuer.", "Løft armene ud til siden, til de er i skulderhøjde.", "Sænk langsomt uden at svinge med kroppen."], "t": "Tænk på at løfte albuerne, ikke hænderne. Brug let vægt.", "u": "Håndvægte"}, "Cable lateral raise": {"p": "latr", "s": ["Stil dig sidelæns ved en lav talje, og tag fat i håndtaget med den fjerneste hånd.", "Løft armen ud til siden, til den er i skulderhøjde.", "Sænk langsomt tilbage."], "t": "Kablet giver konstant spænding, også i bunden af bevægelsen.", "u": "Kabelmaskine"}, "Rear delt fly": {"p": "rdf", "s": ["Læn dig frem fra hoften med lige ryg og en håndvægt i hver hånd.", "Løft armene ud til siden med let bøjede albuer.", "Sænk langsomt."], "t": "Pres skulderbladene let sammen i toppen.", "u": "Håndvægte eller pec deck"}, "Face pulls": {"p": "facep", "s": ["Sæt en tov i en talje i ansigtshøjde, og træk i begge ender med strakte arme.", "Træk mod ansigtet, så albuerne går højt og ud til siden.", "Før armene langsomt frem igen."], "t": "En god øvelse til skuldrenes sundhed og holdningen.", "u": "Kabelmaskine og tov"}, "Upright row": {"p": "uprow", "s": ["Stå med et let overgreb og hænderne tæt foran lårene.", "Træk vægten op langs kroppen, til den når brysthøjde, med albuerne højere end hænderne.", "Sænk kontrolleret."], "t": "Stop i brysthøjde. Højere kan stramme skuldrene.", "u": "Stang eller håndvægte"}, "Shrugs": {"p": "shrug", "s": ["Stå med en tung håndvægt i hver hånd og armene strakte.", "Løft skuldrene lige op mod ørerne, og hold kort i toppen.", "Sænk langsomt uden at rulle skuldrene."], "t": "Kun skuldrene bevæger sig. Armene er strakte.", "u": "Håndvægte eller stang"}, "Biceps curl": {"p": "curl", "s": ["Stå med en håndvægt i hver hånd og albuerne ind mod siderne.", "Bøj albuerne, og løft vægten mod skuldrene.", "Sænk langsomt til strakte arme."], "t": "Lad ikke albuerne vandre fremad, og undgå at svinge.", "u": "Håndvægte eller stang"}, "Hammer curl": {"p": "curl", "s": ["Hold håndvægtene med håndfladerne mod hinanden.", "Bøj albuerne, og løft vægten mod skuldrene.", "Sænk langsomt."], "t": "Rammer også underarmen og den muskel, der ligger under biceps.", "u": "Håndvægte"}, "Incline curl": {"p": "curli", "s": ["Sæt dig på en skråbænk med armene hængende ned bag kroppen.", "Bøj albuerne, og løft vægten mod skuldrene.", "Sænk langsomt til fuldt stræk."], "t": "Strækket i bunden gør øvelsen ekstra effektiv for biceps.", "u": "Håndvægte og skråbænk"}, "Preacher curl": {"p": "curlp", "s": ["Placer overarmene på den skrå pude, og tag fat i vægten.", "Bøj albuerne, og løft mod skuldrene.", "Sænk langsomt, men lad ikke albuerne låse brat ud."], "t": "Puden fjerner snyd, så brug en moderat vægt.", "u": "Preacher-bænk og stang eller håndvægt"}, "Cable curl": {"p": "curlc", "s": ["Stå foran en lav talje, og tag fat i håndtaget.", "Bøj albuerne, og løft håndtaget mod skuldrene.", "Sænk langsomt uden at slippe spændingen."], "t": "Kablet giver jævn belastning gennem hele bevægelsen.", "u": "Kabelmaskine"}, "Triceps pushdown": {"p": "pushd", "s": ["Stå foran en høj talje med albuerne ind mod siderne.", "Pres håndtaget ned, til armene er strakte.", "Før langsomt håndtaget op, til underarmene er cirka vandrette."], "t": "Albuerne skal være stille som hængsler.", "u": "Kabelmaskine"}, "Triceps extension": {"p": "ohext", "s": ["Hold en håndvægt over hovedet med begge hænder og strakte arme.", "Bøj albuerne, og sænk vægten bag hovedet.", "Pres op igen, og hold albuerne pegende fremad."], "t": "Hold overarmene tæt ved ørerne og stille.", "u": "Håndvægt"}, "Skull crushers": {"p": "skull", "s": ["Læg dig på en bænk med stangen over brystet og strakte arme.", "Bøj albuerne, og sænk stangen mod panden.", "Stræk armene igen. Albuerne er stille."], "t": "Brug en kontrolleret sænkning og en moderat vægt.", "u": "Stang eller EZ-stang og bænk"}, "Overhead triceps extension": {"p": "ohext", "s": ["Stå eller sid med en håndvægt eller kabel over hovedet.", "Bøj albuerne, og sænk vægten bag hovedet.", "Stræk armene igen."], "t": "Overhead-positionen strækker den lange tricepshoved ekstra godt.", "u": "Håndvægt eller kabel"}, "Close-grip bænkpres": {"p": "bench", "s": ["Læg dig på bænken, og tag fat i stangen i skulderbredde.", "Sænk stangen til nederste del af brystet med albuerne tæt ind.", "Pres op igen."], "t": "Tag ikke grebet for smalt, så belaster du håndleddene.", "u": "Stang og bænk"}, "Hanging knee raises": {"p": "hkr", "s": ["Hæng i en stang med strakte arme.", "Løft knæene mod brystet ved at krølle hofterne op.", "Sænk langsomt uden at svinge."], "t": "Undgå at svinge. Brug maven.", "u": "Chinsstang"}, "Hanging leg raises": {"p": "hlr", "s": ["Hæng i en stang med strakte arme.", "Løft de strakte ben, til de er cirka vandrette eller højere.", "Sænk langsomt og kontrolleret."], "t": "Er det for tungt, så start med bøjede knæ.", "u": "Chinsstang"}, "Planke": {"p": "plank", "s": ["Støt på underarme og tæer med albuerne lige under skuldrene.", "Hold kroppen i en lige linje fra hoved til hæle.", "Spænd mave og baller, og træk vejret roligt."], "t": "Lad ikke lænden hænge og ikke hofterne stikke op.", "u": "Kropsvægt"}, "Cable crunch": {"p": "ccrunch", "s": ["Knæl foran en høj talje, og hold rebet ved panden.", "Krøl overkroppen ned mod knæene ved at spænde maven.", "Rejs dig langsomt igen."], "t": "Bevægelsen kommer fra maven, ikke fra hofterne.", "u": "Kabelmaskine og tov"}, "Ab wheel": {"p": "abwheel", "s": ["Knæl, og hold hjulet under skuldrene.", "Rul langsomt frem med let rundet ryg, til kroppen er næsten strakt.", "Træk hjulet tilbage ved at spænde maven."], "t": "Rul kun så langt, som du kan holde lænden stabil.", "u": "Ab wheel"}, "Russian twist": {"p": "twist", "s": ["Sid med let bagudlænet overkrop og løftede fødder, og hold en vægt foran brystet.", "Drej overkroppen til den ene side.", "Drej til den anden side. Det tæller som én gentagelse."], "t": "Drej fra brystet, ikke kun med armene.", "u": "Vægtskive eller håndvægt"}, "Pallof press": {"p": "pallof", "s": ["Stil dig sidelæns til en talje, og hold håndtaget ved brystet.", "Pres armene lige frem, og modstå kablets træk.", "Før hænderne tilbage til brystet."], "t": "En anti-rotationsøvelse. Kroppen skal blive helt stille.", "u": "Kabelmaskine"}};
+function HI(n,c){return '<span class="hic'+(c?' '+c:'')+'">'+IC[n]+'</span>'}
+function exRowBtn(name,right,sub){
+  var d=EXD[name];
+  return '<button class="exr" data-a="exOpen" data-n="'+esc(name)+'"><span class="exth">'+(d?figSvg(d.p,.8,false):'')+'</span><span class="exm"><b>'+esc(name)+'</b>'+(sub?'<span class="small muted">'+sub+'</span>':'')+'</span><span class="exright">'+right+IC.info+'</span></button>';
+}
+var pop=null;
+function renderPop(){
+  var el=$('#pop');
+  if(!pop){el.innerHTML='';stopFig();return}
+  var xd=EXD[pop.n],xl=libFind(pop.n);
+  el.innerHTML='<div class="bd top" data-a="popBd"><div class="panel" role="dialog" aria-modal="true"><div class="ph"><h2>'+esc(pop.n)+'</h2><button class="iconbtn" data-a="popClose" aria-label="Luk">'+IC.x+'</button></div>'
+    +(xd?'<div class="figbox">'+figSvg(xd.p,0,true)+'</div>'
+      +'<p class="small muted" style="margin:0 0 12px">'+esc(xl?xl[2]:'')+(xd.u?', '+esc(xd.u.toLowerCase()):'')+'</p>'
+      +'<ol class="how">'+xd.s.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ol>'
+      +'<div class="tip"><div><b>Tip</b>'+esc(xd.t)+'</div></div>'
+      :'<p class="muted">Der er ingen vejledning til denne øvelse endnu.</p>')
+    +'<button class="btn" data-a="sugAdd" data-n="'+esc(pop.n)+'">Tilføj til en dag</button><button class="btn sec2" data-a="popClose" style="margin-top:10px">Luk</button></div></div>';
+  startFig();
+}
 /* ---------- library of exercises ---------- */
 var LIB=[
  ['Squat','Ben','Quadriceps','reps','c'],['Front squat','Ben','Quadriceps','reps','c'],['Goblet squat','Ben','Quadriceps','reps','c'],
  ['Hack squat','Ben','Quadriceps','reps','c'],['Benpres','Ben','Quadriceps','reps','c'],['Bulgarian split squat','Ben','Quadriceps','reps','c'],
- ['Udfald','Ben','Quadriceps','reps','c'],['Step-ups','Ben','Quadriceps','reps','c'],['Let squat','Ben','Quadriceps','reps','c'],
+ ['Udfald','Ben','Quadriceps','reps','c'],['Step-ups','Ben','Quadriceps','reps','c'],
  ['Leg extension','Ben','Quadriceps','reps','i'],
  ['Dødløft','Ben','Baglår og baller','reps','c'],['Rumænsk dødløft','Ben','Baglår og baller','reps','c'],['Hip thrust','Ben','Baglår og baller','reps','c'],
  ['Good morning','Ben','Baglår og baller','reps','c'],['Back extension','Ben','Baglår og baller','reps','i'],
  ['Hamstring curl, liggende','Ben','Baglår og baller','reps','i'],['Hamstring curl, siddende','Ben','Baglår og baller','reps','i'],
- ['Hamstring curl, stående','Ben','Baglår og baller','reps','i'],['Leg curl','Ben','Baglår og baller','reps','i'],
- ['Calf raises, stående','Ben','Læg','reps','i'],['Calf raises, siddende','Ben','Læg','reps','i'],['Calf raises','Ben','Læg','reps','i'],['Calf raise i benpres','Ben','Læg','reps','i'],
+ ['Hamstring curl, stående','Ben','Baglår og baller','reps','i'],
+ ['Calf raises, stående','Ben','Læg','reps','i'],['Calf raises, siddende','Ben','Læg','reps','i'],['Calf raise i benpres','Ben','Læg','reps','i'],
  ['Bænkpres','Bryst','Bryst','reps','c'],['Bænkpres med pause','Bryst','Bryst','reps','c'],['Incline bænkpres','Bryst','Bryst','reps','c'],
  ['Incline dumbbell press','Bryst','Bryst','reps','c'],['Dumbbell bænkpres','Bryst','Bryst','reps','c'],['Chest press maskine','Bryst','Bryst','reps','c'],
  ['Dips','Bryst','Bryst','reps','c'],['Cable fly','Bryst','Bryst','reps','i'],['Pec deck','Bryst','Bryst','reps','i'],['Push-ups','Bryst','Bryst','reps','c'],
  ['Barbell row','Ryg','Ryg','reps','c'],['Pull-ups','Ryg','Ryg','reps','c'],['Chin-ups','Ryg','Ryg','reps','c'],['Lat pulldown','Ryg','Ryg','reps','c'],
- ['Lat pulldown ergogrip','Ryg','Ryg','reps','c'],['Seated row','Ryg','Ryg','reps','c'],['Chest-supported row','Ryg','Ryg','reps','c'],
+ ['Seated row','Ryg','Ryg','reps','c'],['Chest-supported row','Ryg','Ryg','reps','c'],
  ['T-bar row','Ryg','Ryg','reps','c'],['Dumbbell row','Ryg','Ryg','reps','c'],['Straight-arm pulldown','Ryg','Ryg','reps','i'],['Rack pull','Ryg','Ryg','reps','c'],
  ['Stående skulderpres','Skuldre','Skuldre','reps','c'],['Skulderpres med håndvægte','Skuldre','Skuldre','reps','c'],['Lateral raises','Skuldre','Skuldre','reps','i'],
  ['Cable lateral raise','Skuldre','Skuldre','reps','i'],['Rear delt fly','Skuldre','Skuldre','reps','i'],['Face pulls','Skuldre','Skuldre','reps','i'],
  ['Upright row','Skuldre','Skuldre','reps','i'],['Shrugs','Skuldre','Skuldre','reps','i'],
  ['Biceps curl','Biceps','Biceps','reps','i'],['Hammer curl','Biceps','Biceps','reps','i'],['Incline curl','Biceps','Biceps','reps','i'],
  ['Preacher curl','Biceps','Biceps','reps','i'],['Cable curl','Biceps','Biceps','reps','i'],
- ['Triceps pushdown','Triceps','Triceps','reps','i'],['Triceps extension','Triceps','Triceps','reps','i'],['Skull crushers','Triceps','Triceps','reps','i'],
+ ['Triceps pushdown','Triceps','Triceps','reps','i'],['Skull crushers','Triceps','Triceps','reps','i'],
  ['Overhead triceps extension','Triceps','Triceps','reps','i'],['Close-grip bænkpres','Triceps','Triceps','reps','c'],
  ['Hanging knee raises','Mave','Mave','reps','i'],['Hanging leg raises','Mave','Mave','reps','i'],['Planke','Mave','Mave','time','i'],
  ['Cable crunch','Mave','Mave','reps','i'],['Ab wheel','Mave','Mave','reps','i'],['Russian twist','Mave','Mave','reps','i'],['Pallof press','Mave','Mave','reps','i']
 ];
-var GROUPS=['Bryst','Ryg','Skuldre','Biceps','Triceps','Ben','Mave'];
-var MUSCLES=['Bryst','Ryg','Skuldre','Biceps','Triceps','Quadriceps','Baglår og baller','Læg','Mave'];
+var GROUPS=['Ben','Biceps','Bryst','Mave','Ryg','Skuldre','Triceps'];
+var MUSCLES=['Baglår og baller','Læg','Quadriceps','Biceps','Bryst','Mave','Ryg','Skuldre','Triceps'];
 var MIN_SETS={'Bryst':8,'Ryg':10,'Skuldre':8,'Biceps':6,'Triceps':6,'Quadriceps':8,'Baglår og baller':8,'Læg':6,'Mave':6};
 var VARS={'Bænkpres':['Incline bænkpres','Dips','Close-grip bænkpres'],'Bænkpres med pause':['Incline dumbbell press','Cable fly'],
   'Squat':['Front squat','Hack squat','Bulgarian split squat'],'Dødløft':['Rumænsk dødløft','Rack pull','Hip thrust'],
   'Rumænsk dødløft':['Hip thrust','Hamstring curl, liggende'],'Stående skulderpres':['Skulderpres med håndvægte','Lateral raises','Face pulls'],
-  'Barbell row':['Chest-supported row','T-bar row','Pull-ups'],'Lat pulldown ergogrip':['Pull-ups','Seated row','Straight-arm pulldown']};
+  'Barbell row':['Chest-supported row','T-bar row','Pull-ups'],'Lat pulldown':['Pull-ups','Seated row','Straight-arm pulldown']};
+(function(){['Let squat','Leg curl','Calf raises','Triceps extension','Lat pulldown ergogrip'].forEach(function(k){delete EXD[k]});
+  EXD['Lat pulldown'].t='Brug et bredt greb eller et neutralt greb (ergogreb). Træk med albuerne, og undgå at svinge.';
+  EXD['Hamstring curl, liggende'].t='Kaldes også leg curl. Tryk hofterne ned i bænken hele vejen.'})();
+function libByGroup(g){return LIB.filter(function(l){return l[1]===g}).sort(function(a,b){return a[0].localeCompare(b[0],'da')})}
 function libFind(name){var n=String(name).toLowerCase();for(var i=0;i<LIB.length;i++)if(LIB[i][0].toLowerCase()===n)return LIB[i];return null}
 function muscleOf(name){var l=libFind(name);return l?l[2]:null}
 function defaultsFor(name){
@@ -933,11 +1042,19 @@ function defaultsFor(name){
   if(l&&l[4]==='i')return{sets:3,reps:'12',kind:'reps'};
   return{sets:3,reps:'8',kind:'reps'};
 }
-function exSelect(attr,placeholder){
+function customNames(){
+  var set={};
+  S.program.forEach(function(d){d.exercises.forEach(function(e){if(!libFind(e.name))set[e.name]=1})});
+  S.sessions.forEach(function(x){x.exercises.forEach(function(e){if(!libFind(e.name))set[e.name]=1})});
+  return Object.keys(set).sort(function(a,b){return a.localeCompare(b,'da')});
+}
+function exSelect(attr,placeholder,sel){
   var counts=allNames(),top=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]||a.localeCompare(b,'da')}).slice(0,8);
-  var h='<select class="in" '+attr+'><option value="">'+placeholder+'</option>';
+  var h='<select class="in" '+attr+'><option value=""'+(sel?'':' selected')+'>'+placeholder+'</option>';
   if(top.length)h+='<optgroup label="Mest brugte">'+top.map(function(n){return '<option>'+esc(n)+'</option>'}).join('')+'</optgroup>';
-  GROUPS.forEach(function(g){h+='<optgroup label="'+g+'">'+LIB.filter(function(l){return l[1]===g}).map(function(l){return '<option>'+esc(l[0])+'</option>'}).join('')+'</optgroup>'});
+  GROUPS.forEach(function(g){h+='<optgroup label="'+g+'">'+libByGroup(g).map(function(l){return '<option'+(l[0]===sel?' selected':'')+'>'+esc(l[0])+'</option>'}).join('')+'</optgroup>'});
+  var own=customNames();
+  if(own.length)h+='<optgroup label="Dine egne">'+own.map(function(n){return '<option'+(n===sel?' selected':'')+'>'+esc(n)+'</option>'}).join('')+'</optgroup>';
   return h+'</select>';
 }
 
@@ -1069,9 +1186,115 @@ function bodySvg(view,ds,o){
   return h+'</svg>';
 }
 
+
+/* ---------- smart schemes and weights ---------- */
+function schemeFor(name,prev){
+  var d=defaultsFor(name),l=libFind(name),p=prev||{},n=firstNum(p.reps)||0;
+  if(d.kind==='time')return{sets:3,reps:'30 sek',kind:'time'};
+  var comp=l&&l[4]==='c',sets=Math.max(3,Math.min(5,p.sets||3)),reps;
+  if(comp)reps=(n>=5&&n<=10)?String(p.reps):'8';else reps=(n>=10&&n<=15)?String(p.reps):'12';
+  return{sets:sets,reps:reps,kind:'reps'};
+}
+var REL={
+ 'Incline bænkpres':[['Bænkpres',.8]],'Incline dumbbell press':[['Bænkpres',.33],['Incline bænkpres',.42]],'Dumbbell bænkpres':[['Bænkpres',.37]],
+ 'Close-grip bænkpres':[['Bænkpres',.85]],'Bænkpres med pause':[['Bænkpres',.85]],'Chest press maskine':[['Bænkpres',.8]],'Cable fly':[['Bænkpres',.15]],'Pec deck':[['Bænkpres',.4]],
+ 'Stående skulderpres':[['Bænkpres',.6]],'Skulderpres med håndvægte':[['Stående skulderpres',.37],['Bænkpres',.22]],
+ 'Lateral raises':[['Bænkpres',.07]],'Cable lateral raise':[['Lateral raises',.8],['Bænkpres',.06]],'Rear delt fly':[['Lateral raises',.8],['Bænkpres',.06]],
+ 'Face pulls':[['Bænkpres',.25]],'Upright row':[['Bænkpres',.4]],'Shrugs':[['Bænkpres',.35],['Dødløft',.25]],
+ 'Barbell row':[['Bænkpres',.8]],'T-bar row':[['Barbell row',.8],['Bænkpres',.6]],'Dumbbell row':[['Barbell row',.4],['Bænkpres',.35]],
+ 'Chest-supported row':[['Dumbbell row',.85],['Bænkpres',.3]],'Seated row':[['Barbell row',.9],['Bænkpres',.7]],'Lat pulldown':[['Bænkpres',.7]],
+ 'Straight-arm pulldown':[['Lat pulldown',.4],['Bænkpres',.3]],'Rack pull':[['Dødløft',1.1]],
+ 'Biceps curl':[['Hammer curl',1],['Bænkpres',.15]],'Hammer curl':[['Biceps curl',1],['Bænkpres',.15]],'Incline curl':[['Biceps curl',.8],['Bænkpres',.12]],
+ 'Preacher curl':[['Biceps curl',1.1],['Bænkpres',.17]],'Cable curl':[['Biceps curl',1.3],['Bænkpres',.2]],
+ 'Triceps pushdown':[['Bænkpres',.35]],'Overhead triceps extension':[['Triceps pushdown',.6],['Bænkpres',.25]],'Skull crushers':[['Bænkpres',.35]],
+ 'Front squat':[['Squat',.75]],'Goblet squat':[['Squat',.3]],'Hack squat':[['Squat',.9]],'Benpres':[['Squat',1.5]],
+ 'Bulgarian split squat':[['Squat',.3]],'Udfald':[['Squat',.3]],'Step-ups':[['Squat',.25]],'Leg extension':[['Squat',.4]],
+ 'Rumænsk dødløft':[['Dødløft',.8],['Squat',.8]],'Dødløft':[['Squat',1.2],['Rumænsk dødløft',1.2]],'Hip thrust':[['Squat',1]],'Good morning':[['Squat',.4]],
+ 'Hamstring curl, liggende':[['Squat',.3]],'Hamstring curl, siddende':[['Hamstring curl, liggende',1.1]],'Hamstring curl, stående':[['Hamstring curl, liggende',.7]],
+ 'Calf raises, stående':[['Squat',.6]],'Calf raises, siddende':[['Calf raises, stående',.7]],'Calf raise i benpres':[['Benpres',.5],['Squat',.9]],
+ 'Squat':[['Front squat',1.3],['Benpres',.65],['Dødløft',.8]]
+};
+function lastTop(name){var H=hist(name);if(!H.length)return 0;var t=0;H[H.length-1].sets.forEach(function(x){if(x.kg>t)t=x.kg});return t}
+function suggestKg(name){
+  var own=lastTop(name);if(own>0)return{kg:own,from:null};
+  var rel=REL[name]||[],st=S.settings.step;
+  for(var i=0;i<rel.length;i++){var t=lastTop(rel[i][0]);if(t>0)return{kg:Math.max(st,Math.round(t*rel[i][1]/st)*st),from:rel[i][0]}}
+  return{kg:0,from:null};
+}
+
+/* ---------- day form: sleep, food, time of day ---------- */
+function todLabel(h){return h<7?'tidlig morgen':h<11?'formiddag':h<15?'middag':h<19?'eftermiddag':'aften'}
+function pad2(n){return n<10?'0'+n:''+n}
+function readiness(dayId){
+  var ds=todayStr(),ci=S.checkin[ds]||{},h=new Date().getHours(),adv=[],score=0,why=[];
+  if(ci.sleep!=null){
+    if(ci.sleep>=7.5)score+=1;
+    else if(ci.sleep>=6.5){}
+    else if(ci.sleep>=5.5){score-=1;why.push('lidt søvn');adv.push('Stop 2–3 reps før grænsen i dag, og hold øje med teknikken.')}
+    else{score-=2;why.push('meget lidt søvn');adv.push('Hold passet roligt og kort. Søvn er der, hvor du bygger op.')}
+  }
+  var food=ci.food||(h<8?'intet':h>=20?'fuld':'let'),inferred=!ci.food;
+  if(food==='fuld')score+=1;
+  if(food==='intet'){score-=1;why.push('tom mave');adv.push('Spis noget let med kulhydrat 45–60 minutter før (banan, toast eller havregryn), og drik vand.')}
+  var d=S.program.find(function(x){return x.id===dayId});
+  if(d){var m=S.sore[ds]||{};if(d.exercises.some(function(e){var mu=muscleOf(e.name);return mu&&m[mu]>=2})){score-=1;why.push('øm')}}
+  if(h<7)adv.push('Tidlig træning: varm ekstra godt op, og tag en lille snack, hvis du kan.');
+  if(h>=21)adv.push('Sen træning: undgå de tungeste sæt tæt på sengetid, og få protein bagefter.');
+  var level=score>=2?'god':score>=0?'ok':score>=-2?'lav':'meget lav';
+  return{level:level,score:score,why:why,adv:adv,food:food,inferred:inferred,sleep:ci.sleep,h:h,
+    setMod:(level==='lav'||level==='meget lav')?-1:0,load:level==='lav'?.95:level==='meget lav'?.9:1,answered:ci.sleep!=null};
+}
+function ciCard(t){
+  if(!t||t.status!=='train'||S.active)return '';
+  var ds=todayStr(),ci=S.checkin[ds]||{},r=readiness(t.dayId),now=new Date(),clock=pad2(now.getHours())+':'+pad2(now.getMinutes());
+  var h='<div class="card ci"><div class="cih"><span class="hic ico-bolt">'+IC.bolt+'</span><b>Dagsform</b><span class="small muted" style="margin-left:auto">kl. '+clock+', '+todLabel(now.getHours())+'</span></div>';
+  h+='<div class="small muted" style="margin:10px 0 6px">Søvn i nat</div><div class="chips" style="margin:0 0 4px">'+[4,5,6,7,8,9].map(function(v){return '<button class="chip'+(ci.sleep===v?' on':'')+'" data-a="ciSleep" data-v="'+v+'">'+(v===9?'9+ t':v+' t')+'</button>'}).join('')+'</div>';
+  h+='<div class="small muted" style="margin:10px 0 6px">Mad</div><div class="chips" style="margin:0">'+[['intet','Ikke spist'],['let','Let snack'],['fuld','Fuldt måltid']].map(function(o){return '<button class="chip'+(ci.food===o[0]?' on':'')+'" data-a="ciFood" data-v="'+o[0]+'">'+o[1]+'</button>'}).join('')+'</div>';
+  if(r.answered||ci.food){
+    h+='<div class="ciq lv-'+r.level.replace(' ','')+'"><b>Dagsform: '+r.level+'</b>'+(r.why.length?' ('+esc(r.why.join(', '))+')':'')+(r.inferred?'<span class="small muted"> (mad gættet ud fra tidspunktet)</span>':'');
+    var adapt=S.settings.adapt&&!ci.skip&&r.setMod<0;
+    if(adapt)h+='<div class="small" style="margin-top:4px">Jeg tilpasser passet: 1 sæt mindre pr. øvelse og ca. '+Math.round((1-r.load)*100)+' % lettere vægt.</div>';
+    r.adv.forEach(function(a){h+='<div class="small muted" style="margin-top:4px">'+esc(a)+'</div>'});
+    if(r.setMod<0&&S.settings.adapt)h+='<button class="link" style="margin:8px 0 0" data-a="ciSkip">'+(ci.skip?'Tilpas passet alligevel':'Træn efter planen')+'</button>';
+    h+='</div>';
+  }
+  return h+'</div>';
+}
+
+/* ---------- daily habits and tips ---------- */
+function waterGoal(){
+  var bw=(latestBw()||{}).kg||S.goals.bwStart||70,ds=todayStr(),tr=S.sessions.some(function(x){return x.date===ds})||(schedule(1)[0].status==='train');
+  var ml=bw*35+(tr?500:0),gl=Math.ceil(ml/250);
+  return{ml:ml,gl:gl,l:Math.round(ml/100)/10};
+}
+function dayTip(){
+  var h=new Date().getHours(),d=S.daily[todayStr()]||{},g=waterGoal(),w=d.w||0,out=[];
+  var frac=Math.max(0,Math.min(1,(h-7)/14)),expect=Math.floor(g.gl*frac);
+  if(w<expect)out.push({i:'drop',t:'Du er bagud med vand',x:'Drik et glas nu. Målet i dag er mindst '+String(g.l).replace('.',',')+' liter.'});
+  if(h<10)out.push({i:'drop',t:'Start med et glas vand',x:'Og få protein til morgenmad, fx æg, skyr eller havregryn med mælk.'});
+  else if(h<13&&!d.veg)out.push({i:'leaf',t:'Har du fået frugt eller grønt?',x:'Sigt efter 600 gram frugt og grønt om dagen. Få noget med til frokost.'});
+  else if(h<17)out.push({i:'walk',t:'Har du bevæget dig i dag?',x:'En gåtur på 20–30 minutter hjælper restitutionen, også på hviledage.'});
+  else if(h<21&&!d.prot)out.push({i:'food',t:'Husk protein til aftensmad',x:'Cirka 25–40 gram. Det hjælper musklerne med at komme sig.'});
+  else if(h>=21)out.push({i:'moon',t:'Skru ned for i dag',x:'Skærmen væk, og sigt efter 7–9 timers søvn.'});
+  if(!d.veg&&h>=13&&h<21)out.push({i:'leaf',t:'Frugt og grønt mangler endnu',x:'Tag en frugt eller en håndfuld grøntsager til næste måltid.'});
+  return out.slice(0,2);
+}
+function habitsCard(){
+  if(!S.settings.tips)return '';
+  var d=S.daily[todayStr()]||{},g=waterGoal(),w=d.w||0,pct=Math.min(100,w/g.gl*100),tips=dayTip();
+  var h='<div class="card hab"><div class="cih"><span class="hic ico-drop">'+IC.drop+'</span><b>Dagens vaner</b></div>';
+  h+='<div class="wrow"><div><div class="wnum"><b>'+w+'</b> <span class="muted">af '+g.gl+' glas</span></div><div class="small muted">Mindst '+String(g.l).replace('.',',')+' liter i dag (ca. 35 ml pr. kg)</div></div><div class="wbtns"><button class="iconbtn" data-a="waterDown" aria-label="Et glas mindre">−</button><button class="iconbtn on" data-a="waterUp" aria-label="Et glas mere">+</button></div></div>';
+  h+='<div class="pbar"><i style="width:'+pct+'%"></i></div>';
+  h+='<div class="chips" style="margin:0 0 6px"><button class="chip'+(d.veg?' on':'')+'" data-a="habit" data-k="veg"><span class="ico-sm">'+IC.leaf+'</span>Frugt og grønt</button><button class="chip'+(d.prot?' on':'')+'" data-a="habit" data-k="prot"><span class="ico-sm">'+IC.food+'</span>Protein</button></div>';
+  tips.forEach(function(t){h+='<div class="tipr"><span class="ti ico-'+t.i+'">'+TI[t.i]+'</span><div><b>'+esc(t.t)+'</b><span class="d">'+esc(t.x)+'</span></div></div>'});
+  return h+'</div>';
+}
+
 /* ---------- recovery tips ---------- */
 var TI={
  moon:'<svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>',
+ leaf:'<svg viewBox="0 0 24 24"><path d="M5 19c0-9 5-14 14-14 0 9-5 14-14 14zM5 19l7-7"/></svg>',
+ food:'<svg viewBox="0 0 24 24"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-2 2-3 4-3 7h3v11"/></svg>',
  drop:'<svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg>',
  walk:'<svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg>',
  stretch:'<svg viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="1.8"/><path d="M5 9l7 2 7-2M12 11v5l-3 5M12 16l3 5"/></svg>',
@@ -1363,25 +1586,23 @@ function dayViewHtml(ds){
   if(ses.length){
     ses.forEach(function(x){
       h+='<p class="muted" style="margin-top:0">Udført: <b style="color:var(--text)">'+esc(x.dayName+' '+(x.focus||''))+'</b></p>'
-        +exRows(x.exercises.map(function(e){return '<div class="logrow" style="align-items:flex-start"><span>'+esc(e.name)+'</span><span style="text-align:right">'+setsText(e.sets,e.kind)+'</span></div>'}))+(x.note?'<p class="small muted" style="margin:8px 2px 0">Note: '+esc(x.note)+'</p>':'');
+        +exRows(x.exercises.map(function(e){return exRowBtn(e.name,'',setsText(e.sets,e.kind))}))+(x.note?'<p class="small muted" style="margin:8px 2px 0">Note: '+esc(x.note)+'</p>':'');
     });
   }else if(cur&&cur.status==='train'){
     var d=S.program.find(function(x){return x.id===cur.dayId}),dl=isDeloadWeek(ds),rows;
     h+='<p class="muted" style="margin-top:0">'+(dl?'Deload-pas: ':'Planlagt: ')+'<b style="color:var(--text)">'+esc(cur.name+' '+cur.focus)+'</b></p>';
     if(dl)h+='<p class="small muted" style="margin:-4px 0 10px">Ca. 60 % af sættene og ca. 90 % af din vægt. Stop 3–4 reps før grænsen.</p>';
-    if(dl)rows=deloadFor(d).map(function(p){return '<div class="logrow" style="flex-direction:column;gap:3px"><div style="display:flex;justify-content:space-between;gap:12px"><span>'+esc(p.name)+'</span><span style="color:var(--gold);font-weight:600;text-align:right">'+p.sets+' × '+esc(p.reps)+(p.kg?' med ca. '+fmt(p.kg)+' kg':'')+'</span></div></div>'});
-    else rows=d.exercises.map(function(e){
-      var hh=hist(e.name),l=hh.length?hh[hh.length-1]:null;
-      return '<div class="logrow" style="flex-direction:column;gap:3px"><div style="display:flex;justify-content:space-between;gap:12px"><span>'+esc(e.name)+'</span><span style="color:var(--lilac);font-weight:600">'+e.sets+' × '+esc(e.reps)+'</span></div>'
-        +(l?'<span class="small">Sidst: '+setsText(l.sets,l.kind)+'</span>':(e.note?'<span class="small">'+esc(e.note)+'</span>':''))+'</div>'});
+    if(dl)rows=deloadFor(d).map(function(p){return exRowBtn(p.name,p.sets+' × '+esc(p.reps),p.kg?'Ca. '+fmt(p.kg)+' kg':'')});
+    else rows=d.exercises.map(function(e){var hh=hist(e.name),l=hh.length?hh[hh.length-1]:null;return exRowBtn(e.name,e.sets+' × '+esc(e.reps),l?'Sidst: '+setsText(l.sets,l.kind):(e.note?esc(e.note):''))});
     h+=exRows(rows);
     plansOn(ds).forEach(function(p){h+='<div class="tp"><b>1RM-test:</b> '+esc(p.name)+'. Forventet ca. '+fmt(p.low)+' til '+fmt(p.high)+' kg. '+esc(ladderText(p))+'</div>'});
+    h+='<button class="btn sec2" data-a="openDay" data-id="'+d.id+'" style="margin-top:12px">'+IC.edit+'Ret programmet for '+esc(d.name)+'</button>';
   }else if(ds>=today){
     var nx=sch.find(function(e){return e.status==='train'&&e.date>ds});
     h+='<p class="muted" style="margin-top:0">Hviledag.'+(nx?' Næste pas er '+esc(nx.name+' '+nx.focus)+', '+esc(fmtDate(nx.date)):'')+'</p>';
   }else h+='<p class="muted" style="margin-top:0">Ingen pas registreret denne dag.</p>';
   if(ds<=today){var st=soreText(ds);h+='<div class="card" style="margin-top:12px"><b>Ømhed</b><p class="small muted" style="margin:4px 0 10px">'+(st?esc(st):'Ikke noteret')+'</p><button class="chip" data-a="openSore" data-d="'+ds+'">'+(st?'Ret ømhed':'Log ømhed')+'</button></div>'}
-  if(ds>=today&&!ses.length)h+='<button class="btn sec2" data-a="openDate" data-d="'+ds+'" style="margin-top:6px">Ryk eller ændr dagen</button>';
+  if(ds>=today&&!ses.length)h+='<button class="btn sec2" data-a="openDate" data-d="'+ds+'" style="margin-top:8px">Ryk eller ændr dagen</button>';
   return h+'</div>';
 }
 
@@ -1432,10 +1653,11 @@ function bwCard(){
 }
 
 function upcomingList(sch){
-  var h='<div class="sec"><h2>Kommende dage</h2></div><div class="card" style="padding:4px 16px">';
+  var h='<div class="sec"><h2>'+HI('cal')+'Kommende træninger</h2></div><div class="card" style="padding:4px 16px">';
   sch.slice(1,8).forEach(function(e){
-    h+='<button class="logrow" style="width:100%;text-align:left;align-items:center" data-a="viewDay" data-d="'+e.date+'"><span>'+fmtDate(e.date)+'</span><span style="text-align:right;color:'+(e.status==='train'?'var(--lilac)':'var(--muted)')+';font-weight:600">'
-      +(e.status==='train'?esc(e.name)+' '+esc(e.focus):e.status==='done'?'Udført':'Hviledag')+(e.ov?' <span class="small muted">(ændret)</span>':'')+'</span></button>';
+    var tr=e.status==='train',dn=e.status==='done';
+    h+='<button class="logrow upr" data-a="viewDay" data-d="'+e.date+'"><span class="ui'+(tr?'':' m')+'">'+(tr?IC.dumb2:IC.moon)+'</span><span class="ud">'+fmtDate(e.date)+'</span><span style="text-align:right;color:'+(tr?'var(--lilac)':'var(--muted)')+';font-weight:600">'
+      +(tr?esc(e.name)+' '+esc(e.focus):dn?'Udført':'Hviledag')+(e.ov?' <span class="small muted">(ændret)</span>':'')+'</span></button>';
   });
   return h+'</div>';
 }
@@ -1459,26 +1681,27 @@ function viewHome(){
   var h='<main'+mc(0)+'><div class="topl"><h1>Hjem</h1><span class="date uc">'+esc(fmtDate(today,true))+'</span></div>'+installTip()+deloadBanner();
   if(a){
     var tot=0,dn=0;a.exercises.forEach(function(e){e.sets.forEach(function(x){if(x.warm)return;tot++;if(x.done)dn++})});
-    h+='<section class="tcard"><p class="lbl">Pas i gang</p><h2>'+esc(a.name)+'<small>'+esc(a.focus||'')+'</small></h2><p class="muted small" style="margin:0 0 12px">'+dn+' af '+tot+' sæt er logget</p><button class="cta sm" data-a="openWorkout">Fortsæt pas</button><div class="links"><button class="link" data-a="askDiscard">Kassér passet</button></div></section>';
+    h+='<section class="tcard"><p class="lbl">Pas i gang</p><h2>'+esc(a.name)+'<small>'+esc(a.focus||'')+'</small></h2><p class="muted small" style="margin:0 0 12px">'+dn+' af '+tot+' sæt er logget</p><button class="cta sm" data-a="openWorkout">'+IC.play+'<span>Fortsæt pas</span></button><div class="links"><button class="link" data-a="askDiscard">Kassér passet</button></div></section>';
   }else if(t.status==='train'){
     var n=S.program.find(function(d){return d.id===t.dayId}),tests=plansOn(t.date);
     var rows=dlNow?deloadFor(n).map(function(p){return [p.name,p.sets+' × '+p.reps]}):n.exercises.map(function(e){return [e.name,e.sets+' × '+e.reps]});
     h+='<section class="tcard"><p class="lbl">I dag'+(dlNow?' <span class="badge">Deload</span>':'')+(tests.length&&!dlNow?' <span class="badge">1RM-test: '+tests.map(function(p){return esc(p.name)}).join(', ')+'</span>':'')+'</p>'
       +'<h2>'+esc(t.name)+'<small>'+esc(t.focus||'')+'</small></h2>'
-      +'<ul class="tl">'+rows.map(function(r){return '<li><span>'+esc(r[0])+'</span><span>'+esc(r[1])+'</span></li>'}).join('')+'</ul>'
-      +'<button class="cta sm" data-a="start" data-id="'+n.id+'" data-dl="'+(dlNow?1:0)+'">'+(dlNow?'Start deload-pas':'Start pas')+'</button>'
-      +'<div class="links"><button class="link" data-a="pickDay">Vælg et andet pas</button><button class="link" data-a="openDate" data-d="'+t.date+'">Ryk eller spring over</button></div></section>'+soreSwapCard(t);
+      +'<ul class="tl">'+rows.map(function(r){return '<li><button class="rbtn" data-a="exOpen" data-n="'+esc(r[0])+'"><span>'+esc(r[0])+'</span><span class="rr">'+esc(r[1])+'<i class="rinfo">'+IC.info+'</i></span></button></li>'}).join('')+'</ul>'
+      +'<button class="cta sm" data-a="start" data-id="'+n.id+'" data-dl="'+(dlNow?1:0)+'">'+IC.play+'<span>'+(dlNow?'Start deload-pas':'Start pas')+'</span></button>'
+      +'<div class="links"><button class="link" data-a="pickDay">Vælg et andet pas</button><button class="link" data-a="openDate" data-d="'+t.date+'">Ryk eller spring over</button></div></section>'+ciCard(t)+soreSwapCard(t);
   }else{
     var dn2=t.status==='done';
     h+='<section class="tcard"><p class="lbl">'+(dn2?'Klaret i dag':'I dag')+'</p><h2>'+(dn2?'Godt gået':'Hviledag')+'<small>Sådan restituerer du bedst muligt</small></h2>'+tipsHtml(tipsFor(3))
       +'<div class="links"><button class="link" data-a="pickDay">Træn alligevel</button><button class="link" data-a="openDate" data-d="'+t.date+'">Ændr i dag</button></div></section>';
   }
+  h+=habitsCard();
   if(!S.sore[today])h+='<button class="card sorebtn" data-a="openSore" data-d="'+today+'"><div><b>Hvordan har kroppen det?</b><span class="small muted">Log, hvor du er øm</span></div><span class="muted">'+IC.chev+'</span></button>';
   return h+weekStrip()+'</main>';
 }
 
 function deloadCard(){
-  var h='<div class="sec"><h2>Deload</h2></div><div class="card">';
+  var h='<div class="sec"><h2>'+HI('flame')+'Deload</h2></div><div class="card">';
   if(!deloadOn())return h+'<p style="margin-top:0" class="muted">Deload er slået fra.</p><button class="btn sec2" data-a="deloadEvery" data-v="6">Slå til, hver 6. uge</button></div>';
   var now=isDeloadWeek(todayStr());
   h+='<p style="margin-top:0">'+(now?'<b>Det er deload-uge nu.</b>':'Næste deload-uge starter <b>'+esc(fmtDate(S.deload.next))+'</b>')+'</p>'
@@ -1489,7 +1712,7 @@ function deloadCard(){
   return h;
 }
 function testCard(){
-  var h='<div class="sec"><h2>1RM-test</h2></div>',ps=plans1RM();
+  var h='<div class="sec"><h2>'+HI('star')+'1RM-test</h2></div>',ps=plans1RM();
   if(!ps.length)return h+'<div class="card"><p class="muted" style="margin:0">Log pas med fx Bænkpres, Squat eller Dødløft, så regner jeg ud, hvornår du er klar til at teste din 1RM.</p></div>';
   h+='<div class="card" style="padding:4px 16px">';
   ps.forEach(function(p){
@@ -1511,7 +1734,7 @@ function recCardHtml(n,r){
 }
 function recordsCard(){
   var counts=allNames(),names=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]||a.localeCompare(b,'da')});
-  var h='<div class="sec"><h2>Rekorder</h2></div>';
+  var h='<div class="sec"><h2>'+HI('star')+'Rekorder</h2></div>';
   if(!names.length)return h+'<div class="empty">Log dit første pas, så dukker dine rekorder op her.</div>';
   var list=ui.recAll?names:names.slice(0,5);
   list.forEach(function(n){h+=recCardHtml(n,records(n))});
@@ -1520,13 +1743,13 @@ function recordsCard(){
 }
 function trainingCard(){
   var v=volumeByMuscle(),counts=allNames(),top=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]}).slice(0,5);
-  var h='<div class="sec"><h2>Din træning</h2></div><div class="card"><p class="small muted" style="margin-top:0">Sæt pr. uge pr. muskelgruppe ('+(v.src==='log'?'ud fra dine seneste uger':'ud fra dit program')+'). Stregen viser et godt minimum.</p>';
+  var h='<div class="sec"><h2>'+HI('chart2')+'Din træning</h2></div><div class="card"><p class="small muted" style="margin-top:0">Sæt pr. uge pr. muskelgruppe ('+(v.src==='log'?'ud fra dine seneste uger':'ud fra dit program')+'). Stregen viser et godt minimum.</p>';
   MUSCLES.forEach(function(m){
     var n=v.per[m]||0,pct=Math.min(100,n/(MIN_SETS[m]*2)*100);
     h+='<div class="vrow"><span>'+m+'</span><div class="vbar"><i class="'+(n<MIN_SETS[m]?'low':'')+'" style="width:'+pct+'%"></i><u></u></div><b>'+fmt(Math.round(n*10)/10)+'</b></div>';
   });
   if(top.length)h+='<p class="small muted" style="margin:12px 0 0">Mest brugte: '+top.map(function(n){return esc(n)+' ('+counts[n]+')'}).join(', ')+'</p>';
-  h+='</div><div class="sec"><h2>Forslag til dig</h2></div>';
+  h+='</div><div class="sec"><h2>'+HI('bolt','ico-bolt')+'Forslag til dig</h2></div>';
   var sg=exerciseSuggestions();
   if(!sg.length)return h+'<div class="card"><p class="muted" style="margin:0">Ingen forslag lige nu. Din træning ser jævnt fordelt ud.</p></div>';
   sg.forEach(function(x){
@@ -1640,17 +1863,14 @@ function viewHistory(){
 
 function exRowsHtml(d,dl){
   var rows;
-  if(dl)rows=deloadFor(d).map(function(p){return '<div class="logrow" style="flex-direction:column;gap:3px"><div style="display:flex;justify-content:space-between;gap:12px"><span>'+esc(p.name)+'</span><span style="color:var(--gold);font-weight:600;text-align:right">'+p.sets+' × '+esc(p.reps)+(p.kg?' med ca. '+fmt(p.kg)+' kg':'')+'</span></div></div>'});
-  else rows=d.exercises.map(function(e){
-    var hh=hist(e.name),l=hh.length?hh[hh.length-1]:null;
-    return '<div class="logrow" style="flex-direction:column;gap:3px"><div style="display:flex;justify-content:space-between;gap:12px"><span>'+esc(e.name)+'</span><span style="color:var(--lilac);font-weight:600">'+e.sets+' × '+esc(e.reps)+'</span></div>'
-      +(l?'<span class="small">Sidst: '+setsText(l.sets,l.kind)+'</span>':(e.note?'<span class="small">'+esc(e.note)+'</span>':''))+'</div>'});
+  if(dl)rows=deloadFor(d).map(function(p){return exRowBtn(p.name,p.sets+' × '+esc(p.reps),p.kg?'Ca. '+fmt(p.kg)+' kg':'')});
+  else rows=d.exercises.map(function(e){var hh=hist(e.name),l=hh.length?hh[hh.length-1]:null;return exRowBtn(e.name,e.sets+' × '+esc(e.reps),l?'Sidst: '+setsText(l.sets,l.kind):(e.note?esc(e.note):''))});
   return '<div class="dv"><div class="card" style="padding:4px 16px">'+rows.join('')+'</div></div>';
 }
 function viewPlan(){
   var sch=schedule(10),t=sch[0],dlNow=isDeloadWeek(todayStr());
   var h='<main'+mc(1)+'><div class="sec"><h2>Program</h2><button data-a="openDay" data-id="">Ny dag</button></div>';
-  h+='<div class="sec" style="margin-top:0"><h2 style="font-size:19px">Dagens program</h2></div>';
+  h+='<div class="sec" style="margin-top:0"><h2 style="font-size:19px">'+HI('dumb2')+'Dagens program</h2></div>';
   if(S.active){
     h+='<div class="card"><b>Pas i gang</b><p class="small muted" style="margin:4px 0 12px">'+esc(S.active.name+' '+(S.active.focus||''))+'</p><button class="cta sm" data-a="openWorkout">Fortsæt pas</button></div>';
   }else if(t.status==='train'){
@@ -1661,9 +1881,9 @@ function viewPlan(){
     h+='<div class="card"><b>Klaret i dag</b><p class="small muted" style="margin:4px 0 0">Du har trænet '+esc(t.name+' '+t.focus)+'.</p></div>';
   }else h+='<div class="card"><b>Hviledag</b><p class="small muted" style="margin:4px 0 0">Ingen pas i dag. Tips til restitution finder du under Hjem.</p></div>';
   h+=upcomingList(sch);
-  h+='<div class="sec" style="margin-top:22px"><h2>Dine dage</h2></div>';
+  h+='<div class="sec" style="margin-top:22px"><h2>'+HI('list')+'Dine dage</h2></div>';
   S.program.forEach(function(d){
-    h+='<button class="dayc" data-a="openDay" data-id="'+d.id+'"><span><b>'+esc(d.name)+' '+esc(d.focus||'')+'</b><br><span class="small muted">'+d.exercises.length+' øvelser</span></span><span class="muted">Ret</span></button>';
+    h+='<button class="dayc" data-a="openDay" data-id="'+d.id+'"><span style="display:flex;align-items:center;gap:12px">'+HI('dumb2')+'<span><b>'+esc(d.name)+' '+esc(d.focus||'')+'</b><br><span class="small muted">'+d.exercises.length+' øvelser</span></span></span><span class="muted" style="display:grid">'+IC.edit.replace('<svg','<svg style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"')+'</span></button>';
   });
   return h+'</main>';
 }
@@ -1671,7 +1891,7 @@ function viewPlan(){
 /* ---------- body tab ---------- */
 function nextTimeCard(){
   var n=schedule(14).find(function(e){return e.status==='train'});
-  var h='<div class="sec"><h2>Til næste gang</h2></div><div class="card">';
+  var h='<div class="sec"><h2>'+HI('bolt','ico-bolt')+'Til næste gang</h2></div><div class="card">';
   if(!n)return h+'<p class="muted" style="margin:0">Ingen planlagte pas.</p></div>';
   h+='<p class="small muted" style="margin:0 0 8px">Næste pas: <b style="color:var(--text)">'+esc(n.name+' '+n.focus)+'</b>, '+esc(fmtDate(n.date))+'</p>';
   var plan=sorePlan(n.dayId);
@@ -1689,16 +1909,22 @@ function viewBody(){
   var tx=soreText(ds);
   h+='<div class="card" style="margin-top:12px"><b>'+(tx?esc(tx):'Ingen ømhed noteret')+'</b><div class="chips" style="margin:10px 0 0"><button class="chip" data-a="soreNone" data-d="'+ds+'">Ingen ømhed</button></div></div>';
   h+=nextTimeCard();
-  h+='<div class="sec"><h2>Restitution</h2></div><div class="card">'+tipsHtml(tipsFor(5))+'<p class="small muted" style="margin:8px 0 0">Skarp smerte, eller smerte der ikke aftager, skal du hvile og få undersøgt.</p></div>';
+  h+='<div class="sec"><h2>'+HI('moon')+'Restitution</h2></div><div class="card">'+tipsHtml(tipsFor(5))+'<p class="small muted" style="margin:8px 0 0">Skarp smerte, eller smerte der ikke aftager, skal du hvile og få undersøgt.</p></div>';
   return h+'</main>';
 }
 
 /* ---------- menu, pages, settings ---------- */
-var MENU=[['goals','goal','Vej til målet','Stang og skiver mod dine mål'],['ex','book','Øvelser','Sådan gør du, med bevægelige illustrationer'],['hist','cal','Historik','Alle dine pas'],['coach','star','Coach','Deload, 1RM-test, rekorder og forslag'],['bw','scale','Kropsvægt','Log og graf'],['settings','gear','Indstillinger','Farver, hviletid, mål og mere'],['backup','cloud','Backup og gendan','GitHub eller fil']];
+var MENU=[
+ {k:'a',t:'Træning',i:'dumb2',items:[['ex','book','Øvelser','Sådan gør du, med bevægelige illustrationer'],['goals','goal','Vej til målet','Stang og skiver mod dine mål'],['hist','cal','Historik','Alle dine pas'],['coach','star','Coach','Deload, 1RM-test, rekorder og forslag']]},
+ {k:'b',t:'Krop',i:'scale',items:[['bw','scale','Kropsvægt','Log og graf'],['tab:body','bolt','Ømhed og restitution','Kropstegning og tips']]},
+ {k:'c',t:'System',i:'gear',items:[['settings','gear','Indstillinger','Farver, hviletid, mål og mere'],['backup','cloud','Backup og gendan','GitHub eller fil']]}
+];
 function drawerHtml(){
-  return '<div class="drp" data-a="noop"><div class="drh"><h2>Menu</h2><button class="iconbtn" data-a="drClose" aria-label="Luk">'+IC.x+'</button></div>'
-    +MENU.map(function(m){return '<button class="dri" data-a="go" data-p="'+m[0]+'"><span class="ic">'+IC[m[1]]+'</span><span><b>'+m[2]+'</b><span class="s">'+m[3]+'</span></span></button>'}).join('')
-    +'<div class="drf">Data ligger kun på din telefon.</div></div>';
+  return '<div class="drp" data-a="noop"><div class="drh" style="display:flex;justify-content:space-between;align-items:flex-start"><div><span class="eb">Menu</span><h2>Hvad skal vi?</h2></div><button class="iconbtn" data-a="drClose" aria-label="Luk">'+IC.x+'</button></div>'
+    +MENU.map(function(g,gi){
+      return '<div class="acc'+(ui.acc[g.k]?' open':'')+'" data-g="'+g.k+'" style="--i:'+gi+'"><button class="acch" data-a="acc" data-g="'+g.k+'"><span class="ic">'+IC[g.i]+'</span><b>'+g.t+'</b><span class="cnt">'+g.items.length+'</span><span class="chev">'+IC.chev+'</span></button><div class="accb">'
+        +g.items.map(function(m){return '<button class="dri" data-a="go" data-p="'+m[0]+'"><span class="ic">'+IC[m[1]]+'</span><span><b>'+m[2]+'</b><span class="s">'+m[3]+'</span></span></button>'}).join('')+'</div></div>';
+    }).join('')+'<div class="drf">Data ligger kun på din telefon.</div></div>';
 }
 function chrome(){
   var dr=$('#drawer'),nm=$('#navMenu');if(nm)nm.classList.toggle('on',!!ui.page||!!ui.drawer);
@@ -1725,7 +1951,7 @@ function settingsHtml(){
     +'<b>Vægttrin (+ og − knapper)</b><div class="seg" style="margin:8px 0 6px">'
     +[1.25,2.5,5].map(function(v){return '<button data-a="setStep" data-v="'+v+'" class="'+(st.step===v?'on':'')+'">'+(v===1.25?'1,25':fmt(v))+' kg</button>'}).join('')+'</div>'
     +togRow('Lyd','sound','Bip, når hvilen er slut')+togRow('Vibration','vibrate','Bruges kun på enheder, der understøtter det')+'</div>';
-  h+='<div class="sec" style="margin-top:22px"><h2 style="font-size:19px">App</h2></div><div class="card">'+togRow('Opstartsanimation','preloader','Stangen, der læsses, når appen åbner')+'</div>';
+  h+='<div class="sec" style="margin-top:22px"><h2 style="font-size:19px">App</h2></div><div class="card">'+togRow('Opstartsanimation','preloader','Vægtskiven, der falder, når appen åbner')+togRow('Tilpas passet efter dagsform','adapt','Lidt færre sæt og lettere vægt ved lidt søvn eller tom mave')+togRow('Tips og vaner på Hjem','tips','Vand, frugt og grønt og dagens tip')+'</div>';
   h+='<div class="sec" style="margin-top:22px"><h2 style="font-size:19px">Ugerytme</h2></div><div class="card"><p class="muted small" style="margin-top:0">Vælg de dage du helst træner. Resten er hviledage. Enkelte dage kan du altid rykke fra Hjem.</p><div class="seg" style="margin-bottom:0">'
     +['Man','Tir','Ons','Tor','Fre','Lør','Søn'].map(function(n,i){return '<button data-a="togDow" data-i="'+i+'" class="'+(S.plan.pattern[i]?'on':'')+'">'+n+'</button>'}).join('')+'</div></div>';
   h+='<div class="sec" style="margin-top:22px"><h2 style="font-size:19px">Deload</h2></div><div class="card"><p class="muted small" style="margin-top:0">Hvor ofte vil du have en let uge? Appen minder dig om det og foreslår sæt, reps og vægt.</p><div class="seg" style="margin-bottom:0">'
@@ -1746,7 +1972,7 @@ function settingsHtml(){
 }
 function exListHtml(){
   var q=(ui.exq||'').trim().toLowerCase(),g=ui.exg||'Alle';
-  var items=LIB.filter(function(l){return (g==='Alle'||l[1]===g)&&(!q||l[0].toLowerCase().indexOf(q)>=0)});
+  var items=[];GROUPS.forEach(function(gg){if(g==='Alle'||g===gg)libByGroup(gg).forEach(function(l){if(!q||l[0].toLowerCase().indexOf(q)>=0)items.push(l)})});
   if(!items.length)return '<div class="empty">Ingen øvelser fundet.</div>';
   return items.map(function(l){
     var d=EXD[l[0]];
@@ -1801,7 +2027,7 @@ function prFlags(ex){
 function viewWorkout(){
   var a=S.active,wIdx=warmIndex();
   var h='<div class="wk-top"><button class="iconbtn" data-a="closeWorkout" aria-label="Tilbage">'+IC.back+'</button>'
-    +'<div class="ttl"><b>'+esc(a.name)+' '+esc(a.focus||'')+'</b><span id="elapsed">0 min</span></div>'
+    +'<div class="ttl"><b>'+esc(a.name)+' '+esc(a.focus||'')+'</b><span id="elapsed">0 min</span>'+(a.adapted?' <span class="badge">Tilpasset</span>':'')+'</div>'
     +'<button class="finish" data-a="finish">Afslut</button></div><div class="wk">';
   a.exercises.forEach(function(ex,exi){
     var wn=0,t=ex.kind==='time',pr=prFlags(ex);
@@ -1832,7 +2058,7 @@ function viewWorkout(){
 /* sheets */
 function renderSheet(keep){
   var el=$('#sheet'),prev=el.querySelector('.panel'),st=prev&&keep?prev.scrollTop:0;
-  if(!sheet){el.innerHTML='';stopFig();return}
+  if(!sheet){el.innerHTML='';return}
   var h='';
   if(sheet.type==='confirm'){
     h='<div class="ph"><h2>'+esc(sheet.title)+'</h2><button class="iconbtn" data-a="closeSheet" aria-label="Luk">'+IC.x+'</button></div><p class="muted" style="margin-top:0">'+esc(sheet.text)+'</p>'
@@ -1854,7 +2080,6 @@ function renderSheet(keep){
   }else if(sheet.type==='day'){
     var d=sheet.draft;
     h='<div class="ph"><h2>'+(sheet.isNew?'Ny dag':'Ret '+esc(d.name))+'</h2><button class="iconbtn" data-a="closeSheet" aria-label="Luk">'+IC.x+'</button></div>'
-      +'<datalist id="exlist">'+suggestions().map(function(n){return '<option value="'+esc(n)+'">'}).join('')+'</datalist>'
       +'<label class="fld"><span>Navn</span><input class="in" data-draft="name" value="'+esc(d.name)+'"></label>'
       +'<label class="fld"><span>Fokus</span><input class="in" data-draft="focus" value="'+esc(d.focus||'')+'" placeholder="fx Overkrop A"></label>';
     d.exercises.forEach(function(e,i){
@@ -1862,7 +2087,7 @@ function renderSheet(keep){
       h+='<div class="erow" data-i="'+i+'"><div class="ehead"><button class="grip" data-i="'+i+'" aria-label="Træk for at flytte"><svg viewBox="0 0 24 24"><circle cx="9" cy="6" r="1.8"/><circle cx="15" cy="6" r="1.8"/><circle cx="9" cy="12" r="1.8"/><circle cx="15" cy="12" r="1.8"/><circle cx="9" cy="18" r="1.8"/><circle cx="15" cy="18" r="1.8"/></svg></button>'
         +'<button class="etitle" data-a="eToggle" data-i="'+i+'"><b>'+esc(e.name||'Ny øvelse')+'</b><span>'+esc(e.sets+' × '+e.reps)+(e.kind==='time'?' (tid)':'')+'</span></button>'
         +'<button class="ech'+(op?' open':'')+'" data-a="eToggle" data-i="'+i+'" aria-label="Rediger"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></div>';
-      if(op)h+='<div class="ebody"><label class="fld"><span>Vælg fra listen</span>'+exSelect('data-pick="'+i+'"','Vælg øvelse…')+'</label><input class="in" list="exlist" data-draft="exercises.'+i+'.name" value="'+esc(e.name)+'" placeholder="Eller skriv selv">'
+      if(op)h+='<div class="ebody"><label class="fld"><span>Øvelse</span>'+exSelect('data-pick="'+i+'"','Vælg øvelse…',e.name)+'</label>'
         +'<div class="g"><label class="fld" style="margin:0"><span>Sæt</span><input class="in" inputmode="numeric" data-draft="exercises.'+i+'.sets" value="'+e.sets+'"></label>'
         +'<label class="fld" style="margin:0"><span>Reps / sek</span><input class="in" data-draft="exercises.'+i+'.reps" value="'+esc(e.reps)+'"></label>'
         +'<label class="fld" style="margin:0"><span>Type</span><select class="in" data-draft="exercises.'+i+'.kind"><option value="reps"'+(e.kind!=='time'?' selected':'')+'>Reps</option><option value="time"'+(e.kind==='time'?' selected':'')+'>Tid</option></select></label></div>'
@@ -1899,6 +2124,12 @@ function renderSheet(keep){
         +'<div class="tip"><div><b>Tip</b>'+esc(xd.t)+'</div></div>'
         :'<p class="muted">Der er ingen vejledning til denne øvelse endnu.</p>')
       +'<button class="btn" data-a="sugAdd" data-n="'+esc(sheet.n)+'">Tilføj til en dag</button>';
+  }else if(sheet.type==='newprog'){
+    var np=defaultProgram();
+    h='<div class="ph"><h2>Nyt program</h2><button class="iconbtn" data-a="closeSheet" aria-label="Luk">'+IC.x+'</button></div>'
+      +'<p class="muted small" style="margin-top:0">Jeg har lavet et program, der rammer alle muskelgrupper, fx biceps, triceps, baglår og læg. Se det igennem, og vælg selv, om du vil bruge det. Din historik bliver liggende.</p>'
+      +np.map(function(d){return '<div class="card" style="padding:12px 16px"><b>'+esc(d.name+' '+d.focus)+'</b><div class="dv" style="margin-top:4px">'+d.exercises.map(function(e){return '<div class="small" style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-top:1px solid var(--line)"><span>'+esc(e.name)+'</span><span class="muted">'+e.sets+' × '+esc(e.reps)+'</span></div>'}).join('')+'</div></div>'}).join('')
+      +'<button class="btn" data-a="newprogYes">Brug det nye program</button><button class="btn sec2" data-a="newprogNo" style="margin-top:10px">Behold mit eget</button>';
   }else if(sheet.type==='zones'){
     var zg=sheet.group,zvs=[];ZONES.forEach(function(z){if(z.g===zg&&zvs.indexOf(z.v)<0)zvs.push(z.v)});
     var zv=zvs.indexOf(sheet.view)>=0?sheet.view:zvs[0];
@@ -1936,7 +2167,6 @@ function renderSheet(keep){
   
   el.innerHTML='<div class="bd" data-a="bdClose"><div class="panel" role="dialog" aria-modal="true">'+h+'</div></div>';
   var p=el.querySelector('.panel');if(p&&keep)p.scrollTop=st;
-  if(sheet.type==='exinfo')startFig();else stopFig();
   if(sheet.type==='addEx'&&sheet.focus){var q2=$('#exq');if(q2){q2.focus();var l=q2.value.length;q2.setSelectionRange(l,l)}}
 }
 
@@ -2023,12 +2253,12 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 /* ---------- workout actions ---------- */
 function findEx(id){return S.active&&S.active.exercises.find(function(e){return e.id===id})}
 function makeEx(name,sets,reps,note,kind){
-  var last=hist(name),l=last.length?last[last.length-1]:null,out=[];
+  var last=hist(name),l=last.length?last[last.length-1]:null,out=[],sg=l?null:suggestKg(name);
   for(var i=0;i<sets;i++){
     var ls=l&&(l.sets[i]||l.sets[l.sets.length-1]);
-    out.push({kg:ls?ls.kg:'',reps:ls?ls.reps:(firstNum(reps)||''),rir:null,done:false});
+    out.push({kg:ls?ls.kg:(sg&&sg.kg?sg.kg:''),reps:ls?ls.reps:(firstNum(reps)||''),rir:null,done:false});
   }
-  return{id:uid(),name:name,kind:kind||'reps',target:sets+' × '+reps,targetReps:String(reps),note:note||'',sets:out};
+  return{id:uid(),name:name,kind:kind||'reps',target:sets+' × '+reps,targetReps:String(reps),note:(note||'')+(sg&&sg.from?(note?' ':'')+'Vægt foreslået ud fra '+sg.from+'.':''),sets:out};
 }
 function makeExPlan(p){
   var out=[];
@@ -2037,15 +2267,22 @@ function makeExPlan(p){
 }
 function startWorkout(id,dl){
   var d=S.program.find(function(x){return x.id===id});if(!d)return;
-  var sw=(S.swaps||{})[id],map=(sw&&!dl)?sw.map:{};
+  var sw=(S.swaps||{})[id],map=(sw&&!dl)?sw.map:{},ds=todayStr(),ci=S.checkin[ds]||{},rd=readiness(id);
+  var adapt=!dl&&S.settings.adapt&&!ci.skip&&rd.setMod<0,st=S.settings.step;
   var exs=dl?deloadFor(d).map(makeExPlan):d.exercises.map(function(e){
     var nm=map[e.name];
-    if(nm){var df=defaultsFor(nm);return makeEx(nm,e.sets||df.sets,df.reps,'Byttet ud for '+e.name+', fordi du er øm',kindOf(nm))}
+    if(nm){var sc=schemeFor(nm,{sets:e.sets,reps:e.reps});return makeEx(nm,sc.sets,sc.reps,'Byttet ud for '+e.name+', fordi du er øm.',sc.kind)}
     return makeEx(e.name,e.sets||2,e.reps,e.note,e.kind);
+  });
+  if(adapt)exs.forEach(function(x){
+    if(x.sets.length>2)x.sets.pop();
+    x.sets.forEach(function(q){var kg=num(q.kg);if(x.kind!=='time'&&kg>0)q.kg=Math.max(st,Math.round(kg*rd.load/st)*st)});
+    x.target=x.sets.length+' × '+x.targetReps;x.note=(x.note?x.note+' ':'')+'Tilpasset din dagsform.';
   });
   if(sw&&!dl)delete S.swaps[id];
   sheet=null;ui.page=null;ui.drawer=false;
-  S.active={id:uid(),dayId:d.id,name:d.name,focus:(d.focus||'')+(dl?' (deload)':''),date:todayStr(),startedAt:Date.now(),deload:!!dl,exercises:exs};
+  S.active={id:uid(),dayId:d.id,name:d.name,focus:(d.focus||'')+(dl?' (deload)':''),date:ds,startedAt:Date.now(),deload:!!dl,adapted:adapt?rd.level:null,
+    ci:(ci.sleep!=null||ci.food)?{sleep:ci.sleep==null?null:ci.sleep,food:ci.food||rd.food,h:new Date().getHours()}:null,exercises:exs};
   save();ui.view='workout';rest=null;window.scrollTo(0,0);render();lock();
 }
 function addExerciseToWorkout(nm){
@@ -2067,7 +2304,7 @@ function finishWorkout(){
     });
     if(sets.length)exs.push({name:ex.name,kind:ex.kind,sets:sets});
   });
-  var ses={id:uid(),date:a.date,dayId:a.dayId,dayName:a.name,focus:a.focus,durationMin:Math.round((Date.now()-a.startedAt)/60000),deload:!!a.deload,note:a.note||'',exercises:exs};
+  var ses={id:uid(),date:a.date,dayId:a.dayId,dayName:a.name,focus:a.focus,durationMin:Math.round((Date.now()-a.startedAt)/60000),deload:!!a.deload,note:a.note||'',ci:a.ci||null,adapted:a.adapted||null,exercises:exs};
   S.sessions.push(ses);S.active=null;rest=null;ui.warn=false;save();
   ui.view='tabs';ui.tab='home';ui.fx=true;sheet=null;window.scrollTo(0,0);render();
   celebrate(ses,prNames);
@@ -2095,6 +2332,7 @@ function celebrate(ses,prs){
 }
 function closeSheet(){
   if(sheet&&sheet.type==='welcome')return;
+  if(sheet&&sheet.type==='newprog'){S.progOffer=1;save()}
   var warn=sheet&&sheet.act==='finishAnyway',redo=sheet&&(sheet.type==='sore'||sheet.type==='backup'||sheet.type==='zones');
   sheet=null;
   if(!S.welcomed)sheet={type:'welcome'};
@@ -2109,6 +2347,7 @@ document.addEventListener('click',function(e){
   var t=e.target.closest('[data-a]');if(!t)return;
   var a=t.dataset.a;
   if(a==='bdClose'){if(e.target===t)closeSheet();return}
+  if(a==='popBd'){if(e.target===t){pop=null;renderPop()}return}
   var ex,s;
   switch(a){
     case 'tab':if(ui.tab!==t.dataset.t||ui.view!=='tabs'||ui.page)ui.fx=true;ui.tab=t.dataset.t;ui.page=null;ui.drawer=false;ui.view='tabs';window.scrollTo(0,0);render();break;
@@ -2299,13 +2538,24 @@ document.addEventListener('click',function(e){
       save();renderSheet(true);break;
     case 'soreNone':var snd=t.dataset.d||todayStr();S.sore[snd]={none:1};S.soreZ[snd]={};save();render();toast('Noteret: ingen ømhed');break;
     case 'noop':break;
-    case 'exOpen':sheet={type:'exinfo',n:t.dataset.n};renderSheet();break;
+    case 'ciSleep':var cd=todayStr(),c1=S.checkin[cd]||(S.checkin[cd]={});c1.sleep=+t.dataset.v;save();render();break;
+    case 'ciFood':var cd2=todayStr(),c2=S.checkin[cd2]||(S.checkin[cd2]={});c2.food=t.dataset.v;save();render();break;
+    case 'ciSkip':var cd3=todayStr(),c3=S.checkin[cd3]||(S.checkin[cd3]={});c3.skip=!c3.skip;save();render();break;
+    case 'waterUp':var wd1=todayStr(),w1=S.daily[wd1]||(S.daily[wd1]={});w1.w=(w1.w||0)+1;save();buzz(8);render();break;
+    case 'waterDown':var wd2=todayStr(),w2=S.daily[wd2]||(S.daily[wd2]={});w2.w=Math.max(0,(w2.w||0)-1);save();render();break;
+    case 'habit':var hd=todayStr(),h1=S.daily[hd]||(S.daily[hd]={});h1[t.dataset.k]=!h1[t.dataset.k];save();render();break;
+    case 'newprogYes':S.program=defaultProgram();S.progOffer=1;sheet=null;save();ui.fx=true;render();toast('Det nye program er klar');break;
+    case 'newprogNo':S.progOffer=1;sheet=null;save();render();break;
+    case 'acc':ui.acc[t.dataset.g]=!ui.acc[t.dataset.g];var ae=document.querySelector('.acc[data-g="'+t.dataset.g+'"]');if(ae)ae.classList.toggle('open',!!ui.acc[t.dataset.g]);break;
+    case 'exOpen':pop={n:t.dataset.n};renderPop();break;
+    case 'popClose':pop=null;renderPop();break;
     case 'exGroup':ui.exg=t.dataset.g;render();break;
     case 'burger':ui.drawer=true;chrome();break;
     case 'drClose':ui.drawer=false;chrome();break;
     case 'go':
       ui.drawer=false;
       if(t.dataset.p==='backup'){sheet={type:'backup',mode:'main'};chrome();renderSheet()}
+      else if(t.dataset.p.indexOf('tab:')===0){ui.tab=t.dataset.p.slice(4);ui.page=null;ui.fx=true;window.scrollTo(0,0);render()}
       else{ui.page=t.dataset.p;ui.fx=true;window.scrollTo(0,0);render()}
       break;
     case 'pageBack':ui.page=null;ui.fx=true;window.scrollTo(0,0);render();break;
@@ -2337,7 +2587,7 @@ document.addEventListener('click',function(e){
     case 'deloadPostpone':initDeload();S.deload.next=addDays(S.deload.next,7);save();render();toast('Deload er udskudt en uge');break;
     case 'dlPlan':sheet={type:'dlplan',id:t.dataset.id};renderSheet();break;
     case 'recAll':ui.recAll=!ui.recAll;render();break;
-    case 'sugAdd':sheet={type:'addToDay',n:t.dataset.n};renderSheet();break;
+    case 'sugAdd':pop=null;renderPop();sheet={type:'addToDay',n:t.dataset.n};renderSheet();break;
     case 'sugToDay':
       var dd2=S.program.find(function(x){return x.id===t.dataset.id}),df3=defaultsFor(sheet.n),nm2=sheet.n;
       if(dd2){dd2.exercises.push({name:nm2,sets:df3.sets,reps:df3.reps,kind:df3.kind,note:''});save();sheet=null;render();toast(nm2+' er lagt til '+dd2.name)}
@@ -2401,7 +2651,7 @@ document.addEventListener('input',function(e){
 });
 document.addEventListener('change',function(e){
   var t=e.target;
-  if(t.dataset.pick!==undefined&&t.value&&sheet&&sheet.draft){var pe=sheet.draft.exercises[+t.dataset.pick];pe.name=t.value;var lb=libFind(t.value);if(lb)pe.kind=lb[3];renderSheet(true);return}
+  if(t.dataset.pick!==undefined&&t.value&&sheet&&sheet.draft){var pe=sheet.draft.exercises[+t.dataset.pick],sc=schemeFor(t.value,{sets:pe.sets,reps:pe.reps});pe.name=t.value;pe.sets=sc.sets;pe.reps=sc.reps;pe.kind=sc.kind;renderSheet(true);toast('Sæt og reps tilpasset: '+sc.sets+' × '+sc.reps);return}
   if(t.dataset.addpick!==undefined&&t.value&&S.active){addExerciseToWorkout(t.value);return}
   if(t.dataset.deloadnext&&t.value){S.deload.next=mondayOf(t.value);save();render();return}
   if(t.dataset.sel==='progEx'){ui.progEx=t.value;ui.fx=true;render();return}
@@ -2415,7 +2665,7 @@ document.addEventListener('change',function(e){
   }
 });
 
-if(!S.welcomed)sheet={type:'welcome'};
+if(!S.welcomed)sheet={type:'welcome'};else if(!S.progOffer)sheet={type:'newprog'};
 applyTheme();
 render();
 (function(){
@@ -2426,11 +2676,12 @@ render();
   function out(){if(done)return;done=true;pre.classList.add('out');setTimeout(function(){pre.remove()},650)}
   pre.addEventListener('click',out);
   (function f(now){
-    var p=Math.min(1,Math.max(0,(now-t0-250)/1700)),e=p*p*(3-2*p);
-    n.textContent=Math.round(62+106*e);
-    if(now-t0<2100)requestAnimationFrame(f);
+    var p=Math.min(1,Math.max(0,(now-t0-200)/650));
+    n.textContent=Math.round(20+80*p);
+    if(now-t0<1000)requestAnimationFrame(f);
   })(t0);
-  setTimeout(out,RM?900:3050);
+  if(RM)n.textContent=100;
+  setTimeout(out,RM?900:2900);
   setTimeout(out,4500);
 })();
 try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
